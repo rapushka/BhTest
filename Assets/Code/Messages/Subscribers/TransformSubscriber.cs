@@ -1,3 +1,4 @@
+using Code.Player;
 using Mirror;
 using UnityEngine;
 
@@ -5,11 +6,11 @@ namespace Code.Messages.Subscribers
 {
 	public class TransformSubscriber : MonoBehaviour
 	{
-		[SerializeField] private Transform _cameraTransform;
+		[SerializeField] private Follower _playerCameraFollower;
 
-		public void OnStartServer(NetworkConnectionToClient connection, TransformMessage message)
+		public void Register(NetworkConnectionToClient connection, TransformMessage message)
 		{
-			_cameraTransform.SetParent(message.transform, worldPositionStays: false);
+			_playerCameraFollower.Construct(message.transform);
 		}
 	}
 }

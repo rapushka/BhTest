@@ -5,7 +5,7 @@ namespace Code.Messages.Senders
 {
 	public class TransformSender : MonoBehaviour
 	{
-		public void SendTransform(Transform playerTransform)
+		public void Send(Transform playerTransform)
 		{
 			var message = new TransformMessage
 			{
