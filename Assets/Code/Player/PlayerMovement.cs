@@ -1,9 +1,10 @@
 using Code.Workflow.Extensions;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Player
 {
-	public class PlayerMovement : MonoBehaviour
+	public class PlayerMovement : NetworkBehaviour
 	{
 		[SerializeField] private InputEmit _input;
 		[SerializeField] private float _movementSpeed;
@@ -11,7 +12,14 @@ namespace Code.Player
 
 		private float ScaledSpeed => _movementSpeed * Time.fixedDeltaTime;
 
-		private void FixedUpdate() => Move();
+		private void FixedUpdate()
+		{
+			if (hasAuthority == false)
+			{
+				return;
+			}
+			Move();
+		}
 
 		private void Move()
 			=> _input.MoveDirection

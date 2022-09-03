@@ -1,8 +1,9 @@
+using Mirror;
 using UnityEngine;
 
 namespace Code.Player
 {
-	public class InputEmit : MonoBehaviour
+	public class InputEmit : NetworkBehaviour
 	{
 		public Vector2 MoveDirection { get; private set; }
 
