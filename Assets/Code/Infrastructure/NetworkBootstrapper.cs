@@ -8,13 +8,17 @@ namespace Code.Infrastructure
 	public class NetworkBootstrapper : NetworkManager
 	{
 		[Header("Initialize Fields")]
+		[SerializeField] private PositionSubscriber _positionSubscriber;
+
 		[SerializeField] private Transform[] _spawnPoints;
 
 		public override void OnStartServer()
 		{
 			base.OnStartServer();
 			
-			NetworkServer.RegisterHandler<PositionMessage>(OnCreateCharacter);
+			_positionSubscriber.Construct(playerPrefab);
+
+			NetworkServer.RegisterHandler<PositionMessage>(_positionSubscriber.OnRegister);
 		}
 
 		public override void OnClientConnect()
@@ -24,12 +28,6 @@ namespace Code.Infrastructure
 			SpawnPlayer();
 		}
 		
-		private void OnCreateCharacter(NetworkConnectionToClient connection, PositionMessage message)
-		{
-			GameObject player = Instantiate(playerPrefab, message.position, Quaternion.identity);
-			NetworkServer.AddPlayerForConnection(connection, player);
-		}
-
 		private void SpawnPlayer()
 		{
 			var message = new PositionMessage
