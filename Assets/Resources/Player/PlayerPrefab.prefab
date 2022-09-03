@@ -454,8 +454,8 @@ MonoBehaviour:
   _mouseSensitivity: 3
   _distanceFromTarget: 5
   _smooth: 0
-  _rotationXMin: 90
-  _rotationXMax: -10
+  _rotationXMax: 90
+  _rotationXMin: -10
   _target: {fileID: 723966058560327062}
   _networkBehaviour: {fileID: 369405980115543399}
   _invertCamera: 0

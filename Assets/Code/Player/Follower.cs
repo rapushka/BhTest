@@ -1,6 +1,5 @@
 using Mirror;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Player
 {
@@ -8,7 +7,7 @@ namespace Code.Player
 	{
 		[SerializeField] private float _mouseSensitivity;
 		[SerializeField] private float _distanceFromTarget;
-		[FormerlySerializedAs("_smoothTime")] [SerializeField] private float _smooth;
+		[SerializeField] private float _smooth;
 		[SerializeField] private float _rotationXMin;
 		[SerializeField] private float _rotationXMax;
 		[SerializeField] private Transform _target;
@@ -36,19 +35,16 @@ namespace Code.Player
 			_rotationY += mouseX;
 			_rotationX += mouseY;
 
-			ApplyClampingByX();
+			ClampByX();
 
 			var nextRotation = new Vector3(ActualRotationX, _rotationY);
 
 			ApplyDampingBetweenRotations(nextRotation);
-
 			SubstractForwardToPointForwardToTarget();
 		}
 
 		private void SubstractForwardToPointForwardToTarget()
-		{
-			transform.position = _target.position - transform.forward * _distanceFromTarget;
-		}
+			=> transform.position = _target.position - transform.forward * _distanceFromTarget;
 
 		private void ApplyDampingBetweenRotations(Vector3 nextRotation)
 		{
@@ -56,11 +52,9 @@ namespace Code.Player
 			transform.localEulerAngles = _currentRotation;
 		}
 
-		private void ApplyClampingByX()
-		{
-			_rotationX = _invertCamera
-				? Mathf.Clamp(_rotationX, _rotationXMax, _rotationXMin)
-				: Mathf.Clamp(_rotationX, -_rotationXMin, -_rotationXMax);
-		}
+		private void ClampByX()
+			=> _rotationX = _invertCamera
+				? Mathf.Clamp(_rotationX, _rotationXMin, _rotationXMax)
+				: Mathf.Clamp(_rotationX, -_rotationXMax, -_rotationXMin);
 	}
 }
