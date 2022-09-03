@@ -10,7 +10,6 @@ namespace Code.Messages.Subscribers
 
 		public void Register(NetworkConnectionToClient connection, TransformMessage message)
 		{
-			_playerCameraFollower.Construct(message.transform);
 		}
 	}
 }
