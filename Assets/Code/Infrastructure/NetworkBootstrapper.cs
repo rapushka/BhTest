@@ -24,6 +24,7 @@ namespace Code.Infrastructure
 		{
 			base.OnClientConnect();
 			
+			
 			// Senders
 			_transformSender.Send(NetworkClient.localPlayer.transform);
 		}
