@@ -1,5 +1,4 @@
 using Code.Workflow.Extensions;
-using Mirror;
 using UnityEngine;
 
 namespace Code.Player
