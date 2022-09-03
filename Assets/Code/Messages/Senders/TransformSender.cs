@@ -1,0 +1,18 @@
+using Mirror;
+using UnityEngine;
+
+namespace Code.Messages.Senders
+{
+	public class TransformSender : MonoBehaviour
+	{
+		public void SendTransform(Transform playerTransform)
+		{
+			var message = new TransformMessage
+			{
+				transform = playerTransform
+			};
+
+			NetworkClient.connection.Send(message);
+		}
+	}
+}

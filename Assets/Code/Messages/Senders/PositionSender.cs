@@ -1,4 +1,3 @@
-using Code.Message;
 using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace Code.Messages.Senders
 	{
 		[SerializeField] private Transform[] _spawnPoints;
 
-		public void OnClientConnect()
+		public void SendSpawnPoint()
 		{
 			var message = new PositionMessage
 			{

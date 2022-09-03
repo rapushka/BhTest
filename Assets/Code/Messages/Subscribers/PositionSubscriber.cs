@@ -1,4 +1,3 @@
-using Code.Message;
 using Mirror;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ namespace Code.Messages.Subscribers
 			_playerPrefab = playerPrefab;
 		}
 
-		public void OnRegister(NetworkConnectionToClient connection, PositionMessage message)
+		public void OnStartServer(NetworkConnectionToClient connection, PositionMessage message)
 		{
 			GameObject player = Instantiate(_playerPrefab, message.position, Quaternion.identity);
 			NetworkServer.AddPlayerForConnection(connection, player);

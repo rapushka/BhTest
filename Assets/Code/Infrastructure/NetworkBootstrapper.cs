@@ -1,7 +1,7 @@
-using Code.Message;
+using Code.Messages;
 using Code.Messages.Senders;
 using Code.Messages.Subscribers;
-using Code.Workflow.Extensions;
+using Code.Player;
 using Mirror;
 using UnityEngine;
 
@@ -9,24 +9,26 @@ namespace Code.Infrastructure
 {
 	public class NetworkBootstrapper : NetworkManager
 	{
-		[Header("Initialize Fields")]
+		[Header("Messages")]
 		[SerializeField] private PositionSubscriber _positionSubscriber;
 		[SerializeField] private PositionSender _positionSender;
-		
+		[SerializeField] private Follower _playerCameraFollower;
+
 		public override void OnStartServer()
 		{
 			base.OnStartServer();
-			
-			_positionSubscriber.Construct(playerPrefab);
-
-			NetworkServer.RegisterHandler<PositionMessage>(_positionSubscriber.OnRegister);
 		}
 
 		public override void OnClientConnect()
 		{
 			base.OnClientConnect();
+			
+			ConstructCamera();
+		}
 
-			_positionSender.OnClientConnect();
+		private void ConstructCamera()
+		{
+			_playerCameraFollower.Construct(NetworkClient.localPlayer.transform);
 		}
 	}
 }

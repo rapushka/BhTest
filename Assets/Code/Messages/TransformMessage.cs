@@ -1,7 +1,7 @@
 using Mirror;
 using UnityEngine;
 
-namespace Code.Message
+namespace Code.Messages
 {
 	public struct TransformMessage : NetworkMessage 
 	{
