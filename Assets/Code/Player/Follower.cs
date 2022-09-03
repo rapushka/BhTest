@@ -18,11 +18,6 @@ namespace Code.Player
 
 		public void Construct(Transform target)
 		{
-			if (isLocalPlayer == false)
-			{
-				return;
-			}
-			
 			_target = target;
 			enabled = true;
 		}
