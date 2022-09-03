@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Player
 {
-	public class PlayerMovement : NetworkBehaviour
+	public class PlayerMovement : MonoBehaviour
 	{
 		[SerializeField] private InputEmit _input;
 		[SerializeField] private float _movementSpeed;
@@ -12,14 +12,7 @@ namespace Code.Player
 
 		private float ScaledSpeed => _movementSpeed * Time.fixedDeltaTime;
 
-		private void FixedUpdate()
-		{
-			if (hasAuthority == false)
-			{
-				return;
-			}
-			Move();
-		}
+		private void FixedUpdate() => Move();
 
 		private void Move()
 			=> _input.MoveDirection

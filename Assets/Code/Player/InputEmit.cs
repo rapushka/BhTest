@@ -9,6 +9,11 @@ namespace Code.Player
 
 		private void Update()
 		{
+			if (hasAuthority == false)
+			{
+				return;
+			}
+			
 			Movement();
 		}
 
