@@ -2,7 +2,7 @@ using Code.Message;
 using Mirror;
 using UnityEngine;
 
-namespace Code.Infrastructure
+namespace Code.Messages.Subscribers
 {
 	public class PositionSubscriber : MonoBehaviour
 	{

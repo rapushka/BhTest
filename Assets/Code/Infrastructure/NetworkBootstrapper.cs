@@ -1,4 +1,6 @@
 using Code.Message;
+using Code.Messages.Senders;
+using Code.Messages.Subscribers;
 using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
@@ -9,9 +11,8 @@ namespace Code.Infrastructure
 	{
 		[Header("Initialize Fields")]
 		[SerializeField] private PositionSubscriber _positionSubscriber;
-
-		[SerializeField] private Transform[] _spawnPoints;
-
+		[SerializeField] private PositionSender _positionSender;
+		
 		public override void OnStartServer()
 		{
 			base.OnStartServer();
@@ -25,17 +26,7 @@ namespace Code.Infrastructure
 		{
 			base.OnClientConnect();
 
-			SpawnPlayer();
-		}
-		
-		private void SpawnPlayer()
-		{
-			var message = new PositionMessage
-			{
-				position = _spawnPoints.PickRandom().position
-			};                  
-			
-			NetworkClient.connection.Send(message);
+			_positionSender.OnClientConnect();
 		}
 	}
 }
