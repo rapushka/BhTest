@@ -1,6 +1,6 @@
 using Mirror;
 
-namespace Code
+namespace Code.Player
 {
 	public class Player : NetworkBehaviour { }
 }
