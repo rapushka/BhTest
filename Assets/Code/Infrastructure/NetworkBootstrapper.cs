@@ -17,7 +17,7 @@ namespace Code.Infrastructure
 			base.OnStartServer();
 			
 			// Subscribers
-			NetworkServer.RegisterHandler<TransformMessage>(_transformSubscriber.Register);
+			// NetworkServer.RegisterHandler<TransformMessage>(_transformSubscriber.Register);
 		}
 
 		public override void OnClientConnect()
@@ -26,7 +26,7 @@ namespace Code.Infrastructure
 			
 			
 			// Senders
-			_transformSender.Send(NetworkClient.localPlayer.transform);
+			// _transformSender.Send(NetworkClient.localPlayer.transform);
 		}
 	}
 }

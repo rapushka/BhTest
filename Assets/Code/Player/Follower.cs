@@ -1,25 +1,26 @@
+using System;
 using Mirror;
 using UnityEngine;
 
 namespace Code.Player
 {
-	public class Follower : NetworkBehaviour
+	public class Follower : MonoBehaviour
 	{
 		[SerializeField] private float _mouseSensitivity;
 		[SerializeField] private float _distanceFromTarget;
 		[SerializeField] private float _smoothTime;
 		[SerializeField] private Vector2 _rotationXMinMax;
-
-		private Transform _target;
+		[SerializeField] private Transform _target;
+		[SerializeField] private NetworkBehaviour _networkBehaviour;
+		
 		private float _rotationY;
 		private float _rotationX;
 		private Vector3 _currentRotation;
 		private Vector3 _smoothVelocity = Vector3.zero;
 
-		public void Construct(Transform target)
+		private void Start()
 		{
-			_target = target;
-			enabled = true;
+			gameObject.SetActive(_networkBehaviour.hasAuthority);
 		}
 
 		private void Update()
