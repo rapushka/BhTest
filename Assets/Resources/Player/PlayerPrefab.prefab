@@ -424,7 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc2a705770041d8a9741b946d9b2961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorChangeComponent: {fileID: 2046485595033023712}
+  _colorChange: {fileID: 2046485595033023712}
+  _durationChangedColorState: 3
 --- !u!1 &7369405223296208841
 GameObject:
   m_ObjectHideFlags: 0

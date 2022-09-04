@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
+using Code.Player.StateMachine.ColorStates;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Player.StateMachine
 {
 	public class PlayerStateMachine : MonoBehaviour
 	{
-		[FormerlySerializedAs("_colorChangeComponent")] [SerializeField] private ColorChangeComponent _colorChange;
+		[SerializeField] private ColorChangeComponent _colorChange;
 		[SerializeField] private float _durationChangedColorState = 3;
 
-		private Dictionary<Type, IColorState> _states;
-		private IColorState _currentColorState;
+		private Dictionary<Type, ColorState> _states;
+		private ColorState _currentColorState;
 
 		private void Start()
 		{
-			_states = new Dictionary<Type, IColorState>
+			_states = new Dictionary<Type, ColorState>
 			{
 				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState),
 				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChange),
@@ -40,6 +40,6 @@ namespace Code.Player.StateMachine
 			_currentColorState.OnUpdate(this);
 		}
 
-		private IColorState State<T>() => _states[typeof(T)];
+		private ColorState State<T>() => _states[typeof(T)];
 	}
 }

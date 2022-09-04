@@ -1,26 +1,25 @@
 using UnityEngine;
 
-namespace Code.Player.StateMachine
+namespace Code.Player.StateMachine.ColorStates
 {
-	public class ColorChangedState : IColorState
+	public class ColorChangedState : ColorState
 	{
-		private readonly ColorChangeComponent _colorChangeComponent;
 		private readonly float _durationChangedColorState;
 		private float _beingDuration;
 
 		public ColorChangedState(ColorChangeComponent colorChangeComponent, float durationChangedColorState)
+			: base(colorChangeComponent)
 		{
-			_colorChangeComponent = colorChangeComponent;
 			_durationChangedColorState = durationChangedColorState;
 		}
 
-		public void Enter(PlayerStateMachine stateMachine)
+		public override void Enter(PlayerStateMachine stateMachine)
 		{
 			_beingDuration = 0f;
-			_colorChangeComponent.ToChangedColor();
+			ColorChangeComponent.ToChangedColor();
 		}
 
-		public void OnUpdate(PlayerStateMachine stateMachine)
+		public override void OnUpdate(PlayerStateMachine stateMachine)
 		{
 			_beingDuration += Time.deltaTime;
 
@@ -30,6 +29,6 @@ namespace Code.Player.StateMachine
 			}
 		}
 
-		public void OnCollide(PlayerStateMachine stateMachine) { }
+		public override void OnCollide(PlayerStateMachine stateMachine) { }
 	}
 }
