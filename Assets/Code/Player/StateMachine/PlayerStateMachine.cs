@@ -1,6 +1,7 @@
 using Code.Infrastructure;
 using Code.Player.Dash;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Player.StateMachine
 {
@@ -10,12 +11,12 @@ namespace Code.Player.StateMachine
 		[SerializeField] private DashComponent _dashComponent;
 		[SerializeField] private float _colorChangedStateDuration;
 		[SerializeField] private CollisionLocator _collisionLocator;
-		[SerializeField] private MaterialChangeComponent _materialChangeComponent;
+		[FormerlySerializedAs("_materialChangeComponent")] [SerializeField] private ColorChangeComponent _colorChangeComponent;
 
 		public DashComponent DashComponent => _dashComponent;
 		public float DashDuration => _dashComponent.DashDuration;
 		public float ColorChangedStateDuration => _colorChangedStateDuration;
-		public MaterialChangeComponent MaterialChangeComponent => _materialChangeComponent;
+		public ColorChangeComponent colorChangeComponent => _colorChangeComponent;
 
 		public IDashingState CurrentDashingState { get; private set; }
 		public IColorState CurrentColorState { get; private set; }

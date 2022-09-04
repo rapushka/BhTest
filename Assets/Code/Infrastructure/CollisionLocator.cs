@@ -10,19 +10,23 @@ namespace Code.Infrastructure
 
 		private void OnControllerColliderHit(ControllerColliderHit hit)
 		{
-			CmdOnCollision(hit.collider.gameObject);
+			GameObject other = hit.collider.gameObject;
+			if (other.TryGetComponent(out NetworkBehaviour _))
+			{
+				CmdOnCollision(other);
+			}
 		}
 
 		[Command]
-		private void CmdOnCollision(GameObject hit)
+		private void CmdOnCollision(GameObject other)
 		{
-			RpcExplode(hit);
+			RpcExplode(other);
 		}
 
 		[ClientRpc]
-		private void RpcExplode(GameObject hit)
+		private void RpcExplode(GameObject other)
 		{
-			Collide?.Invoke(hit);
+			Collide?.Invoke(other);
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace Code.Player.StateMachine
 	{
 		public void Enter(PlayerStateMachine stateMachine)
 		{
-			stateMachine.MaterialChangeComponent.ToDefaultColor();
+			stateMachine.colorChangeComponent.ToDefaultColor();
 		}
 
 		public void OnUpdate(PlayerStateMachine stateMachine) { }

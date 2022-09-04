@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Player
 {
-	public class MaterialChangeComponent : NetworkBehaviour
+	public class ColorChangeComponent : NetworkBehaviour
 	{
 		[SerializeField] private Renderer _renderer;
 		[SerializeField] private Color _default;
