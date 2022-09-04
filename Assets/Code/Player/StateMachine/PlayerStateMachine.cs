@@ -16,6 +16,7 @@ namespace Code.Player.StateMachine
 			_states = new Dictionary<Type, IColorState>
 			{
 				[typeof(ColorChangedState)] = new ColorChangedState(_colorChangeComponent),
+				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChangeComponent),
 			};
 
 			_currentColorState = State<ColorChangedState>();
