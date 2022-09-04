@@ -27,7 +27,7 @@ namespace Code.Player
 			{
 				ApplyColor(color);
 			}
-			else
+			else if (hasAuthority)
 			{
 				CmdApplyColor(color);
 			}
