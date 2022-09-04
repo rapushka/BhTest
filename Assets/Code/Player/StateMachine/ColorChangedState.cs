@@ -1,10 +1,10 @@
 namespace Code.Player.StateMachine
 {
-	public class DefaultColorState : IColorState
+	public class ColorChangedState : IColorState
 	{
 		private readonly ColorChangeComponent _colorChangeComponent;
 
-		public DefaultColorState(ColorChangeComponent colorChangeComponent)
+		public ColorChangedState(ColorChangeComponent colorChangeComponent)
 		{
 			_colorChangeComponent = colorChangeComponent;
 		}
