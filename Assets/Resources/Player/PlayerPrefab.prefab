@@ -403,6 +403,7 @@ MonoBehaviour:
   _input: {fileID: -3588540212027939946}
   _transform: {fileID: 6071311251416837746}
   _rotationSpeed: 5
+  _characterController: {fileID: 8552949324427846729}
 --- !u!1 &8524608522593676112
 GameObject:
   m_ObjectHideFlags: 0
