@@ -9,13 +9,10 @@ namespace Code.Player.Dash
 		[SerializeField] private float _dashDuration;
 		[SerializeField] private CharacterController _characterController;
 		[SerializeField] private Transform _facingTransform;
-		[SerializeField] private InputEmit _input;
 
 		public float DashDuration => _dashDuration;
 		
-		private void Start() => _input.Dashing += OnDashing;
-
-		private void OnDashing() => StartCoroutine(DashCoroutine());
+		public void Dash() => StartCoroutine(DashCoroutine());
 
 		private IEnumerator DashCoroutine()
 		{

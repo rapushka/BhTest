@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Player.Camera
 {
 	public class ThirdPersonCameraRotator : MonoBehaviour
 	{

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Player.StateMachine
 {
-	public class DashingState : IPlayerState
+	public class DashingState : IDashingState
 	{
 		private float _dashDuration;
 		private float _beingTime;
@@ -18,20 +18,19 @@ namespace Code.Player.StateMachine
 
 			if (_beingTime >= _dashDuration)
 			{
-				stateMachine.SwitchState<DefaultState>();
+				stateMachine.SwitchDashingState<DefaultDashingState>();
 			}
 		}
 
-		public void OnCollide(PlayerStateMachine stateMachine, Collision collision)
+		public void OnCollide(PlayerStateMachine stateMachine, Collider collider)
 		{
-			if (collision.gameObject.TryGetComponent(out PlayerStateMachine collisionStateMachine)
-			    && collisionStateMachine.CurrentState is DefaultState)
+			if (collider.GetColorState() is DefaultColorState)
 			{
-				// score++
+				Debug.Log("Score++");
 			}
 		}
 
-		public void OnDash(PlayerStateMachine stateMachine)
+		public void OnDashInput(PlayerStateMachine stateMachine)
 		{
 		}
 	}

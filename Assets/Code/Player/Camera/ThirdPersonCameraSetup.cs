@@ -1,7 +1,7 @@
 using Mirror;
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Player.Camera
 {
 	public class ThirdPersonCameraSetup : MonoBehaviour
 	{

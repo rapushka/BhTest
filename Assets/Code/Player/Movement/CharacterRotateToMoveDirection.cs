@@ -1,7 +1,7 @@
 using Code.Workflow.Extensions;
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Player.Movement
 {
 	public class CharacterRotateToMoveDirection : MonoBehaviour
 	{

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Player.StateMachine
 {
-	public class ColorChangedState : IPlayerState
+	public class ColorChangedState : IColorState
 	{
 		private float _stateDuration;
 		private float _beingTime;
@@ -10,7 +10,7 @@ namespace Code.Player.StateMachine
 		public void Enter(PlayerStateMachine stateMachine)
 		{
 			_stateDuration = stateMachine.ColorChangedStateDuration;
-			// Change Color
+			Debug.Log("Change Color to Changed");
 		}
 
 		public void OnUpdate(PlayerStateMachine stateMachine)
@@ -19,16 +19,10 @@ namespace Code.Player.StateMachine
 
 			if (_beingTime >= _stateDuration)
 			{
-				stateMachine.SwitchState<DefaultState>();
+				stateMachine.SwitchColorState<DefaultColorState>();
 			}
 		}
 
-		public void OnCollide(PlayerStateMachine stateMachine, Collision collision)
-		{
-		}
-
-		public void OnDash(PlayerStateMachine stateMachine)
-		{
-		}
+		public void OnCollide(PlayerStateMachine stateMachine, Collider collider) { }
 	}
 }

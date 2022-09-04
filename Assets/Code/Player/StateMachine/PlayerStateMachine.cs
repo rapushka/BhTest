@@ -1,3 +1,4 @@
+using Code.Infrastructure;
 using Code.Player.Dash;
 using UnityEngine;
 
@@ -8,29 +9,52 @@ namespace Code.Player.StateMachine
 		[SerializeField] private InputEmit _input;
 		[SerializeField] private DashComponent _dashComponent;
 		[SerializeField] private float _colorChangedStateDuration;
+		[SerializeField] private CollisionLocator _collisionLocator;
 
+		public DashComponent DashComponent => _dashComponent;
 		public float DashDuration => _dashComponent.DashDuration;
 		public float ColorChangedStateDuration => _colorChangedStateDuration;
-		public IPlayerState CurrentState { get; private set; }
 
-		public void SwitchState<TState>()
-			where TState : IPlayerState, new()
-		{
-			CurrentState = new TState();
-			CurrentState.Enter(this);
-		}
+		public IDashingState CurrentDashingState { get; private set; }
+		public IColorState CurrentColorState { get; private set; }
+
+		public void SwitchDashingState<TState>()
+			where TState : IDashingState, new()
+			=> CurrentDashingState = SwitchState<TState>();
+
+		public void SwitchColorState<TState>()
+			where TState : IColorState, new()
+			=> CurrentColorState = SwitchState<TState>();
 
 		private void Start()
 		{
-			SwitchState<DefaultState>();
+			SwitchColorState<DefaultColorState>();
+			SwitchDashingState<DefaultDashingState>();
 
 			_input.Dashing += OnDashing;
+			_collisionLocator.Collide += OnCollide;
 		}
 
-		private void OnDashing() => CurrentState.OnDash(this);
+		private void Update()
+		{
+			CurrentDashingState.OnUpdate(this);
+			CurrentColorState.OnUpdate(this);
+		}
 
-		private void Update() => CurrentState.OnUpdate(this);
+		private void OnDashing() => CurrentDashingState.OnDashInput(this);
 
-		private void OnCollisionEnter(Collision collision) => CurrentState.OnCollide(this, collision);
+		private void OnCollide(Collider collision)
+		{
+			CurrentDashingState.OnCollide(this, collision);
+			CurrentColorState.OnCollide(this, collision);
+		}
+
+		private TState SwitchState<TState>()
+			where TState : IPlayerState, new()
+		{
+			var playerState = new TState();
+			playerState.Enter(this);
+			return playerState;
+		}
 	}
 }
