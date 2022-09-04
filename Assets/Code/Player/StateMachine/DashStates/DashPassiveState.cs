@@ -12,7 +12,10 @@ namespace Code.Player.StateMachine.DashStates
 
 		public override void OnDash(PlayerDashStateMachine playerDashStateMachine)
 		{
+			playerDashStateMachine.SwitchState<DashActiveState>();
 			_dashComponent.Dash();
 		}
+
+		public override void OnUpdate(PlayerDashStateMachine playerDashStateMachine) { }
 	}
 }

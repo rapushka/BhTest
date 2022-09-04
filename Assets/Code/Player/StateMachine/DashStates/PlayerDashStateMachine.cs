@@ -19,6 +19,7 @@ namespace Code.Player.StateMachine.DashStates
 			_states = new Dictionary<Type, DashState>
 			{
 				[typeof(DashPassiveState)] = new DashPassiveState(_dashComponent),
+				[typeof(DashActiveState)] = new DashActiveState(_dashComponent),
 			};
 
 			SwitchState<DashPassiveState>();
@@ -35,7 +36,12 @@ namespace Code.Player.StateMachine.DashStates
 			_currentDashState = State<T>();
 			_currentDashState.Enter(this);
 		}
-		
+
+		private void Update()
+		{
+			_currentDashState.OnUpdate(this);
+		}
+
 		private DashState State<T>() => _states[typeof(T)];
 	}
 }
