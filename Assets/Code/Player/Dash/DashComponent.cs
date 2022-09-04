@@ -3,30 +3,27 @@ using UnityEngine;
 
 namespace Code.Player.Dash
 {
-	public class PlayerDash : MonoBehaviour
+	public class DashComponent : MonoBehaviour
 	{
 		[SerializeField] private float _dashDistance;
-		[SerializeField] private float _dashTime;
+		[SerializeField] private float _dashDuration;
 		[SerializeField] private CharacterController _characterController;
 		[SerializeField] private Transform _facingTransform;
 		[SerializeField] private InputEmit _input;
 
-		private void Start()
-		{
-			_input.Dashing += OnDashing;
-		}
+		public float DashDuration => _dashDuration;
+		
+		private void Start() => _input.Dashing += OnDashing;
 
-		private void OnDashing()
-		{
-			StartCoroutine(DashCoroutine());
-		}
+		private void OnDashing() => StartCoroutine(DashCoroutine());
 
 		private IEnumerator DashCoroutine()
 		{
 			float startTime = Time.time; 
-			while(Time.time < startTime + _dashTime)
+			
+			while(Time.time < startTime + _dashDuration)
 			{
-				float speed = _dashDistance / _dashTime;
+				float speed = _dashDistance / _dashDuration;
 				_characterController.Move(_facingTransform.forward * (speed * Time.deltaTime));
 				yield return null; 
 			}
