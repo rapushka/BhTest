@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Player.StateMachine
 {
-	public class PlayerStateMachine : MonoBehaviour
+	public class PlayerColorStateMachine : MonoBehaviour
 	{
 		[SerializeField] private ColorChangeComponent _colorChange;
 		[SerializeField] private float _durationChangedColorState = 3;

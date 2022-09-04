@@ -13,22 +13,22 @@ namespace Code.Player.StateMachine.ColorStates
 			_durationChangedColorState = durationChangedColorState;
 		}
 
-		public override void Enter(PlayerStateMachine stateMachine)
+		public override void Enter(PlayerColorStateMachine colorStateMachine)
 		{
 			_beingDuration = 0f;
 			ColorChangeComponent.ToChangedColor();
 		}
 
-		public override void OnUpdate(PlayerStateMachine stateMachine)
+		public override void OnUpdate(PlayerColorStateMachine colorStateMachine)
 		{
 			_beingDuration += Time.deltaTime;
 
 			if (_beingDuration >= _durationChangedColorState)
 			{
-				stateMachine.SwitchState<ColorDefaultState>();
+				colorStateMachine.SwitchState<ColorDefaultState>();
 			}
 		}
 
-		public override void OnCollide(PlayerStateMachine stateMachine) { }
+		public override void OnCollide(PlayerColorStateMachine colorStateMachine) { }
 	}
 }

@@ -391,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4540757529518019370}
   - component: {fileID: 6315396143238215754}
+  - component: {fileID: 3246176808425552667}
   m_Layer: 0
   m_Name: Player State Machine
   m_TagString: Untagged
@@ -426,6 +427,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colorChange: {fileID: 2046485595033023712}
   _durationChangedColorState: 3
+--- !u!114 &3246176808425552667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361814020741970759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3212a6c3df845448e59b57d7a9fd0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _input: {fileID: -3588540212027939946}
+  _dashComponent: {fileID: 3201750703182721744}
 --- !u!1 &7369405223296208841
 GameObject:
   m_ObjectHideFlags: 0

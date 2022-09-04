@@ -5,16 +5,16 @@ namespace Code.Player.StateMachine.ColorStates
 		public ColorDefaultState(ColorChangeComponent colorChangeComponent)
 			: base(colorChangeComponent) { }
 
-		public override void Enter(PlayerStateMachine stateMachine)
+		public override void Enter(PlayerColorStateMachine colorStateMachine)
 		{
 			ColorChangeComponent.ToDefaultColor();
 		}
 
-		public override void OnUpdate(PlayerStateMachine stateMachine) { }
+		public override void OnUpdate(PlayerColorStateMachine colorStateMachine) { }
 
-		public override void OnCollide(PlayerStateMachine stateMachine)
+		public override void OnCollide(PlayerColorStateMachine colorStateMachine)
 		{
-			stateMachine.SwitchState<ColorChangedState>();
+			colorStateMachine.SwitchState<ColorChangedState>();
 		}
 	}
 }

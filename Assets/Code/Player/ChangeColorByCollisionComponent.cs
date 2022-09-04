@@ -13,7 +13,7 @@ namespace Code.Player
 
 		private void OnCollide(GameObject other)
 		{
-			var otherStateMachine = other.GetComponentInChildren<PlayerStateMachine>();
+			var otherStateMachine = other.GetComponentInChildren<PlayerColorStateMachine>();
 			otherStateMachine.Collide();
 		}
 	}

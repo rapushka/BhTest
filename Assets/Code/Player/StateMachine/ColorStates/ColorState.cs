@@ -7,10 +7,10 @@ namespace Code.Player.StateMachine.ColorStates
 		protected ColorState(ColorChangeComponent colorChangeComponent)
 			=> ColorChangeComponent = colorChangeComponent;
 
-		public abstract void Enter(PlayerStateMachine stateMachine);
+		public abstract void Enter(PlayerColorStateMachine colorStateMachine);
 
-		public abstract void OnUpdate(PlayerStateMachine stateMachine);
+		public abstract void OnUpdate(PlayerColorStateMachine colorStateMachine);
 
-		public abstract void OnCollide(PlayerStateMachine stateMachine);
+		public abstract void OnCollide(PlayerColorStateMachine colorStateMachine);
 	}
 }
