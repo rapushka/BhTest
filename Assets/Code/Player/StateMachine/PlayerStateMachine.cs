@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Player.StateMachine
 {
 	public class PlayerStateMachine : MonoBehaviour
 	{
-		[SerializeField] private ColorChangeComponent _colorChangeComponent;
-		
+		[FormerlySerializedAs("_colorChangeComponent")] [SerializeField] private ColorChangeComponent _colorChange;
+		[SerializeField] private float _durationChangedColorState = 3;
+
 		private Dictionary<Type, IColorState> _states;
 		private IColorState _currentColorState;
 
@@ -15,22 +17,27 @@ namespace Code.Player.StateMachine
 		{
 			_states = new Dictionary<Type, IColorState>
 			{
-				[typeof(ColorChangedState)] = new ColorChangedState(_colorChangeComponent),
-				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChangeComponent),
+				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState),
+				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChange),
 			};
 
-			_currentColorState = State<ColorChangedState>();
+			SwitchState<ColorDefaultState>();
 		}
 
 		public void Collide()
 		{
-			State<ColorChangedState>().Enter(this);
+			SwitchState<ColorChangedState>();
 		}
 
 		public void SwitchState<T>()
 		{
 			_currentColorState = State<T>();
 			_currentColorState.Enter(this);
+		}
+
+		private void Update()
+		{
+			_currentColorState.OnUpdate(this);
 		}
 
 		private IColorState State<T>() => _states[typeof(T)];

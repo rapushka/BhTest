@@ -8,10 +8,12 @@ namespace Code.Player.StateMachine
 		{
 			_colorChangeComponent = colorChangeComponent;
 		}
-		
+
 		public void Enter(PlayerStateMachine stateMachine)
 		{
 			_colorChangeComponent.ToDefaultColor();
 		}
+
+		public void OnUpdate(PlayerStateMachine stateMachine) { }
 	}
 }
