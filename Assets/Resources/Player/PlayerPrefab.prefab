@@ -400,7 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: -3588540212027939946}
-  _playerTransform: {fileID: 6071311251416837746}
+  _transform: {fileID: 6071311251416837746}
+  _rotationSpeed: 5
 --- !u!1 &8524608522593676112
 GameObject:
   m_ObjectHideFlags: 0
