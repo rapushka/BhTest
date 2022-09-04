@@ -1,3 +1,5 @@
+using System;
+using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
 
@@ -7,6 +9,8 @@ namespace Code.Player
 	{
 		public Vector2 MoveDirection { get; private set; }
 		public Vector2 MouseRotation { get; private set; }
+		
+		public event Action Dashing;
 
 		private void Update()
 		{
@@ -17,6 +21,7 @@ namespace Code.Player
 
 			SetMoveDirection();
 			SetMouseRotation();
+			InvokeDash();
 		}
 
 		private void SetMoveDirection()
@@ -36,5 +41,7 @@ namespace Code.Player
 				y = Input.GetAxis("Mouse Y")
 			};
 		}
+
+		private void InvokeDash() => Dashing.Do((d) => d?.Invoke(), @if: Input.GetKeyDown(KeyCode.Mouse0));
 	}
 }
