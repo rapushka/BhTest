@@ -261,6 +261,7 @@ MonoBehaviour:
   _input: {fileID: -3588540212027939946}
   _movementSpeed: 10
   _characterController: {fileID: 8552949324427846729}
+  _followCamera: {fileID: 993476786401153223}
 --- !u!1 &7369405223296208841
 GameObject:
   m_ObjectHideFlags: 0
