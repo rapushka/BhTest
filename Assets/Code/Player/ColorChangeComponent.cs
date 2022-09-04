@@ -9,8 +9,8 @@ namespace Code.Player
 		[SerializeField] private Color _default;
 		[SerializeField] private Color _changed;
 
-		[SyncVar(hook = nameof(SyncColor))] private Color _color;
-
+		[SyncVar(hook = nameof(SyncColor))] private Color _syncColor;
+		
 		public void ToDefaultColor()
 		{
 			ChangeColor(_default);
@@ -25,7 +25,7 @@ namespace Code.Player
 		{
 			if (isServer)
 			{
-				ApplyColorOnServer(color);
+				ApplyColor(color);
 			}
 			else
 			{
@@ -33,9 +33,9 @@ namespace Code.Player
 			}
 		}
 
-		[Command] private void CmdApplyColor(Color material) => ApplyColorOnServer(material);
+		[Command] private void CmdApplyColor(Color color) => ApplyColor(color);
 
-		[Server] private void ApplyColorOnServer(Color color) => _color = color;
+		[Server] private void ApplyColor(Color color) => _syncColor = color;
 
 		private void SyncColor(Color oldValue, Color newValue) => _renderer.material.color = newValue;
 	}
