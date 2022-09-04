@@ -6,9 +6,16 @@ namespace Code.Player.StateMachine
 	{
 		[SerializeField] private ColorChangeComponent _colorChangeComponent;
 		
-		public void HandleCollide()
+		private DefaultColorState _defaultColorState;
+
+		private void Start()
 		{
-			_colorChangeComponent.ToChangedColor();
+			_defaultColorState = new DefaultColorState(_colorChangeComponent);
+		}
+
+		public void Collide()
+		{
+			_defaultColorState.Enter(this);
 		}
 	}
 }

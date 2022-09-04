@@ -9,15 +9,12 @@ namespace Code.Player
 	{
 		[SerializeField] private CollisionLocator _collisionLocator;
 
-		private void Start()
-		{
-			_collisionLocator.Collide += OnCollide;
-		}
+		private void Start() => _collisionLocator.Collide += OnCollide;
 
 		private void OnCollide(GameObject other)
 		{
 			var otherStateMachine = other.GetComponentInChildren<PlayerStateMachine>();
-			otherStateMachine.HandleCollide();
+			otherStateMachine.Collide();
 		}
 	}
 }
