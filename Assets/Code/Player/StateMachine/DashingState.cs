@@ -22,7 +22,7 @@ namespace Code.Player.StateMachine
 			}
 		}
 
-		public void OnCollide(PlayerStateMachine stateMachine, Collider collider)
+		public void OnCollide(PlayerStateMachine stateMachine, GameObject collider)
 		{
 			if (collider.GetColorState() is DefaultColorState)
 			{

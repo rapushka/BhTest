@@ -6,20 +6,20 @@ namespace Code.Player.StateMachine
 	public static class GameObjectExtensions
 	{
 		[CanBeNull]
-		public static IDashingState GetDashingState(this Component @this)
+		public static IDashingState GetDashingState(this GameObject @this)
 			=> @this.HasStateMachine(out PlayerStateMachine stateMachine)
 				? stateMachine.CurrentDashingState
 				: null;
 
 		[CanBeNull]
-		public static IColorState GetColorState(this Component @this)
+		public static IColorState GetColorState(this GameObject @this)
 			=> @this.HasStateMachine(out PlayerStateMachine stateMachine)
 				? stateMachine.CurrentColorState
 				: null;
 
-		private static bool HasStateMachine(this Component @this, out PlayerStateMachine stateMachine)
+		private static bool HasStateMachine(this GameObject @this, out PlayerStateMachine stateMachine)
 		{
-			stateMachine = @this.GetComponentInChildren<PlayerStateMachine>();
+			stateMachine = @this != null ? @this.GetComponentInChildren<PlayerStateMachine>() : null;
 			return stateMachine != null;
 		}
 	}

@@ -45,7 +45,7 @@ namespace Code.Player.StateMachine
 
 		private void OnDashing() => CurrentDashingState.OnDashInput(this);
 
-		private void OnCollide(Collider collision)
+		private void OnCollide(GameObject collision)
 		{
 			CurrentDashingState.OnCollide(this, collision);
 			CurrentColorState.OnCollide(this, collision);

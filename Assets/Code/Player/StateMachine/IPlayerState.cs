@@ -6,6 +6,6 @@ namespace Code.Player.StateMachine
 	{
 		void Enter(PlayerStateMachine stateMachine);
 		void OnUpdate(PlayerStateMachine stateMachine);
-		void OnCollide(PlayerStateMachine stateMachine, Collider collider);
+		void OnCollide(PlayerStateMachine stateMachine, GameObject collider);
 	}
 }

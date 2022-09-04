@@ -8,7 +8,7 @@ namespace Code.Player.StateMachine
 
 		public void OnUpdate(PlayerStateMachine stateMachine) { }
 
-		public void OnCollide(PlayerStateMachine stateMachine, Collider collider) { }
+		public void OnCollide(PlayerStateMachine stateMachine, GameObject collider) { }
 
 		public void OnDashInput(PlayerStateMachine stateMachine)
 		{

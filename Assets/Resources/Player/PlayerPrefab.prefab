@@ -175,7 +175,7 @@ MonoBehaviour:
   _input: {fileID: -3588540212027939946}
   _dashComponent: {fileID: 3201750703182721744}
   _colorChangedStateDuration: 3
-  _collisionLocator: {fileID: 7985733297258504442}
+  _collisionLocator: {fileID: 5971471354022010005}
   _materialChangeComponent: {fileID: 2046485595033023712}
 --- !u!1 &7208289164333700974
 GameObject:
@@ -194,8 +194,8 @@ GameObject:
   - component: {fileID: 1347369101504071584}
   - component: {fileID: -3588540212027939946}
   - component: {fileID: 332065901221535369}
-  - component: {fileID: 7985733297258504442}
   - component: {fileID: 2046485595033023712}
+  - component: {fileID: 5971471354022010005}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -382,18 +382,6 @@ MonoBehaviour:
   _movementSpeed: 10
   _characterController: {fileID: 8552949324427846729}
   _followCamera: {fileID: 993476786401153223}
---- !u!114 &7985733297258504442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7208289164333700974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b83f599c3a443a5a69ebcf6a56db0ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2046485595033023712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +399,20 @@ MonoBehaviour:
   _renderer: {fileID: 6460460293363147985}
   _default: {r: 0, g: 1, b: 1, a: 1}
   _changed: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &5971471354022010005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7208289164333700974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b83f599c3a443a5a69ebcf6a56db0ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &7369405223296208841
 GameObject:
   m_ObjectHideFlags: 0
