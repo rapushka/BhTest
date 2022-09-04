@@ -10,7 +10,7 @@ namespace Code.Player.StateMachine
 		public void Enter(PlayerStateMachine stateMachine)
 		{
 			_stateDuration = stateMachine.ColorChangedStateDuration;
-			Debug.Log("Change Color to Changed");
+			stateMachine.MaterialChangeComponent.ToChangedColor();
 		}
 
 		public void OnUpdate(PlayerStateMachine stateMachine)

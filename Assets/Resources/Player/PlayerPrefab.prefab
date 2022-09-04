@@ -176,6 +176,7 @@ MonoBehaviour:
   _dashComponent: {fileID: 3201750703182721744}
   _colorChangedStateDuration: 3
   _collisionLocator: {fileID: 7985733297258504442}
+  _materialChangeComponent: {fileID: 2046485595033023712}
 --- !u!1 &7208289164333700974
 GameObject:
   m_ObjectHideFlags: 0

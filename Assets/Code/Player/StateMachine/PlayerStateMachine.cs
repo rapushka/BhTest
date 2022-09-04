@@ -10,10 +10,12 @@ namespace Code.Player.StateMachine
 		[SerializeField] private DashComponent _dashComponent;
 		[SerializeField] private float _colorChangedStateDuration;
 		[SerializeField] private CollisionLocator _collisionLocator;
+		[SerializeField] private MaterialChangeComponent _materialChangeComponent;
 
 		public DashComponent DashComponent => _dashComponent;
 		public float DashDuration => _dashComponent.DashDuration;
 		public float ColorChangedStateDuration => _colorChangedStateDuration;
+		public MaterialChangeComponent MaterialChangeComponent => _materialChangeComponent;
 
 		public IDashingState CurrentDashingState { get; private set; }
 		public IColorState CurrentColorState { get; private set; }
