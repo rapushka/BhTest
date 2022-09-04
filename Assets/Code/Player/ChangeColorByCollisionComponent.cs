@@ -19,14 +19,16 @@ namespace Code.Player
 
 		private void OnCollide(GameObject other)
 		{
-			if (_changed == false)	
+			var otherColor = other.GetComponentInChildren<ColorChangeComponent>();
+
+			if (_changed == false)
 			{
-				_colorChangeComponent.ToChangedColor();
+				otherColor.ToChangedColor();
 				_changed = true;
 			}
 			else
 			{
-				_colorChangeComponent.ToDefaultColor();
+				otherColor.ToDefaultColor();
 				_changed = false;
 			}
 		}
