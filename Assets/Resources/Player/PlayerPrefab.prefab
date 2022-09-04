@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 4551747214648806759}
   - component: {fileID: 9062065269696087182}
   - component: {fileID: 8394806215094539012}
+  - component: {fileID: 5365061754448934024}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -451,11 +452,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377e8714045d4d7283580e25a000e03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 723966058560327062}
+  _playerBehaviour: {fileID: 369405980115543399}
+  _inputEmit: {fileID: -3588540212027939946}
+  _rotator: {fileID: 5365061754448934024}
+--- !u!114 &5365061754448934024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524608522593676112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f43a02becb545ef96a04bbc47f999d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invertCamera: 0
   _mouseSensitivity: 3
   _distanceFromTarget: 5
   _smooth: 0
-  _rotationXMax: 90
   _rotationXMin: -10
-  _target: {fileID: 723966058560327062}
-  _networkBehaviour: {fileID: 369405980115543399}
-  _invertCamera: 0
+  _rotationXMax: 90
