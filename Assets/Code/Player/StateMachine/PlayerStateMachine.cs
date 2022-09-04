@@ -26,7 +26,7 @@ namespace Code.Player.StateMachine
 
 		public void Collide()
 		{
-			SwitchState<ColorChangedState>();
+			_currentColorState.OnCollide(this);
 		}
 
 		public void SwitchState<T>()

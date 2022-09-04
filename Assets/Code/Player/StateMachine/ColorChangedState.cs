@@ -8,13 +8,12 @@ namespace Code.Player.StateMachine
 		private readonly float _durationChangedColorState;
 		private float _beingDuration;
 
-
 		public ColorChangedState(ColorChangeComponent colorChangeComponent, float durationChangedColorState)
 		{
 			_colorChangeComponent = colorChangeComponent;
 			_durationChangedColorState = durationChangedColorState;
 		}
-		
+
 		public void Enter(PlayerStateMachine stateMachine)
 		{
 			_beingDuration = 0f;
@@ -30,5 +29,7 @@ namespace Code.Player.StateMachine
 				stateMachine.SwitchState<ColorDefaultState>();
 			}
 		}
+
+		public void OnCollide(PlayerStateMachine stateMachine) { }
 	}
 }

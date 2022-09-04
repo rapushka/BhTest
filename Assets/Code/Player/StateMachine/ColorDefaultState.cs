@@ -15,5 +15,10 @@ namespace Code.Player.StateMachine
 		}
 
 		public void OnUpdate(PlayerStateMachine stateMachine) { }
+
+		public void OnCollide(PlayerStateMachine stateMachine)
+		{
+			stateMachine.SwitchState<ColorChangedState>();
+		}
 	}
 }

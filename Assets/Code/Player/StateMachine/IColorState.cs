@@ -5,5 +5,7 @@ namespace Code.Player.StateMachine
 		void Enter(PlayerStateMachine stateMachine);
 
 		void OnUpdate(PlayerStateMachine stateMachine);
+
+		void OnCollide(PlayerStateMachine stateMachine);
 	}
 }
