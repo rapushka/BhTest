@@ -1,3 +1,4 @@
+using Code.Player.StateMachine.DashStates;
 using UnityEngine;
 
 namespace Code.Player.StateMachine.ColorStates
@@ -29,6 +30,6 @@ namespace Code.Player.StateMachine.ColorStates
 			}
 		}
 
-		public override void OnCollide(PlayerColorStateMachine colorStateMachine) { }
+		public override void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState) { }
 	}
 }

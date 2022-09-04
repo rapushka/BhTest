@@ -14,6 +14,8 @@ namespace Code.Player.StateMachine.DashStates
 		private Dictionary<Type, DashState> _states;
 		private DashState _currentDashState;
 
+		public DashState CurrentState => _currentDashState;
+
 		private void Start()
 		{
 			_states = new Dictionary<Type, DashState>

@@ -1,5 +1,4 @@
 using Code.Player.Dash;
-using Code.Player.StateMachine.ColorStates;
 using UnityEngine;
 
 namespace Code.Player.StateMachine.DashStates

@@ -381,6 +381,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _collisionLocator: {fileID: 5971471354022010005}
+  _dashStateMachine: {fileID: 3246176808425552667}
 --- !u!1 &7361814020741970759
 GameObject:
   m_ObjectHideFlags: 0

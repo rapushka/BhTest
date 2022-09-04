@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Player.StateMachine.ColorStates;
+using Code.Player.StateMachine.DashStates;
 using UnityEngine;
 
 namespace Code.Player.StateMachine
@@ -24,9 +25,9 @@ namespace Code.Player.StateMachine
 			SwitchState<ColorDefaultState>();
 		}
 
-		public void Collide()
+		public void Collide(DashState otherDashState)
 		{
-			_currentColorState.OnCollide(this);
+			_currentColorState.OnCollide(this, otherDashState);
 		}
 
 		public void SwitchState<T>()

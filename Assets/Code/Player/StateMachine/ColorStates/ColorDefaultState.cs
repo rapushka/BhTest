@@ -1,3 +1,5 @@
+using Code.Player.StateMachine.DashStates;
+
 namespace Code.Player.StateMachine.ColorStates
 {
 	public class ColorDefaultState : ColorState
@@ -11,10 +13,12 @@ namespace Code.Player.StateMachine.ColorStates
 		}
 
 		public override void OnUpdate(PlayerColorStateMachine colorStateMachine) { }
-
-		public override void OnCollide(PlayerColorStateMachine colorStateMachine)
+		public override void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState)
 		{
-			colorStateMachine.SwitchState<ColorChangedState>();
+			if (otherDashState is DashActiveState)
+			{
+				colorStateMachine.SwitchState<ColorChangedState>();
+			}
 		}
 	}
 }
