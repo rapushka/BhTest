@@ -10,33 +10,34 @@ namespace Code.Player
 		[SerializeField] private Color _changed;
 
 		[SyncVar(hook = nameof(SyncColor))] private Color _syncColor;
-		
-		public void ToDefaultColor()
-		{
-			ChangeColor(_default);
-		}
 
-		public void ToChangedColor()
-		{
-			ChangeColor(_changed);
-		}
+		public void ToDefaultColor() => ChangeColor(_default);
+
+		public void ToChangedColor() => ChangeColor(_changed);
 
 		private void ChangeColor(Color color)
 		{
-			if (isServer)
-			{
-				ApplyColor(color);
-			}
-			else
+			if (hasAuthority)
 			{
 				CmdApplyColor(color);
 			}
+			else
+			{
+				ApplyColor(color);
+			}
 		}
 
-		[Command] private void CmdApplyColor(Color color) => ApplyColor(color);
+		[Command(requiresAuthority = false)] private void CmdApplyColor(Color color) => ApplyColor(color);
 
-		[Server] private void ApplyColor(Color color) => _syncColor = color;
+		[Server]
+		private void ApplyColor(Color color)
+		{
+			_syncColor = color;
+			RpcApplyColor(color);
+		}
 
-		private void SyncColor(Color oldValue, Color newValue) => _renderer.material.color = newValue;
+		[ClientRpc] private void RpcApplyColor(Color color) => _syncColor = color;
+
+		private void SyncColor(Color _, Color newValue) => _renderer.material.color = _syncColor;
 	}
 }

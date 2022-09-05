@@ -1,3 +1,5 @@
+using Code.Player.StateMachine.ColorStates;
+
 namespace Code.Player.StateMachine.DashStates
 {
 	public abstract class DashState
@@ -5,5 +7,6 @@ namespace Code.Player.StateMachine.DashStates
 		public abstract void Enter(PlayerDashStateMachine playerDashStateMachine);
 		public abstract void OnDash(PlayerDashStateMachine playerDashStateMachine);
 		public abstract void OnUpdate(PlayerDashStateMachine playerDashStateMachine);
+		public abstract void OnCollide(ColorState otherColorState);
 	}
 }

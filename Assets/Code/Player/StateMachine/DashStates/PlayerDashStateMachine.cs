@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Player.Dash;
+using Code.Player.Score;
 using Code.Player.StateMachine.ColorStates;
 using UnityEngine;
 
@@ -10,40 +11,42 @@ namespace Code.Player.StateMachine.DashStates
 	{
 		[SerializeField] private InputEmit _input;
 		[SerializeField] private DashComponent _dashComponent;
+		[SerializeField] private PlayerScore _playerScore;
 
 		private Dictionary<Type, DashState> _states;
-		private DashState _currentDashState;
 
-		public DashState CurrentState => _currentDashState;
+		public DashState CurrentDashState { get; private set; }
+
+		public void SwitchState<T>()
+			where T : DashState
+		{
+			CurrentDashState = State<T>();
+			CurrentDashState.Enter(this);
+		}
+
+		public void Collide(ColorState otherColorState) => CurrentDashState.OnCollide(otherColorState);
 
 		private void Start()
 		{
 			_states = new Dictionary<Type, DashState>
 			{
 				[typeof(DashPassiveState)] = new DashPassiveState(_dashComponent),
-				[typeof(DashActiveState)] = new DashActiveState(_dashComponent),
+				[typeof(DashActiveState)] = new DashActiveState(_dashComponent, _playerScore),
 			};
 
 			SwitchState<DashPassiveState>();
-			_input.Dashing += OnDash;
 		}
 
-		private void OnDash()
-		{
-			_currentDashState.OnDash(this);
-		}
+		private void OnEnable() => _input.Dashing += OnDash;
 
-		public void SwitchState<T>()
-		{
-			_currentDashState = State<T>();
-			_currentDashState.Enter(this);
-		}
+		private void OnDisable() => _input.Dashing -= OnDash;
 
-		private void Update()
-		{
-			_currentDashState.OnUpdate(this);
-		}
+		private void OnDash() => CurrentDashState.OnDash(this);
 
-		private DashState State<T>() => _states[typeof(T)];
+		private void Update() => CurrentDashState.OnUpdate(this);
+
+		private T State<T>()
+			where T : DashState
+			=> (T)_states[typeof(T)];
 	}
 }

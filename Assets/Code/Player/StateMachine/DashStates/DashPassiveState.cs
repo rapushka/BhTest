@@ -1,4 +1,5 @@
 using Code.Player.Dash;
+using Code.Player.StateMachine.ColorStates;
 
 namespace Code.Player.StateMachine.DashStates
 {
@@ -17,5 +18,7 @@ namespace Code.Player.StateMachine.DashStates
 		}
 
 		public override void OnUpdate(PlayerDashStateMachine playerDashStateMachine) { }
+
+		public override void OnCollide(ColorState otherColorState) { }
 	}
 }
