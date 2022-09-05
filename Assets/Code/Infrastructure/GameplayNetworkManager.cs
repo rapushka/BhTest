@@ -1,27 +1,28 @@
+using Code.Player.Score;
 using Mirror;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.Infrastructure
 {
 	public class GameplayNetworkManager : NetworkManager
 	{
-		private void Update()
+
+		public override void OnClientConnect()
 		{
-			if (Input.GetKeyDown(KeyCode.Q) == false)
-			{
-				return;
-			}
+			base.OnClientConnect();
 
-			NetworkIdentity connection = NetworkClient.connection.identity;
-			if (connection == false)
-			{
-				return;
-			}
-
-			connection
-				.GetComponentInChildren<Text>()
-				.text = "Text Changed from NetworkManager";
+			// NetworkIdentity identity = NetworkClient.connection.identity;
+			//
+			// if (identity == false)
+			// {
+			// 	return;
+			// }
+			//
+			// int index = identity.GetComponent<NetworkRoomPlayer>().index;
+			//
+			// identity
+			// 	.GetComponent<PlayerScore>()
+			// 	.Construct($"Player{index}", index);
 		}
 	}
 }
