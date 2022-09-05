@@ -11,7 +11,7 @@ namespace Code.Player.Score
 
 		[SyncVar] private int _scoreValue;
 		[SyncVar] private int _index;
-		private string _playerName;
+		[SyncVar] private string _playerName;
 
 		public void Construct(string playerName, int index)
 		{

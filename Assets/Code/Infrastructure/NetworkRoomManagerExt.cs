@@ -45,17 +45,17 @@ namespace Code.Infrastructure
 			ServerChangeScene(GameplayScene);
 		}
 
-		private static bool IsStartGameButtonPressed()
+		private bool IsStartGameButtonPressed()
 			=> GUI.Button
 			(
 				new Rect
 				(
-					x: 150,
-					y: 300,
-					width: 120,
-					height: 20
+					x: _position.x,
+					y: _position.y,
+					width: _scale.x,
+					height: _scale.y
 				),
-				"StartGame"
+				"Start Game"
 			);
 	}
 }

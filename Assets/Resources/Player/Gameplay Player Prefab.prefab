@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0
   _renderer: {fileID: 6460460293363147985}
   _default: {r: 0, g: 1, b: 1, a: 1}
   _changed: {r: 1, g: 0, b: 0, a: 1}
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0
   _position: {x: 10, y: 10}
   _scale: {x: 75, y: 25}
   _spaceBetween: 10
