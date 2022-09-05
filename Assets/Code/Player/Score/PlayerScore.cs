@@ -25,16 +25,13 @@ namespace Code.Player.Score
 		{
 			if (isServer)
 			{
-				ChangeScore();
+				ApplyScore();
 			}
 			else
 			{
-				CmdChangeScore();
+				CmdApplyScore();
 			}
 		}
-
-		[Command] private void CmdChangeScore() => ChangeScore();
-		[Server] private void ChangeScore() => _syncScoreValue++;
 
 		private void OnGUI()
 		{
@@ -50,6 +47,10 @@ namespace Code.Player.Score
 				$"{_playerName}: {_scoreValue}"
 			);
 		}
+
+		[Command] private void CmdApplyScore() => ApplyScore();
+
+		[Server] private void ApplyScore() => _syncScoreValue++;
 
 		private void SyncScore(int _, int newValue) => _scoreValue = _syncScoreValue;
 	}
