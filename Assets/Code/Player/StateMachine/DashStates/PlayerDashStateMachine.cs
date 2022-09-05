@@ -17,40 +17,6 @@ namespace Code.Player.StateMachine.DashStates
 
 		public DashState CurrentState { get; private set; }
 
-		private void Start()
-		{
-			_states = new Dictionary<Type, DashState>
-			{
-				[typeof(DashPassiveState)] = new DashPassiveState(_dashComponent),
-				[typeof(DashActiveState)] = new DashActiveState(_dashComponent),
-			};
-
-			SwitchState<DashPassiveState>();
-			SubscribeEvents();
-		}
-
-		private void SubscribeEvents()
-		{
-			_input.Dashing += OnDash;
-			State<DashActiveState>().Hit += OnHit;
-		}
-
-		private void OnDestroy()
-		{
-			_input.Dashing -= OnDash;
-			State<DashActiveState>().Hit -= OnHit;
-		}
-
-		private void OnHit()
-		{
-			_playerScore.IncrementScore();
-		}
-
-		private void OnDash()
-		{
-			CurrentState.OnDash(this);
-		}
-
 		public void SwitchState<T>()
 			where T : DashState
 		{
@@ -58,15 +24,26 @@ namespace Code.Player.StateMachine.DashStates
 			CurrentState.Enter(this);
 		}
 
-		private void Update()
+		public void Collide(ColorState otherColorState) => CurrentState.OnCollide(otherColorState);
+
+		private void Start()
 		{
-			CurrentState.OnUpdate(this);
+			_states = new Dictionary<Type, DashState>
+			{
+				[typeof(DashPassiveState)] = new DashPassiveState(_dashComponent),
+				[typeof(DashActiveState)] = new DashActiveState(_dashComponent, _playerScore),
+			};
+
+			SwitchState<DashPassiveState>();
 		}
 
-		public void Collide(ColorState otherColorState)
-		{
-			CurrentState.OnCollide(otherColorState);
-		}
+		private void OnEnable() => _input.Dashing += OnDash;
+
+		private void OnDisable() => _input.Dashing -= OnDash;
+
+		private void OnDash() => CurrentState.OnDash(this);
+
+		private void Update() => CurrentState.OnUpdate(this);
 
 		private T State<T>()
 			where T : DashState

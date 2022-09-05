@@ -1230,7 +1230,7 @@ namespace Mirror
         }
 
         /// <summary>Called on the server when a new client connects.</summary>
-        public virtual void OnServerConnect(NetworkConnectionToClient conn) {}
+        public virtual void OnServerConnect(NetworkConnectionToClient connection) {}
 
         /// <summary>Called on the server when a client disconnects.</summary>
         // Called by NetworkServer.OnTransportDisconnect!
