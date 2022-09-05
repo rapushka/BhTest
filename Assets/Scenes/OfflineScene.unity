@@ -176,8 +176,8 @@ MonoBehaviour:
   _allPlayersReady: 0
   roomSlots: []
   clientIndex: 0
-  _position: {x: 0, y: 0}
-  _scale: {x: 0, y: 0}
+  _position: {x: 150, y: 300}
+  _scale: {x: 120, y: 20}
 --- !u!114 &669609992
 MonoBehaviour:
   m_ObjectHideFlags: 0
