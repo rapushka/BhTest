@@ -11,15 +11,9 @@ namespace Code.Player
 
 		[SyncVar(hook = nameof(SyncColor))] private Color _syncColor;
 		
-		public void ToDefaultColor()
-		{
-			ChangeColor(_default);
-		}
+		public void ToDefaultColor() => ChangeColor(_default);
 
-		public void ToChangedColor()
-		{
-			ChangeColor(_changed);
-		}
+		public void ToChangedColor() => ChangeColor(_changed);
 
 		private void ChangeColor(Color color)
 		{

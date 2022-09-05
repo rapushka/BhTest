@@ -10,23 +10,27 @@ namespace Code.Infrastructure
 
 		private void OnControllerColliderHit(ControllerColliderHit hit)
 		{
-			GameObject other = hit.collider.gameObject;
-			if (other.TryGetComponent(out NetworkBehaviour _))
+			Collider otherCollider = hit.collider;
+			if (otherCollider.TryGetComponent(out NetworkBehaviour _))
 			{
-				CmdOnCollision(other);
+				OnCollision(otherCollider.gameObject);
 			}
 		}
 
-		[Command]
-		private void CmdOnCollision(GameObject other)
+		private void OnCollision(GameObject other)
 		{
-			RpcExplode(other);
+			if (hasAuthority)
+			{
+				CmdSendCollision(other);
+			}
+			else
+			{
+				SendCollision(other);
+			}
 		}
 
-		[ClientRpc]
-		private void RpcExplode(GameObject other)
-		{
-			Collide?.Invoke(other);
-		}
+		[Command] private void CmdSendCollision(GameObject other) => SendCollision(other);
+
+		[Server] private void SendCollision(GameObject other) => Collide?.Invoke(other);
 	}
 }

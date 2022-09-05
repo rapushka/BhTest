@@ -18,8 +18,8 @@ namespace Code.Player.StateMachine
 		{
 			_states = new Dictionary<Type, ColorState>
 			{
-				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState),
 				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChange),
+				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState)
 			};
 
 			SwitchState<ColorDefaultState>();
@@ -32,7 +32,7 @@ namespace Code.Player.StateMachine
 
 		public void SwitchState<T>()
 		{
-			_currentColorState = State<T>();
+			_currentColorState = _states[typeof(T)];
 			_currentColorState.Enter(this);
 		}
 
@@ -40,7 +40,5 @@ namespace Code.Player.StateMachine
 		{
 			_currentColorState.OnUpdate(this);
 		}
-
-		private ColorState State<T>() => _states[typeof(T)];
 	}
 }

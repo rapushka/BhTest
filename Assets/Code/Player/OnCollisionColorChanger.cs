@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Player
 {
-	public class ChangeColorByCollisionComponent : NetworkBehaviour
+	public class OnCollisionColorChanger : NetworkBehaviour
 	{
 		[SerializeField] private CollisionLocator _collisionLocator;
 		[SerializeField] private PlayerDashStateMachine _dashStateMachine;
@@ -16,7 +16,10 @@ namespace Code.Player
 		private void OnCollide(GameObject other)
 		{
 			var otherStateMachine = other.GetComponentInChildren<PlayerColorStateMachine>();
-			otherStateMachine.Collide(_dashStateMachine.CurrentState);
+			if (otherStateMachine != null)
+			{
+				otherStateMachine.Collide(_dashStateMachine.CurrentState);
+			}
 		}
 	}
 }
