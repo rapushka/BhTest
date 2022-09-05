@@ -1,4 +1,6 @@
+using System;
 using Code.Player.Dash;
+using Code.Player.StateMachine.ColorStates;
 using UnityEngine;
 
 namespace Code.Player.StateMachine.DashStates
@@ -9,6 +11,8 @@ namespace Code.Player.StateMachine.DashStates
 
 		private float _beingTime;
 
+		public event Action Hit;
+		
 		public DashActiveState(DashComponent dashComponent) => _dashDuration = dashComponent.DashDuration;
 
 		public override void Enter(PlayerDashStateMachine playerDashStateMachine)
@@ -25,6 +29,14 @@ namespace Code.Player.StateMachine.DashStates
 			if (_beingTime >= _dashDuration)
 			{
 				playerDashStateMachine.SwitchState<DashPassiveState>();
+			}
+		}
+
+		public override void OnCollide(ColorState otherColorState)
+		{
+			if (otherColorState is ColorDefaultState)
+			{
+				Hit?.Invoke();
 			}
 		}
 	}

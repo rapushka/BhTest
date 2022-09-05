@@ -242,13 +242,13 @@ GameObject:
   - component: {fileID: -8423804570053952928}
   - component: {fileID: 369405980115543399}
   - component: {fileID: 8162286674566595472}
-  - component: {fileID: 3162133256450738906}
   - component: {fileID: 1347369101504071584}
   - component: {fileID: -3588540212027939946}
   - component: {fileID: 332065901221535369}
   - component: {fileID: 2046485595033023712}
   - component: {fileID: 5971471354022010005}
   - component: {fileID: 3591017946977677163}
+  - component: {fileID: 7141706381919774052}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -379,20 +379,6 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   target: {fileID: 6071311251416837746}
---- !u!114 &3162133256450738906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7208289164333700974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7f444a68604edf9b64e075fc158507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!114 &1347369101504071584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,6 +468,21 @@ MonoBehaviour:
   syncInterval: 0.1
   _collisionLocator: {fileID: 5971471354022010005}
   _dashStateMachine: {fileID: 3246176808425552667}
+--- !u!114 &7141706381919774052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7208289164333700974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66acd9a2a8e94272a90fe112c5bef34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  _text: {fileID: 8010364804957432373}
 --- !u!1 &7361814020741970759
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: -3588540212027939946}
   _dashComponent: {fileID: 3201750703182721744}
+  _playerScore: {fileID: 7141706381919774052}
 --- !u!1 &7369405223296208841
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +683,7 @@ GameObject:
   - component: {fileID: 4328787330307588549}
   - component: {fileID: 8010364804957432373}
   m_Layer: 0
-  m_Name: Score Value
+  m_Name: Text Score Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +749,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Score: '
 --- !u!1 &8524608522593676112
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8524608522593676112}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 5, z: -5}
+  m_LocalPosition: {x: 0, y: 7, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7870573413790752582}
@@ -855,7 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invertCamera: 0
   _mouseSensitivity: 3
-  _distanceFromTarget: 5
+  _distanceFromTarget: 7
   _smooth: 0
   _rotationXMin: -10
   _rotationXMax: 90

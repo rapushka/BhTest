@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Player.Dash;
+using Code.Player.Score;
 using Code.Player.StateMachine.ColorStates;
 using UnityEngine;
 
@@ -10,11 +11,11 @@ namespace Code.Player.StateMachine.DashStates
 	{
 		[SerializeField] private InputEmit _input;
 		[SerializeField] private DashComponent _dashComponent;
+		[SerializeField] private PlayerScore _playerScore;
 
 		private Dictionary<Type, DashState> _states;
-		private DashState _currentDashState;
 
-		public DashState CurrentState => _currentDashState;
+		public DashState CurrentState { get; private set; }
 
 		private void Start()
 		{
@@ -25,25 +26,50 @@ namespace Code.Player.StateMachine.DashStates
 			};
 
 			SwitchState<DashPassiveState>();
+			SubscribeEvents();
+		}
+
+		private void SubscribeEvents()
+		{
 			_input.Dashing += OnDash;
+			State<DashActiveState>().Hit += OnHit;
+		}
+
+		private void OnDestroy()
+		{
+			_input.Dashing -= OnDash;
+			State<DashActiveState>().Hit -= OnHit;
+		}
+
+		private void OnHit()
+		{
+			_playerScore.IncrementScore();
 		}
 
 		private void OnDash()
 		{
-			_currentDashState.OnDash(this);
+			CurrentState.OnDash(this);
 		}
 
 		public void SwitchState<T>()
+			where T : DashState
 		{
-			_currentDashState = State<T>();
-			_currentDashState.Enter(this);
+			CurrentState = State<T>();
+			CurrentState.Enter(this);
 		}
 
 		private void Update()
 		{
-			_currentDashState.OnUpdate(this);
+			CurrentState.OnUpdate(this);
 		}
 
-		private DashState State<T>() => _states[typeof(T)];
+		public void Collide(ColorState otherColorState)
+		{
+			CurrentState.OnCollide(otherColorState);
+		}
+
+		private T State<T>()
+			where T : DashState
+			=> (T)_states[typeof(T)];
 	}
 }
