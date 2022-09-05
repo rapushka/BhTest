@@ -15,16 +15,14 @@ namespace Code.Player
 
 		private void OnCollide(GameObject other)
 		{
-			Debug.Log("——————————————On Collide——————————————");
 			var otherStateMachine = other.GetComponentInChildren<PlayerColorStateMachine>();
 			if (otherStateMachine == null)
 			{
 				return;
 			}
-			Debug.Log("other has Color State Machine");
 
 			_dashStateMachine.Collide(otherStateMachine.CurrentColorState);
-			otherStateMachine.Collide(_dashStateMachine.CurrentState);
+			otherStateMachine.Collide(_dashStateMachine.CurrentDashState);
 		}
 	}
 }

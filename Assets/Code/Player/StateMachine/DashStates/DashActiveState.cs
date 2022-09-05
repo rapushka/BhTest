@@ -38,7 +38,6 @@ namespace Code.Player.StateMachine.DashStates
 
 		public override void OnCollide(ColorState otherColorState)
 		{
-			Debug.Log($"OnCollide with {otherColorState.GetType().Name}");
 			if (otherColorState is ColorDefaultState)
 			{
 				_playerScore.IncrementScore();

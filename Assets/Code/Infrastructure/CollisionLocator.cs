@@ -30,7 +30,9 @@ namespace Code.Infrastructure
 		}
 
 		[Command(requiresAuthority = false)] private void CmdSendCollision(GameObject other) => SendCollision(other);
-		[Server] private void SendCollision(GameObject other)
+
+		[Server]
+		private void SendCollision(GameObject other)
 		{
 			Collide?.Invoke(other);
 			RpcSendCollision(other);

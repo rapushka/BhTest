@@ -15,16 +15,16 @@ namespace Code.Player.StateMachine.DashStates
 
 		private Dictionary<Type, DashState> _states;
 
-		public DashState CurrentState { get; private set; }
+		public DashState CurrentDashState { get; private set; }
 
 		public void SwitchState<T>()
 			where T : DashState
 		{
-			CurrentState = State<T>();
-			CurrentState.Enter(this);
+			CurrentDashState = State<T>();
+			CurrentDashState.Enter(this);
 		}
 
-		public void Collide(ColorState otherColorState) => CurrentState.OnCollide(otherColorState);
+		public void Collide(ColorState otherColorState) => CurrentDashState.OnCollide(otherColorState);
 
 		private void Start()
 		{
@@ -41,9 +41,9 @@ namespace Code.Player.StateMachine.DashStates
 
 		private void OnDisable() => _input.Dashing -= OnDash;
 
-		private void OnDash() => CurrentState.OnDash(this);
+		private void OnDash() => CurrentDashState.OnDash(this);
 
-		private void Update() => CurrentState.OnUpdate(this);
+		private void Update() => CurrentDashState.OnUpdate(this);
 
 		private T State<T>()
 			where T : DashState

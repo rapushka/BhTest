@@ -19,7 +19,6 @@ namespace Code.Player.Score
 
 		public void IncrementScore()
 		{
-			Debug.Log($"new score value {_scoreValue}");
 			_scoreValue++;
 			UpdateScore();
 		}
