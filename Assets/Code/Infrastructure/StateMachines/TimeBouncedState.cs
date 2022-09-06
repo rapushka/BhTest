@@ -16,6 +16,8 @@ namespace Code.Infrastructure.StateMachines
 		public virtual void OnUpdate(IStateMachine stateMachine)
 			=> stateMachine.Do(SwitchToNextState, @if: TimeIsUp);
 
+		public virtual void Exit(IStateMachine stateMachine) { }
+
 		private void SwitchToNextState(IStateMachine stateMachine) => stateMachine.SwitchState<TNextState>();
 		private bool TimeIsUp(IStateMachine _) => (_beingDuration -= Time.deltaTime) <= 0;
 	}

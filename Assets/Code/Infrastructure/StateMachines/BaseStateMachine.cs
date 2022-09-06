@@ -14,6 +14,7 @@ namespace Code.Infrastructure.StateMachines
 
 		public void SwitchState<T>()
 		{
+			CurrentState.Exit(this);
 			CurrentState = _states[typeof(T)];
 			CurrentState.Enter(this);
 		}

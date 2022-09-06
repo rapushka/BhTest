@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Code.Player.Score;
 using Mirror;
 using UnityEngine;
@@ -9,18 +10,23 @@ namespace Code.Infrastructure
 		[Header("Start Game Button")] [SerializeField] private Vector2 _position;
 		[SerializeField] private Vector2 _scale;
 
+		private readonly List<PlayerScore> _playerScores = new List<PlayerScore>();
 		private bool _showStartButton;
+
+		public IEnumerable<PlayerScore> PlayerScores => _playerScores;
 
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
 		{
 			var playerScore = gamePlayer.GetComponent<PlayerScore>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
-			playerScore.Construct($"Player{index}", index);
+			playerScore.Construct($"Player{index + 1}", index);
+			
+			_playerScores.Add(playerScore);
 
 			return true;
 		}
-
+		
 		public override void OnRoomServerPlayersReady()
 		{
 #if UNITY_SERVER

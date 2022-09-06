@@ -12,7 +12,8 @@ namespace Code.Player.StateMachine.DashStates
 
 		public void Enter(IStateMachine stateMachine) { }
 		public void OnUpdate(IStateMachine stateMachine) { }
-		
+		public void Exit(IStateMachine stateMachine) { }
+
 		public void OnDash(PlayerDashStateMachine playerDashStateMachine)
 		{
 			playerDashStateMachine.SwitchState<DashActiveState>();

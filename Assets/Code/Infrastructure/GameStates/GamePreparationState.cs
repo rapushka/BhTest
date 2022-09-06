@@ -6,11 +6,18 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GamePreparationState : IGameState
 	{
-		public void Enter(IStateMachine stateMachine)
+		public void Enter(IStateMachine stateMachine) => SceneManager.LoadScene(Constants.SceneName.OfflineScene);
+
+		public void OnUpdate(IStateMachine stateMachine)
 		{
-			SceneManager.LoadScene(Constants.SceneName.OfflineScene);
+			string activeScene = SceneManager.GetActiveScene().name;
+			if (activeScene == Constants.SceneName.OnlineScene)
+			{
+				stateMachine.SwitchState<GameplayState>();
+			}
 		}
 
-		public void OnUpdate(IStateMachine stateMachine) { }
+		public void Exit(IStateMachine stateMachine)
+		{ }
 	}
 }
