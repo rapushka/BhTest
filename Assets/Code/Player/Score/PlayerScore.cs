@@ -1,10 +1,12 @@
 using Mirror;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.Player.Score
 {
 	public class PlayerScore : NetworkBehaviour
 	{
+		[SerializeField] private Text _playerNameView;
 		[Header("GUI Layout")] [SerializeField] private Vector2 _position;
 		[SerializeField] private Vector2 _scale;
 		[SerializeField] private float _spaceBetween;
@@ -19,6 +21,8 @@ namespace Code.Player.Score
 		{
 			_playerName = playerName;
 			_index = index;
+
+			_playerNameView.text = _playerName;
 		}
 
 		public void IncrementScore()
@@ -32,7 +36,7 @@ namespace Code.Player.Score
 				CmdApplyScore();
 			}
 		}
-
+		
 		private void OnGUI()
 		{
 			GUI.Box
