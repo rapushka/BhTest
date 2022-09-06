@@ -1,23 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Code.Infrastructure.GameStateMachine;
 using Code.Player.StateMachine.ColorStates;
 using Code.Player.StateMachine.DashStates;
 using UnityEngine;
 
 namespace Code.Player.StateMachine
 {
-	public class PlayerColorStateMachine : MonoBehaviour
+	public class PlayerColorStateMachine : MonoBehaviour, IStateMachine<IColorState>
 	{
 		[SerializeField] private ColorChangeComponent _colorChange;
 		[SerializeField] private float _durationChangedColorState = 3;
 
-		private Dictionary<Type, ColorState> _states;
+		private Dictionary<Type, IColorState> _states;
 
-		public ColorState CurrentColorState { get; private set; }
+		public IColorState CurrentColorState { get; private set; }
 
 		private void Start()
 		{
-			_states = new Dictionary<Type, ColorState>
+			_states = new Dictionary<Type, IColorState>
 			{
 				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChange),
 				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState)

@@ -35,7 +35,7 @@ namespace Code.Player.StateMachine.DashStates
 			}
 		}
 
-		public override void OnCollide(ColorState otherColorState)
+		public override void OnCollide(IColorState otherColorState)
 		{
 			if (otherColorState is ColorDefaultState)
 			{

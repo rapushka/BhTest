@@ -19,6 +19,6 @@ namespace Code.Player.StateMachine.DashStates
 
 		public override void OnUpdate(PlayerDashStateMachine playerDashStateMachine) { }
 
-		public override void OnCollide(ColorState otherColorState) { }
+		public override void OnCollide(IColorState otherColorState) { }
 	}
 }

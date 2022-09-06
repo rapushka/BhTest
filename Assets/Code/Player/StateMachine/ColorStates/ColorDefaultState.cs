@@ -1,19 +1,25 @@
+using Code.Infrastructure.GameStateMachine;
 using Code.Player.StateMachine.DashStates;
 
 namespace Code.Player.StateMachine.ColorStates
 {
-	public class ColorDefaultState : ColorState
+	public class ColorDefaultState : IColorState
 	{
-		public ColorDefaultState(ColorChangeComponent colorChangeComponent)
-			: base(colorChangeComponent) { }
+		private readonly ColorChangeComponent _colorChangeComponent;
 
-		public override void Enter(PlayerColorStateMachine colorStateMachine)
+		public ColorDefaultState(ColorChangeComponent colorChangeComponent)
 		{
-			ColorChangeComponent.ToDefaultColor();
+			_colorChangeComponent = colorChangeComponent;
 		}
 
-		public override void OnUpdate(PlayerColorStateMachine colorStateMachine) { }
-		public override void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState)
+		public void Enter(IStateMachine<IState> stateMachine)
+		{
+			_colorChangeComponent.ToDefaultColor();
+		}
+
+		public void OnUpdate(IStateMachine<IState> stateMachine) { }
+
+		public void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState)
 		{
 			if (otherDashState is DashActiveState)
 			{

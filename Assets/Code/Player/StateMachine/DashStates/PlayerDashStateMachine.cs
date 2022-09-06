@@ -24,7 +24,7 @@ namespace Code.Player.StateMachine.DashStates
 			CurrentDashState.Enter(this);
 		}
 
-		public void Collide(ColorState otherColorState) => CurrentDashState.OnCollide(otherColorState);
+		public void Collide(IColorState otherColorState) => CurrentDashState.OnCollide(otherColorState);
 
 		private void Start()
 		{
