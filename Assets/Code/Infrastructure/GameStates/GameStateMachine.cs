@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Infrastructure.StateMachines;
 using Code.Player.Score;
 using UnityEngine;
@@ -11,11 +12,13 @@ namespace Code.Infrastructure.GameStates
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		private IEnumerable<PlayerScore> _cashedPlayerScores;
+		private NetworkRoomManagerExt _cashedNetworkRoomManager;
+		private List<PlayerScore> _playerScores = new List<PlayerScore>();
+		
 		public string LastSavedPlayerName { get; private set; }
 
-		private IEnumerable<PlayerScore> PlayerScores
-			=> _cashedPlayerScores ??= FindObjectOfType<NetworkRoomManagerExt>().PlayerScores;
+		private NetworkRoomManagerExt NetworkRoomManager
+			=> _cashedNetworkRoomManager ??= FindObjectOfType<NetworkRoomManagerExt>();
 
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
 			=> new Dictionary<Type, IGameState>
@@ -27,17 +30,22 @@ namespace Code.Infrastructure.GameStates
 
 		private void OnEnable()
 		{
-			foreach (PlayerScore playerScore in PlayerScores)
-			{
-				playerScore.ScoreIncrease += OnScoreIncrease;
-			}
+			NetworkRoomManager.PlayerConnected += OnPlayerConnected;
+		}
+
+		private void OnPlayerConnected(PlayerScore playerScore)
+		{
+			_playerScores.Add(playerScore);
+			playerScore.ScoreIncrease += OnScoreIncrease;
 		}
 
 		private void OnDisable()
 		{
-			foreach (PlayerScore playerScore in PlayerScores)
+			NetworkRoomManager.PlayerConnected -= OnPlayerConnected;
+
+			foreach (PlayerScore playerScore in _playerScores)
 			{
-				playerScore.ScoreIncrease += OnScoreIncrease;
+				playerScore.ScoreIncrease -= OnScoreIncrease;
 			}
 		}
 
