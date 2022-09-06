@@ -1,35 +1,23 @@
+using Code.Infrastructure.GameStateMachine;
 using Code.Player.StateMachine.DashStates;
-using UnityEngine;
 
 namespace Code.Player.StateMachine.ColorStates
 {
-	public class ColorChangedState : ColorState
+	public class ColorChangedState : TimeBouncedState<ColorDefaultState>, IColorState
 	{
-		private readonly float _durationChangedColorState;
-		private float _beingDuration;
+		private readonly ColorChangeComponent _colorChangeComponent;
 
 		public ColorChangedState(ColorChangeComponent colorChangeComponent, float durationChangedColorState)
-			: base(colorChangeComponent)
+			: base(durationChangedColorState)
+			=> _colorChangeComponent = colorChangeComponent;
+
+		public override void Enter(IStateMachine stateMachine)
 		{
-			_durationChangedColorState = durationChangedColorState;
+			base.Enter(stateMachine);
+
+			_colorChangeComponent.ToChangedColor();
 		}
 
-		public override void Enter(PlayerColorStateMachine colorStateMachine)
-		{
-			_beingDuration = 0f;
-			ColorChangeComponent.ToChangedColor();
-		}
-
-		public override void OnUpdate(PlayerColorStateMachine colorStateMachine)
-		{
-			_beingDuration += Time.deltaTime;
-
-			if (_beingDuration >= _durationChangedColorState)
-			{
-				colorStateMachine.SwitchState<ColorDefaultState>();
-			}
-		}
-
-		public override void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState) { }
+		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState) { }
 	}
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 255837572466431036}
   - component: {fileID: 4709248798101818502}
   m_Layer: 0
-  m_Name: Room Player Prefab
+  m_Name: Room Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
