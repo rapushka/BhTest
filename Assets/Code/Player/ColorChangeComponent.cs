@@ -1,5 +1,6 @@
 using Mirror;
 using UnityEngine;
+// ReSharper disable UnusedParameter.Local
 
 namespace Code.Player
 {
