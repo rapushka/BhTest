@@ -10,8 +10,8 @@ namespace Code.Player.StateMachine.DashStates
 
 		public DashPassiveState(DashComponent dashComponent) => _dashComponent = dashComponent;
 
-		public void Enter(IStateMachine<IState> stateMachine) { }
-		public void OnUpdate(IStateMachine<IState> stateMachine) { }
+		public void Enter(IStateMachine stateMachine) { }
+		public void OnUpdate(IStateMachine stateMachine) { }
 		
 		public void OnDash(PlayerDashStateMachine playerDashStateMachine)
 		{

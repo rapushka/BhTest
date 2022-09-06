@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Infrastructure.GameStateMachine
 {
-	public abstract class BaseStateMachine<TState> : MonoBehaviour, IStateMachine<IState>
+	public abstract class BaseStateMachine<TState> : MonoBehaviour, IStateMachine
 		where TState : IState
 	{
 		private Dictionary<Type, TState> _states;
@@ -20,12 +20,16 @@ namespace Code.Infrastructure.GameStateMachine
 
 		private void Start()
 		{
-			_states = CreateDictionary();
+			_states = CreateStatesDictionary();
+			SwitchStateToFirstInDictionary();
+		}
 
+		private void SwitchStateToFirstInDictionary()
+		{
 			CurrentState = _states.First().Value;
 			CurrentState.Enter(this);
 		}
 
-		protected abstract Dictionary<Type, TState> CreateDictionary();
+		protected abstract Dictionary<Type, TState> CreateStatesDictionary();
 	}
 }

@@ -11,12 +11,12 @@ namespace Code.Infrastructure.GameStateMachine
 
 		protected TimeBouncedState(float duration) => _duration = duration;
 
-		public virtual void Enter(IStateMachine<IState> stateMachine) => _beingDuration = _duration;
+		public virtual void Enter(IStateMachine stateMachine) => _beingDuration = _duration;
 
-		public virtual void OnUpdate(IStateMachine<IState> stateMachine)
+		public virtual void OnUpdate(IStateMachine stateMachine)
 			=> stateMachine.Do(SwitchToNextState, @if: TimeIsUp);
 
-		private void SwitchToNextState(IStateMachine<IState> stateMachine) => stateMachine.SwitchState<TNextState>();
-		private bool TimeIsUp(IStateMachine<IState> _) => (_beingDuration -= Time.deltaTime) <= 0;
+		private void SwitchToNextState(IStateMachine stateMachine) => stateMachine.SwitchState<TNextState>();
+		private bool TimeIsUp(IStateMachine _) => (_beingDuration -= Time.deltaTime) <= 0;
 	}
 }

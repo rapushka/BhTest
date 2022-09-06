@@ -11,7 +11,7 @@ namespace Code.Player.StateMachine.ColorStates
 			: base(durationChangedColorState)
 			=> _colorChangeComponent = colorChangeComponent;
 
-		public override void Enter(IStateMachine<IState> stateMachine)
+		public override void Enter(IStateMachine stateMachine)
 		{
 			base.Enter(stateMachine);
 

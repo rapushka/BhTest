@@ -12,9 +12,9 @@ namespace Code.Player.StateMachine.ColorStates
 			_colorChangeComponent = colorChangeComponent;
 		}
 
-		public void Enter(IStateMachine<IState> stateMachine) => _colorChangeComponent.ToDefaultColor();
+		public void Enter(IStateMachine stateMachine) => _colorChangeComponent.ToDefaultColor();
 
-		public void OnUpdate(IStateMachine<IState> stateMachine) { }
+		public void OnUpdate(IStateMachine stateMachine) { }
 
 		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState)
 		{
