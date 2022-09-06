@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Code.Infrastructure.GameStateMachine;
+using Code.Infrastructure.StateMachines;
 using Code.Player.Dash;
 using Code.Player.Score;
 using Code.Player.StateMachine.ColorStates;

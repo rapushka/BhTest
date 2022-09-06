@@ -1,7 +1,7 @@
 using Code.Workflow.Extensions;
 using UnityEngine;
 
-namespace Code.Infrastructure.GameStateMachine
+namespace Code.Infrastructure.StateMachines
 {
 	public abstract class TimeBouncedState<TNextState> : IState
 		where TNextState : IState

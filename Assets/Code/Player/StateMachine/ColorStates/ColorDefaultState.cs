@@ -1,4 +1,4 @@
-using Code.Infrastructure.GameStateMachine;
+using Code.Infrastructure.StateMachines;
 using Code.Player.StateMachine.DashStates;
 
 namespace Code.Player.StateMachine.ColorStates
