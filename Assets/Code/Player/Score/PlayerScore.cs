@@ -1,7 +1,7 @@
+using System;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
-// ReSharper disable UnusedParameter.Local
 
 namespace Code.Player.Score
 {
@@ -17,6 +17,8 @@ namespace Code.Player.Score
 		[SyncVar] private int _index;
 
 		private int _scoreValue;
+
+		public event Action<string, int> ScoreIncrease;
 
 		public void Construct(string playerName, int index)
 		{
@@ -34,6 +36,8 @@ namespace Code.Player.Score
 			{
 				CmdApplyScore();
 			}
+			
+			ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
 		}
 		
 		private void OnGUI()
@@ -54,6 +58,7 @@ namespace Code.Player.Score
 		[Command] private void CmdApplyScore() => ApplyScore();
 		[Server] private void ApplyScore() => _syncScoreValue++;
 
+		// ReSharper disable UnusedParameter.Local
 		private void SyncPlayerName(string _, string newValue) => _playerNameView.text = _syncPlayerName;
 		private void SyncScore(int _, int newValue) => _scoreValue = _syncScoreValue;
 	}

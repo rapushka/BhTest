@@ -1,6 +1,5 @@
 using Mirror;
 using UnityEngine;
-// ReSharper disable UnusedParameter.Local
 
 namespace Code.Player
 {
@@ -37,6 +36,7 @@ namespace Code.Player
 
 		[ClientRpc] private void RpcApplyColor(Color32 color) => _renderer.material.color = color;
 		
+		// ReSharper disable UnusedParameter.Local
 		private void SyncColor(Color32 _, Color32 newValue) => _renderer.material.color = newValue;
 	}
 }
