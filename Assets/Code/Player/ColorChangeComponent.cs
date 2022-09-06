@@ -27,7 +27,7 @@ namespace Code.Player
 			}
 		}
 
-		[Command] private void CmdApplyColor(Color32 color) => ApplyColor(color);
+		[Command(requiresAuthority = false)] private void CmdApplyColor(Color32 color) => ApplyColor(color);
 		[Server] private void ApplyColor(Color32 color)
 		{
 			_color = color;
