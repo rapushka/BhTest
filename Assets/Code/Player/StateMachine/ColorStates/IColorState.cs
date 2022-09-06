@@ -5,6 +5,6 @@ namespace Code.Player.StateMachine.ColorStates
 {
 	public interface IColorState : IState
 	{
-		void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState);
+		void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState);
 	}
 }

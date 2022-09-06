@@ -27,7 +27,7 @@ namespace Code.Player.StateMachine
 			SwitchState<ColorDefaultState>();
 		}
 
-		public void Collide(DashState otherDashState) => CurrentColorState.OnCollide(this, otherDashState);
+		public void Collide(IDashState otherDashState) => CurrentColorState.OnCollide(this, otherDashState);
 
 		public void SwitchState<T>()
 		{

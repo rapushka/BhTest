@@ -18,6 +18,6 @@ namespace Code.Player.StateMachine.ColorStates
 			_colorChangeComponent.ToChangedColor();
 		}
 
-		public void OnCollide(PlayerColorStateMachine colorStateMachine, DashState otherDashState) { }
+		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState) { }
 	}
 }
