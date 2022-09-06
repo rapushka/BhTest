@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Code.Infrastructure.StateMachines;
 using Code.Player.Score;
 using UnityEngine;
@@ -12,13 +11,12 @@ namespace Code.Infrastructure.GameStates
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		private NetworkRoomManagerExt _cashedNetworkRoomManager;
-		private List<PlayerScore> _playerScores = new List<PlayerScore>();
+		private PlayerScore[] _playerScores;
 		
 		public string LastSavedPlayerName { get; private set; }
 
-		private NetworkRoomManagerExt NetworkRoomManager
-			=> _cashedNetworkRoomManager ??= FindObjectOfType<NetworkRoomManagerExt>();
+		private IEnumerable<PlayerScore> PlayerScores
+			=> _playerScores ??= FindObjectsOfType<PlayerScore>();
 
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
 			=> new Dictionary<Type, IGameState>
@@ -28,22 +26,9 @@ namespace Code.Infrastructure.GameStates
 				[typeof(GameWinState)] = new GameWinState(_secondsOnWinScreen),
 			};
 
-		private void OnEnable()
-		{
-			NetworkRoomManager.PlayerConnected += OnPlayerConnected;
-		}
-
-		private void OnPlayerConnected(PlayerScore playerScore)
-		{
-			_playerScores.Add(playerScore);
-			playerScore.ScoreIncrease += OnScoreIncrease;
-		}
-
 		private void OnDisable()
 		{
-			NetworkRoomManager.PlayerConnected -= OnPlayerConnected;
-
-			foreach (PlayerScore playerScore in _playerScores)
+			foreach (PlayerScore playerScore in PlayerScores)
 			{
 				playerScore.ScoreIncrease -= OnScoreIncrease;
 			}
@@ -51,10 +36,27 @@ namespace Code.Infrastructure.GameStates
 
 		private void OnScoreIncrease(string playerName, int score)
 		{
+			Debug.Log("OnScoreIncrease");
 			LastSavedPlayerName = playerName;
 			CurrentState.OnScoreIncrease(this, playerName, score);
 		}
 
-		private void Update() => CurrentState.OnUpdate(this);
+		private void Update()
+		{
+			CurrentState.OnUpdate(this);
+
+			if (CurrentState is GameplayState)
+			{
+				Registry();
+			}
+		}
+
+		private void Registry()
+		{
+			foreach (PlayerScore playerScore in PlayerScores)
+			{
+				playerScore.ScoreIncrease += OnScoreIncrease;
+			}
+		}
 	}
 }

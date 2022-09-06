@@ -37,7 +37,7 @@ namespace Code.Player.Score
 				CmdApplyScore();
 			}
 		}
-		
+
 		private void OnGUI()
 		{
 			GUI.Box
@@ -53,12 +53,17 @@ namespace Code.Player.Score
 			);
 		}
 
-		[Command] private void CmdApplyScore() => ApplyScore();
-		[Server] private void ApplyScore()
+		[Command(requiresAuthority = false)] private void CmdApplyScore() => ApplyScore();
+
+		[Server]
+		private void ApplyScore()
 		{
 			_syncScoreValue++;
 			ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
+			RpcScoreIncrease();
 		}
+
+		[ClientRpc] private void RpcScoreIncrease() => ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
 
 		// ReSharper disable UnusedParameter.Local
 		private void SyncPlayerName(string _, string newValue) => _playerNameView.text = _syncPlayerName;
