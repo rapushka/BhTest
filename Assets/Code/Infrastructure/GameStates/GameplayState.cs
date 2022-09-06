@@ -1,49 +1,27 @@
-using System.Collections.Generic;
 using Code.Infrastructure.StateMachines;
-using Code.Player.Score;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.GameStates
 {
 	public class GameplayState : IGameState
 	{
-		private readonly IEnumerable<PlayerScore> _playerScores;
 		private readonly int _scoreToWin;
-		private IStateMachine _stateMachine;
 
-		public GameplayState(IEnumerable<PlayerScore> playerScores, int scoreToWin)
-		{
-			_playerScores = playerScores;
-			_scoreToWin = scoreToWin;
-		}
+		public GameplayState(int scoreToWin) => _scoreToWin = scoreToWin;
 
-		public void Enter(IStateMachine stateMachine)
-		{
-			Debug.Log("Enter To Gameplay State");
-			_stateMachine = stateMachine;
-			foreach (PlayerScore playerScore in _playerScores)
-			{
-				playerScore.ScoreIncrease += OnScoreIncrease;
-			}
-		}
-
-		private void OnScoreIncrease(string playerName, int score)
-		{
-			Debug.Log($"{playerName} scored {score}!");
-			if (score >= _scoreToWin)
-			{
-				_stateMachine.SwitchState<GameWinState>();
-			}
-		}
+		public void Enter(IStateMachine stateMachine) { }
 
 		public void OnUpdate(IStateMachine stateMachine) { }
 
-		public void Exit(IStateMachine stateMachine)
+		public void Exit(IStateMachine stateMachine) { }
+
+		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score)
 		{
-			foreach (PlayerScore playerScore in _playerScores)
+			Debug.Log($"{playerName} scored {score}!");
+
+			if (score >= _scoreToWin)
 			{
-				playerScore.ScoreIncrease -= OnScoreIncrease;
+				stateMachine.SwitchState<GameWinState>();
 			}
 		}
 	}

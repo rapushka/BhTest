@@ -36,8 +36,6 @@ namespace Code.Player.Score
 			{
 				CmdApplyScore();
 			}
-			
-			ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
 		}
 		
 		private void OnGUI()
@@ -56,7 +54,11 @@ namespace Code.Player.Score
 		}
 
 		[Command] private void CmdApplyScore() => ApplyScore();
-		[Server] private void ApplyScore() => _syncScoreValue++;
+		[Server] private void ApplyScore()
+		{
+			_syncScoreValue++;
+			ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
+		}
 
 		// ReSharper disable UnusedParameter.Local
 		private void SyncPlayerName(string _, string newValue) => _playerNameView.text = _syncPlayerName;

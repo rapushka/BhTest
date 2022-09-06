@@ -17,7 +17,8 @@ namespace Code.Infrastructure.GameStates
 			}
 		}
 
-		public void Exit(IStateMachine stateMachine)
-		{ }
+		public void Exit(IStateMachine stateMachine) { }
+
+		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score) { }
 	}
 }
