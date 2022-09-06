@@ -7,34 +7,22 @@ using UnityEngine;
 
 namespace Code.Player.StateMachine
 {
-	public class PlayerColorStateMachine : MonoBehaviour, IStateMachine<IColorState>
+	public class PlayerColorStateMachine : BaseStateMachine<IColorState>
 	{
 		[SerializeField] private ColorChangeComponent _colorChange;
 		[SerializeField] private float _durationChangedColorState = 3;
+		
+		public void Collide(IDashState otherDashState) => CurrentState.OnCollide(this, otherDashState);
 
-		private Dictionary<Type, IColorState> _states;
-
-		public IColorState CurrentColorState { get; private set; }
-
-		private void Start()
+		protected override Dictionary<Type, IColorState> CreateDictionary()
 		{
-			_states = new Dictionary<Type, IColorState>
+			return new Dictionary<Type, IColorState>
 			{
 				[typeof(ColorDefaultState)] = new ColorDefaultState(_colorChange),
 				[typeof(ColorChangedState)] = new ColorChangedState(_colorChange, _durationChangedColorState)
 			};
-
-			SwitchState<ColorDefaultState>();
 		}
 
-		public void Collide(IDashState otherDashState) => CurrentColorState.OnCollide(this, otherDashState);
-
-		public void SwitchState<T>()
-		{
-			CurrentColorState = _states[typeof(T)];
-			CurrentColorState.Enter(this);
-		}
-
-		private void Update() => CurrentColorState.OnUpdate(this);
+		private void Update() => CurrentState.OnUpdate(this);
 	}
 }

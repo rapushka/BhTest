@@ -21,8 +21,8 @@ namespace Code.Player
 				return;
 			}
 
-			_dashStateMachine.Collide(otherStateMachine.CurrentColorState);
-			otherStateMachine.Collide(_dashStateMachine.CurrentDashState);
+			_dashStateMachine.Collide(otherStateMachine.CurrentState);
+			otherStateMachine.Collide(_dashStateMachine.CurrentState);
 		}
 	}
 }
