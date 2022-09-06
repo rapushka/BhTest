@@ -164,12 +164,10 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 7765663939827234076, guid: 59aec4df638ddbd4db605ed82a789265, type: 3}
+  playerPrefab: {fileID: 7208289164333700974, guid: 703ccafa8b8d41b449fb445ffbbb7cc4, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs:
-  - {fileID: 7208289164333700974, guid: 9b65a96d70aeb8a47bbd68d65f9a5e12, type: 3}
-  - {fileID: 7208289164333700974, guid: 703ccafa8b8d41b449fb445ffbbb7cc4, type: 3}
+  spawnPrefabs: []
   showRoomGUI: 1
   minPlayers: 1
   roomPlayerPrefab: {fileID: 4709248798101818502, guid: 59aec4df638ddbd4db605ed82a789265, type: 3}
