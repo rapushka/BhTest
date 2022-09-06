@@ -16,7 +16,7 @@ namespace Code.Infrastructure
 		{
 			var playerScore = gamePlayer.GetComponent<PlayerScore>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
-			playerScore.Construct("Player", index);
+			playerScore.Construct($"Player{index}", index);
 
 			return true;
 		}
