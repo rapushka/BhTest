@@ -334,14 +334,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0
+  syncInterval: 0.1
   _renderer: {fileID: 6460460293363147985}
   _default:
     serializedVersion: 2
-    rgba: 15400704
+    rgba: 4293590784
   _changed:
     serializedVersion: 2
-    rgba: 255
+    rgba: 4278190335
 --- !u!114 &5971471354022010005
 MonoBehaviour:
   m_ObjectHideFlags: 0

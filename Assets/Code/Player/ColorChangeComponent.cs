@@ -1,4 +1,3 @@
-using System;
 using Mirror;
 using UnityEngine;
 
@@ -6,44 +5,37 @@ namespace Code.Player
 {
 	public class ColorChangeComponent : NetworkBehaviour
 	{
-		[SerializeField] private Renderer _renderer;
+		[SerializeField] private MeshRenderer _renderer;
 		[SerializeField] private Color32 _default;
 		[SerializeField] private Color32 _changed;
 
-		[SyncVar(hook = nameof(ColorSync))] private Color32 _color;
-
-		private Material _cachedMaterial;
+		[SyncVar(hook = nameof(SyncColor))] private Color32 _color;
 
 		public void ToDefaultColor() => ChangeColor(_default);
 
 		public void ToChangedColor() => ChangeColor(_changed);
-
-		public override void OnStartServer()
-		{
-			base.OnStartServer();
-
-			_color = _default;
-		}
-
-		private void OnDestroy() => Destroy(_cachedMaterial);
-
+		
 		private void ChangeColor(Color32 color)
 		{
-			_color = color;
-			_cachedMaterial.color = color;
+			if (isServer)
+			{
+				ApplyColor(color);
+			}
+			else
+			{
+				CmdApplyColor(color);
+			}
 		}
 
 		[Command] private void CmdApplyColor(Color32 color) => ApplyColor(color);
-		[Server] private void ApplyColor(Color32 color) => _cachedMaterial.color = color;
-
-		private void ColorSync(Color32 _, Color32 newColor)
+		[Server] private void ApplyColor(Color32 color)
 		{
-			if (_cachedMaterial == null)
-			{
-				_cachedMaterial = _renderer.material;
-			}
-
-			_cachedMaterial.color = newColor;
+			_color = color;
+			RpcApplyColor(_color);
 		}
+
+		[ClientRpc] private void RpcApplyColor(Color32 color) => _renderer.material.color = color;
+		
+		private void SyncColor(Color32 _, Color32 newValue) => _renderer.material.color = newValue;
 	}
 }
