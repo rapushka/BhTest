@@ -2,11 +2,13 @@
 using System;
 using System.Linq;
 using System.Net;
-using UnityEngine;
-using Mirror;
+using Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel;
+using Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel.NonAlloc;
+using Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp;
 using Unity.Collections;
+using UnityEngine;
 
-namespace kcp2k
+namespace Packages.Mirror.Runtime.Transports.KCP.MirrorTransport
 {
     [HelpURL("https://mirror-networking.gitbook.io/docs/transports/kcp-transport")]
     [DisallowMultipleComponent]

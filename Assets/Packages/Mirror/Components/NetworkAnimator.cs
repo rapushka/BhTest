@@ -1,8 +1,9 @@
 using System.Linq;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Mirror
+namespace Packages.Mirror.Components
 {
     /// <summary>
     /// A component to synchronize Mecanim animation states for networked objects.

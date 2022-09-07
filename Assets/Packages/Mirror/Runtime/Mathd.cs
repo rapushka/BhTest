@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     public static class Mathd
     {

@@ -38,7 +38,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     // SyncField<NetworkIdentity> only stores an uint netId.
     // while providing .spawned lookup for convenience.

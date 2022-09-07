@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using Mono.CecilX;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver
 {
     // This data is flushed each time - if we are run multiple times in the same process/domain
     public class SyncVarAccessLists

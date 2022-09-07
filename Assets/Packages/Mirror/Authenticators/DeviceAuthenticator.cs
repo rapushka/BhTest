@@ -1,7 +1,8 @@
 using System;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror.Authenticators
+namespace Packages.Mirror.Authenticators
 {
     /// <summary>
     /// An authenicator that identifies the user by their device.

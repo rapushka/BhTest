@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Telepathy
+namespace Packages.Mirror.Runtime.Transports.Telepathy.Telepathy
 {
     public class Pool<T>
     {

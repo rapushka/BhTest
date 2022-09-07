@@ -1,25 +1,25 @@
 using System.Collections.Generic;
+using Packages.Mirror.Runtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Mirror
+namespace Packages.Mirror.Components.InterestManagement.Scene
 {
     [AddComponentMenu("Network/ Interest Management/ Scene/Scene Interest Management")]
-    public class SceneInterestManagement : InterestManagement
+    public class SceneInterestManagement : Runtime.InterestManagement
     {
         // Use Scene instead of string scene.name because when additively
         // loading multiples of a subscene the name won't be unique
-        readonly Dictionary<Scene, HashSet<NetworkIdentity>> sceneObjects =
-            new Dictionary<Scene, HashSet<NetworkIdentity>>();
+        readonly Dictionary<UnityEngine.SceneManagement.Scene, HashSet<NetworkIdentity>> sceneObjects =
+            new Dictionary<UnityEngine.SceneManagement.Scene, HashSet<NetworkIdentity>>();
 
-        readonly Dictionary<NetworkIdentity, Scene> lastObjectScene =
-            new Dictionary<NetworkIdentity, Scene>();
+        readonly Dictionary<NetworkIdentity, UnityEngine.SceneManagement.Scene> lastObjectScene =
+            new Dictionary<NetworkIdentity, UnityEngine.SceneManagement.Scene>();
 
-        HashSet<Scene> dirtyScenes = new HashSet<Scene>();
+        HashSet<UnityEngine.SceneManagement.Scene> dirtyScenes = new HashSet<UnityEngine.SceneManagement.Scene>();
 
         public override void OnSpawned(NetworkIdentity identity)
         {
-            Scene currentScene = identity.gameObject.scene;
+            UnityEngine.SceneManagement.Scene currentScene = identity.gameObject.scene;
             lastObjectScene[identity] = currentScene;
             // Debug.Log($"SceneInterestManagement.OnSpawned({identity.name}) currentScene: {currentScene}");
             if (!sceneObjects.TryGetValue(currentScene, out HashSet<NetworkIdentity> objects))
@@ -33,7 +33,7 @@ namespace Mirror
 
         public override void OnDestroyed(NetworkIdentity identity)
         {
-            Scene currentScene = lastObjectScene[identity];
+            UnityEngine.SceneManagement.Scene currentScene = lastObjectScene[identity];
             lastObjectScene.Remove(identity);
             if (sceneObjects.TryGetValue(currentScene, out HashSet<NetworkIdentity> objects) && objects.Remove(identity))
                 RebuildSceneObservers(currentScene);
@@ -49,8 +49,8 @@ namespace Mirror
             //     add new to dirty
             foreach (NetworkIdentity identity in NetworkServer.spawned.Values)
             {
-                Scene currentScene = lastObjectScene[identity];
-                Scene newScene = identity.gameObject.scene;
+                UnityEngine.SceneManagement.Scene currentScene = lastObjectScene[identity];
+                UnityEngine.SceneManagement.Scene newScene = identity.gameObject.scene;
                 if (newScene == currentScene)
                     continue;
 
@@ -76,13 +76,13 @@ namespace Mirror
             }
 
             // rebuild all dirty scenes
-            foreach (Scene dirtyScene in dirtyScenes)
+            foreach (UnityEngine.SceneManagement.Scene dirtyScene in dirtyScenes)
                 RebuildSceneObservers(dirtyScene);
 
             dirtyScenes.Clear();
         }
 
-        void RebuildSceneObservers(Scene scene)
+        void RebuildSceneObservers(UnityEngine.SceneManagement.Scene scene)
         {
             foreach (NetworkIdentity netIdentity in sceneObjects[scene])
                 if (netIdentity != null)

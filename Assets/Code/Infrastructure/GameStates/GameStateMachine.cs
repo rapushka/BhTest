@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Code.Infrastructure.StateMachines;
+using Code.CommonStateMachines;
+using Code.Infrastructure.GameLoop;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameStates

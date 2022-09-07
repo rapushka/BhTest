@@ -1,4 +1,4 @@
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     public interface NetworkMessage {}
 }

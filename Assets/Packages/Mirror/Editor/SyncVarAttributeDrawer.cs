@@ -1,7 +1,8 @@
-﻿using UnityEditor;
+﻿using Packages.Mirror.Runtime;
+using UnityEditor;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     [CustomPropertyDrawer(typeof(SyncVarAttribute))]
     public class SyncVarAttributeDrawer : PropertyDrawer

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Telepathy
+namespace Packages.Mirror.Runtime.Transports.Telepathy.Telepathy
 {
     public class Server : Common
     {

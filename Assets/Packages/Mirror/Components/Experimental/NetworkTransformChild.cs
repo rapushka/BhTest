@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Mirror.Experimental
+namespace Packages.Mirror.Components.Experimental
 {
     /// <summary>
     /// A component to synchronize the position of child transforms of networked objects.

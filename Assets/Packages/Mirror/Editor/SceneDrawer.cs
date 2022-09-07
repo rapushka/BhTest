@@ -1,7 +1,8 @@
+using Packages.Mirror.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     [CustomPropertyDrawer(typeof(SceneAttribute))]
     public class SceneDrawer : PropertyDrawer

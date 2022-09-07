@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace kcp2k
+namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp
 {
     public class Kcp
     {

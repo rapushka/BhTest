@@ -1,6 +1,6 @@
 using System.Net.Sockets;
 
-namespace kcp2k
+namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel
 {
     public static class Extensions
     {

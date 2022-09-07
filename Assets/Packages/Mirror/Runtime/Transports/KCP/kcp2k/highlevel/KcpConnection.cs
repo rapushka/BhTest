@@ -2,8 +2,9 @@ using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp;
 
-namespace kcp2k
+namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel
 {
     enum KcpState { Connected, Authenticated, Disconnected }
 

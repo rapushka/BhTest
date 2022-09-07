@@ -5,7 +5,7 @@ using UnityEngine;
 using Stopwatch = System.Diagnostics.Stopwatch;
 #endif
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     /// <summary>Synchronizes server time to clients.</summary>
     public static class NetworkTime

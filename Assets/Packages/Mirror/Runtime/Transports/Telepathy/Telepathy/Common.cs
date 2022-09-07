@@ -1,5 +1,5 @@
 ﻿// common code used by server and client
-namespace Telepathy
+namespace Packages.Mirror.Runtime.Transports.Telepathy.Telepathy
 {
     public abstract class Common
     {

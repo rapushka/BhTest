@@ -6,7 +6,7 @@
 // we need this custom reflection importer to fix that.
 using Mono.CecilX;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.EntryPointILPostProcessor
 {
     internal class ILPostProcessorReflectionImporterProvider : IReflectionImporterProvider
     {

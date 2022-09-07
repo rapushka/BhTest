@@ -3,9 +3,10 @@ using System.Linq;
 using Mono.CecilX;
 using Mono.CecilX.Cil;
 using Mono.CecilX.Rocks;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.Processors
 {
     public static class ReaderWriterProcessor
     {

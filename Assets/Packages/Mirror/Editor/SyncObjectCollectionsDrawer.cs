@@ -4,9 +4,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Packages.Mirror.Runtime;
 using UnityEditor;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     class SyncObjectCollectionField
     {

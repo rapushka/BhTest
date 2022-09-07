@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace WhereAllocation
+namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.where_allocation.Scripts
 {
     public class IPEndPointNonAlloc : IPEndPoint
     {

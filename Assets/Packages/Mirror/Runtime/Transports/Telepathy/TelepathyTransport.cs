@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using UnityEngine;
 
 // Replaced by Kcp November 2020
-namespace Mirror
+namespace Packages.Mirror.Runtime.Transports.Telepathy
 {
     [HelpURL("https://github.com/vis2k/Telepathy/blob/master/README.md")]
     [DisallowMultipleComponent]

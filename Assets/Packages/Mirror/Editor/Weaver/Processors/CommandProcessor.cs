@@ -1,7 +1,7 @@
 using Mono.CecilX;
 using Mono.CecilX.Cil;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.Processors
 {
     // Processes [Command] methods in NetworkBehaviour
     public static class CommandProcessor
