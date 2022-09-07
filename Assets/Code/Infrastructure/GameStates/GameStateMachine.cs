@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Infrastructure.StateMachines;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameStates
@@ -9,7 +10,13 @@ namespace Code.Infrastructure.GameStates
 	{
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
-		
+		[Scene] [SerializeField] private string _winScene;
+
+		private NetworkRoomManagerExt _networkRoomManager;
+
+		public NetworkRoomManagerExt NetworkRoomManager
+			=> _networkRoomManager ??= FindObjectOfType<NetworkRoomManagerExt>();
+
 		public string LastSavedPlayerName { get; private set; }
 
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
@@ -19,10 +26,9 @@ namespace Code.Infrastructure.GameStates
 				[typeof(GameplayState)] = new GameplayState(_scoreToWin),
 				[typeof(GameWinState)] = new GameWinState(_secondsOnWinScreen),
 			};
-		
+
 		public void OnScoreIncrease(string playerName, int score)
 		{
-			Debug.Log("OnScoreIncrease");
 			LastSavedPlayerName = playerName;
 			CurrentState.OnScoreIncrease(this, playerName, score);
 		}
