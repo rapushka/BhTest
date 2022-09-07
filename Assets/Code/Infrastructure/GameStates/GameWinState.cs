@@ -16,7 +16,7 @@ namespace Code.Infrastructure.GameStates
 			_winnerName = ((GameStateMachine)stateMachine).LastSavedPlayerName;
 
 			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.NetworkRoomManager.GameOver(_winnerName);
+			gameStateMachine.derivedNetworkRoomManager.GameOver(_winnerName);
 		}
 
 		public override void Exit(IStateMachine stateMachine)
@@ -24,7 +24,7 @@ namespace Code.Infrastructure.GameStates
 			base.Exit(stateMachine);
 
 			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.NetworkRoomManager.PlayAgain();
+			gameStateMachine.derivedNetworkRoomManager.PlayAgain();
 		}
 
 		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score) { }

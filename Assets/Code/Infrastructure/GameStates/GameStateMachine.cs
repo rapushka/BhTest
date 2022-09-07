@@ -11,10 +11,10 @@ namespace Code.Infrastructure.GameStates
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		private NetworkRoomManagerExt _networkRoomManager;
+		private DerivedNetworkRoomManager _derivedNetworkRoomManager;
 
-		public NetworkRoomManagerExt NetworkRoomManager
-			=> _networkRoomManager ??= FindObjectOfType<NetworkRoomManagerExt>();
+		public DerivedNetworkRoomManager derivedNetworkRoomManager
+			=> _derivedNetworkRoomManager ??= FindObjectOfType<DerivedNetworkRoomManager>();
 
 		public string LastSavedPlayerName { get; private set; }
 

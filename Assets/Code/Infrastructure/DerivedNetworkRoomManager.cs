@@ -1,18 +1,19 @@
 using Code.Player.Score;
+using Code.UI;
 using Mirror;
 using UnityEngine;
 
 namespace Code.Infrastructure
 {
-	public class NetworkRoomManagerExt : NetworkRoomManager
+	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{
 		[Scene] [SerializeField] private string _winScene;
+		[SerializeField] private WinScreen _winScreen;
 
 		[Header("Start Game Button")] [SerializeField] private Vector2 _position;
 		[SerializeField] private Vector2 _scale;
 
 		private bool _showStartButton;
-		private bool _gameStarted;
 
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
@@ -25,12 +26,17 @@ namespace Code.Infrastructure
 			return true;
 		}
 
-		public void GameOver(string winnerName) => ServerChangeScene(_winScene);
+		public void GameOver(string winnerName)
+		{
+			ServerChangeScene(_winScene);
+
+			_winScreen.DisplayWinnerName(winnerName);
+		}
 
 		public void PlayAgain()
 		{
-			allPlayersReady = true;
 			ServerChangeScene(onlineScene);
+			_winScreen.Hide();
 		}
 
 		public override void OnRoomServerPlayersReady()

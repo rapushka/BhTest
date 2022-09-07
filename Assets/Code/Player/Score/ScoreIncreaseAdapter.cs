@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Player.Score
 {
-	public class ScoreIncreaseLocator : NetworkBehaviour
+	public class ScoreIncreaseAdapter : NetworkBehaviour
 	{
 		[SerializeField] private PlayerScore _playerScore;
 
