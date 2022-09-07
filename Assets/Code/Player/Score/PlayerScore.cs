@@ -59,11 +59,10 @@ namespace Code.Player.Score
 		private void ApplyScore()
 		{
 			_syncScoreValue++;
-			ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
-			RpcScoreIncrease();
+			RpcScoreIncrease(_syncScoreValue);
 		}
 
-		[ClientRpc] private void RpcScoreIncrease() => ScoreIncrease?.Invoke(_syncPlayerName, _scoreValue);
+		[ClientRpc] private void RpcScoreIncrease(int score) => ScoreIncrease?.Invoke(_syncPlayerName, score);
 
 		// ReSharper disable UnusedParameter.Local
 		private void SyncPlayerName(string _, string newValue) => _playerNameView.text = _syncPlayerName;
