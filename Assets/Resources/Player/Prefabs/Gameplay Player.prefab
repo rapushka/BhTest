@@ -600,7 +600,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   _playerScore: {fileID: 7141706381919774052}
-  _gameStateMachine: {fileID: 1602505852218688223, guid: cc141bf43b9ec1d4c8e303296c083874, type: 3}
 --- !u!1 &7361814020741970759
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +875,7 @@ GameObject:
   - component: {fileID: 4551747214648806759}
   - component: {fileID: 8394806215094539012}
   - component: {fileID: 5365061754448934024}
+  - component: {fileID: 5292329213539400693}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -956,6 +956,7 @@ MonoBehaviour:
   _playerBehaviour: {fileID: 369405980115543399}
   _input: {fileID: -3588540212027939946}
   _rotator: {fileID: 5365061754448934024}
+  _cursorLocker: {fileID: 5292329213539400693}
 --- !u!114 &5365061754448934024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,3 +975,16 @@ MonoBehaviour:
   _smooth: 0
   _rotationXMin: -10
   _rotationXMax: 90
+--- !u!114 &5292329213539400693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524608522593676112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4a09d2da404e8f9949775be944dd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _input: {fileID: -3588540212027939946}
