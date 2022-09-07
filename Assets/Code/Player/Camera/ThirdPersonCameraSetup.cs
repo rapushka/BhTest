@@ -16,7 +16,7 @@ namespace Code.Player.Camera
 
 		private void Update() => this.Do(RotateCamera, @if: _cursorLocker.CursorCaptured);
 
-		private void RotateCamera(ThirdPersonCameraSetup _)
+			private void RotateCamera(ThirdPersonCameraSetup _)
 			=> _rotator.RotateCamera(_input.MouseRotation, _target.position);
 	}
 }

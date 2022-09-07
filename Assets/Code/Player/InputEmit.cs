@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Player
 {
-	public class InputEmit : NetworkBehaviour
+	public class InputEmit : NetworkBehaviour, IInputService
 	{
 		public Vector2 MoveDirection { get; private set; }
 		public Vector2 MouseRotation { get; private set; }
