@@ -19,12 +19,24 @@ namespace Code.Gameplay.Camera
 			}
 		}
 
-		private void OnEnable() => _input.Unfocused += OnUnfocusKeyPressed;
-		private void OnDisable() => _input.Unfocused -= OnUnfocusKeyPressed;
+		private void Start() => Focus();
+
+		private void OnEnable()
+		{
+			_input.Unfocused += Unfocus;
+			_input.Dashing += Focus;
+		}
+
+		private void OnDisable()
+		{
+			_input.Unfocused -= Unfocus;
+			_input.Dashing -= Focus;
+		}
 
 		private void OnApplicationFocus(bool hasFocus) => CursorCaptured = hasFocus;
-		private void OnDestroy() => CursorCaptured = false;
+		private void OnDestroy() => Unfocus();
 
-		private void OnUnfocusKeyPressed() => CursorCaptured = false;
+		private void Focus() => CursorCaptured = true;
+		private void Unfocus() => CursorCaptured = false;
 	}
 }
