@@ -11,6 +11,7 @@ namespace Code.Player
 		public Vector2 MouseRotation { get; private set; }
 		
 		public event Action Dashing;
+		public event Action Unfocused;
 
 		private void Update()
 		{
@@ -22,6 +23,7 @@ namespace Code.Player
 			SetMoveDirection();
 			SetMouseRotation();
 			InvokeDash();
+			Unfocus();
 		}
 
 		private void SetMoveDirection()
@@ -42,6 +44,11 @@ namespace Code.Player
 			};
 		}
 
-		private void InvokeDash() => Dashing.Do((d) => d?.Invoke(), @if: Input.GetKeyDown(KeyCode.Mouse0));
+		private void InvokeDash() => InvokeActionByKey(Dashing, KeyCode.Mouse0);
+
+		private void Unfocus() => InvokeActionByKey(Unfocused, KeyCode.Escape);
+
+		private static void InvokeActionByKey(Action action, KeyCode key) 
+			=> action.Do((a) => a?.Invoke(), @if: Input.GetKeyDown(key));
 	}
 }

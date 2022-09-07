@@ -4,18 +4,17 @@ namespace Code.Player.Camera
 {
 	public class ThirdPersonCameraRotator : MonoBehaviour
 	{
-		[Header("Mouse Settings")]
-		[SerializeField] private bool _invertCamera;
+		[Header("Mouse Settings")] [SerializeField] private bool _invertCamera;
 		[SerializeField] private float _mouseSensitivity;
 		[SerializeField] private float _distanceFromTarget;
 		[SerializeField] private float _smooth;
 		[SerializeField] private float _rotationXMin;
 		[SerializeField] private float _rotationXMax;
-		
+
 		private Vector2 _cameraRotation;
 		private Vector3 _currentRotation;
 		private Vector3 _smoothVelocity = Vector3.zero;
-		
+
 		private float ActualRotationX => _invertCamera
 			? _cameraRotation.x
 			: -_cameraRotation.x;
