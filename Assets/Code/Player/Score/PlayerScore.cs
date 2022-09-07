@@ -19,8 +19,6 @@ namespace Code.Player.Score
 		private int _scoreValue;
 
 		public event Action<string, int> ScoreIncrease;
-		public string PlayerName => _syncPlayerName;
-		public int Index => _index;
 
 		public void Construct(string playerName, int index)
 		{

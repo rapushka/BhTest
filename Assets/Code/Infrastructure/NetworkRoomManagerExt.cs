@@ -1,40 +1,36 @@
-using System.Collections.Generic;
 using Code.Player.Score;
 using Mirror;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure
 {
 	public class NetworkRoomManagerExt : NetworkRoomManager
 	{
+		[Scene] [SerializeField] private string _winScene;
+
 		[Header("Start Game Button")] [SerializeField] private Vector2 _position;
 		[SerializeField] private Vector2 _scale;
 
 		private bool _showStartButton;
+		private bool _gameStarted;
 
-		private List<PlayerScore> _players = new List<PlayerScore>();
-		
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
 		{
 			var playerScore = gamePlayer.GetComponent<PlayerScore>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
-			playerScore.Construct($"Player{index + 1}", index);
-			
-			// _players.Add(playerScore);
+			var playerName = $"Player{index + 1}";
+			playerScore.Construct(playerName, index);
 
 			return true;
 		}
 
-		public void RestartGame()
+		public void GameOver(string winnerName) => ServerChangeScene(_winScene);
+
+		public void PlayAgain()
 		{
-			foreach (PlayerScore playerScore in _players)
-			{
-				playerScore.Construct(playerScore.PlayerName, playerScore.Index);
-			}
-			
-			Start();
+			allPlayersReady = true;
+			ServerChangeScene(onlineScene);
 		}
 
 		public override void OnRoomServerPlayersReady()

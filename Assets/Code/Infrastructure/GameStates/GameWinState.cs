@@ -1,7 +1,4 @@
 using Code.Infrastructure.StateMachines;
-using Code.Workflow;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.GameStates
 {
@@ -18,21 +15,16 @@ namespace Code.Infrastructure.GameStates
 
 			_winnerName = ((GameStateMachine)stateMachine).LastSavedPlayerName;
 
-			Debug.Log($"{_winnerName} is winner!");
-			SceneManager.LoadScene(Constants.SceneName.WinScene);
+			var gameStateMachine = (GameStateMachine)stateMachine;
+			gameStateMachine.NetworkRoomManager.GameOver(_winnerName);
 		}
 
 		public override void Exit(IStateMachine stateMachine)
 		{
 			base.Exit(stateMachine);
 
-			Debug.Log("Game Win State Exit");
 			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.NetworkRoomManager.Reset();
-			gameStateMachine.NetworkRoomManager.allPlayersReady = true;
-			SceneManager.LoadScene(Constants.SceneName.RoomScene);
-
-			// _networkRoomManagerExt.RestartGame();
+			gameStateMachine.NetworkRoomManager.PlayAgain();
 		}
 
 		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score) { }

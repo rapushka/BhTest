@@ -10,7 +10,6 @@ namespace Code.Infrastructure.GameStates
 	{
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
-		[Scene] [SerializeField] private string _winScene;
 
 		private NetworkRoomManagerExt _networkRoomManager;
 
