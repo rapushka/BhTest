@@ -1,9 +1,9 @@
 // where-allocation version of KcpClientConnection.
 // may not be wanted on all platforms, so it's an extra optional class.
 using System.Net;
-using Packages.Mirror.Runtime.Transports.KCP.kcp2k.where_allocation.Scripts;
+using WhereAllocation;
 
-namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel.NonAlloc
+namespace kcp2k
 {
     public class KcpClientConnectionNonAlloc : KcpClientConnection
     {

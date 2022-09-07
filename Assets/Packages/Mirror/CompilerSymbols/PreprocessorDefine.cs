@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 
-namespace Packages.Mirror.CompilerSymbols
+namespace Mirror
 {
     static class PreprocessorDefine
     {

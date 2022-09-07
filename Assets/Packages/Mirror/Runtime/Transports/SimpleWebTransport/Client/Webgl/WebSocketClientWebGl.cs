@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AOT;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client.Webgl
+namespace Mirror.SimpleWeb
 {
     public class WebSocketClientWebGl : SimpleWebClient
     {

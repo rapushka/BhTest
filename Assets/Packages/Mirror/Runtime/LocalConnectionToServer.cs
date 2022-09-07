@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Packages.Mirror.Runtime.Batching;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // a localClient's connection TO a server.
     // send messages on this connection causes the server's handler function to be invoked directly.

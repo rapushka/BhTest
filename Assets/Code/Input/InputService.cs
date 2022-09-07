@@ -1,5 +1,5 @@
 using System;
-using Packages.Mirror.Runtime;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Input

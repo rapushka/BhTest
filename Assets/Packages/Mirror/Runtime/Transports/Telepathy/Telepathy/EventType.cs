@@ -1,4 +1,4 @@
-﻿namespace Packages.Mirror.Runtime.Transports.Telepathy.Telepathy
+﻿namespace Telepathy
 {
     public enum EventType
     {

@@ -25,7 +25,7 @@
 using System;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     /// <summary>Abstract transport layer component</summary>
     public abstract class Transport : MonoBehaviour

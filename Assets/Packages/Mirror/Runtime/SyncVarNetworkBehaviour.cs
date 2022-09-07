@@ -9,7 +9,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // SyncField<NetworkBehaviour> needs an uint netId and a byte componentIndex.
     // we use an ulong SyncField internally to store both.

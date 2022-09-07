@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Packages.Mirror.Components.Discovery
+namespace Mirror.Discovery
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("Network/Network Discovery HUD")]

@@ -6,7 +6,7 @@
 // alien technology, but evidence in support of this hypothesis is weak.
 using UnityEngine;
 
-namespace Packages.Mirror.Components.NetworkTransform2k
+namespace Mirror
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("Network/Network Transform")]

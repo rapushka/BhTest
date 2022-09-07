@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror.RemoteCalls
 {
     // invoke type for Cmd/Rpc
     public enum RemoteCallType { Command, ClientRpc }

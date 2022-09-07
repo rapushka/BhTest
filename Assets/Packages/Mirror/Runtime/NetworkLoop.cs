@@ -24,22 +24,21 @@
 //    * we add to the end of EarlyUpdate so it runs after any Unity initializations
 //    * we add to the end of PreLateUpdate so it runs after LateUpdate(). adding
 //      to the beginning of PostLateUpdate doesn't actually work.
+using System;
+using UnityEngine;
 
 // PlayerLoop and LowLevel were in the Experimental namespace until 2019.3
 // https://docs.unity3d.com/2019.2/Documentation/ScriptReference/Experimental.LowLevel.PlayerLoop.html
 // https://docs.unity3d.com/2019.3/Documentation/ScriptReference/LowLevel.PlayerLoop.html
-using System;
-using UnityEngine;
+#if UNITY_2019_3_OR_NEWER
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
-#if UNITY_2019_3_OR_NEWER
-
 #else
 using UnityEngine.Experimental.LowLevel;
 using UnityEngine.Experimental.PlayerLoop;
 #endif
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     public static class NetworkLoop
     {

@@ -1,7 +1,6 @@
-using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Packages.Mirror.Components
+namespace Mirror
 {
     /// <summary>
     /// This component works in conjunction with the NetworkRoomManager to make up the multiplayer room system.

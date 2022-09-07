@@ -1,6 +1,6 @@
 using Code.PlayerStateMachines.ColorStates;
 using Code.PlayerStateMachines.DashStates;
-using Packages.Mirror.Runtime;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Gameplay.Collisions

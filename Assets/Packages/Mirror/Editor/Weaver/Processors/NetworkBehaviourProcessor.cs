@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using Mono.CecilX;
 using Mono.CecilX.Cil;
-using Packages.Mirror.Runtime;
 
-namespace Packages.Mirror.Editor.Weaver.Processors
+namespace Mirror.Weaver
 {
     public enum RemoteCallType
     {

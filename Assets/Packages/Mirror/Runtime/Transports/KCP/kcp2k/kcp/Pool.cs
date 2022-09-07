@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp
+namespace kcp2k
 {
     public class Pool<T>
     {

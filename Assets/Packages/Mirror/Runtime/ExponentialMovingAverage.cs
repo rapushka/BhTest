@@ -1,4 +1,4 @@
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // implementation of N-day EMA
     // it calculates an exponential moving average roughly equivalent to the last n observations

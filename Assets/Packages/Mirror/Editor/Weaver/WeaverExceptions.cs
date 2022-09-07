@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using Mono.CecilX;
 
-namespace Packages.Mirror.Editor.Weaver
+namespace Mirror.Weaver
 {
     [Serializable]
     public abstract class WeaverException : Exception

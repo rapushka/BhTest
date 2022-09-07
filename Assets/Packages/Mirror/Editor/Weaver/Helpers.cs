@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Mono.CecilX;
 
-namespace Packages.Mirror.Editor.Weaver
+namespace Mirror.Weaver
 {
     static class Helpers
     {

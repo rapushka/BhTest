@@ -1,10 +1,9 @@
 using System;
 using System.Net;
-using Packages.Mirror.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Packages.Mirror.Components.Discovery
+namespace Mirror.Discovery
 {
     [Serializable]
     public class ServerFoundUnityEvent : UnityEvent<ServerResponse> {};

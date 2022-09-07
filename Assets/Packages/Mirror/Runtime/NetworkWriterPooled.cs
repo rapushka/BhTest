@@ -2,7 +2,7 @@
 // easier IDE workflow and more elegant code.
 using System;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // DEPRECATED 2022-03-10
     [Obsolete("PooledNetworkWriter was renamed to NetworkWriterPooled. It's cleaner & slightly easier to use.")]

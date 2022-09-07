@@ -4,7 +4,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common
+namespace Mirror.SimpleWeb
 {
     internal sealed class Connection : IDisposable
     {

@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Packages.Mirror.Components.InterestManagement.SpatialHashing
+namespace Mirror
 {
     public class Grid2D<T>
     {

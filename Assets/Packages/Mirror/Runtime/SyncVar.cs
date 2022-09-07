@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // 'class' so that we can track it in SyncObjects list, and iterate it for
     //   de/serialization.

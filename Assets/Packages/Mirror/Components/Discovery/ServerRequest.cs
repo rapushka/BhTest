@@ -1,6 +1,4 @@
-using Packages.Mirror.Runtime;
-
-namespace Packages.Mirror.Components.Discovery
+namespace Mirror.Discovery
 {
     public struct ServerRequest : NetworkMessage {}
 }

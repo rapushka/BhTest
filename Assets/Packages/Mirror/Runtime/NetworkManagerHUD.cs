@@ -2,7 +2,7 @@
 // confusion if someone accidentally presses one.
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     /// <summary>Shows NetworkManager controls in a GUI at runtime.</summary>
     [DisallowMultipleComponent]

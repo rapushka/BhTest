@@ -1,6 +1,6 @@
 using System;
 using Code.Workflow.Extensions;
-using Packages.Mirror.Runtime;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Gameplay.Collisions

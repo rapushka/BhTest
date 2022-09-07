@@ -21,11 +21,9 @@
 #define onlySyncOnChange_BANDWIDTH_SAVING
 using System;
 using System.Collections.Generic;
-using Packages.Mirror.Runtime;
-using Packages.Mirror.Runtime.SnapshotInterpolation;
 using UnityEngine;
 
-namespace Packages.Mirror.Components.NetworkTransform2k
+namespace Mirror
 {
     public abstract class NetworkTransformBase : NetworkBehaviour
     {

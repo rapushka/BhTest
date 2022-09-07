@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime.Transports
+namespace Mirror
 {
     /// <summary>
     /// Allows Middleware to override some of the transport methods or let the inner transport handle them.

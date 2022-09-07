@@ -1,6 +1,6 @@
 using System.Net.Sockets;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common
+namespace Mirror.SimpleWeb
 {
     [System.Serializable]
     public struct TcpConfig

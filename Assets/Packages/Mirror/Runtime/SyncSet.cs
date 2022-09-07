@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     public class SyncSet<T> : SyncObject, ISet<T>
     {

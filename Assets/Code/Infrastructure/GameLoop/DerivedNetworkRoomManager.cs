@@ -1,7 +1,6 @@
 using Code.Gameplay.Score;
 using Code.UI;
-using Packages.Mirror.Components;
-using Packages.Mirror.Runtime;
+using Mirror;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameLoop

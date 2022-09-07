@@ -4,9 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp;
 
-namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel
+namespace kcp2k
 {
     public class KcpServer
     {

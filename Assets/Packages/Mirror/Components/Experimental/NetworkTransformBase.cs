@@ -17,10 +17,9 @@
 //   interpolation. interpolation over time is never that good.
 //
 using System;
-using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Packages.Mirror.Components.Experimental
+namespace Mirror.Experimental
 {
     // Deprecated 2022-01-18
     [Obsolete("Use the default NetworkTransform instead, it has proper snapshot interpolation.")]

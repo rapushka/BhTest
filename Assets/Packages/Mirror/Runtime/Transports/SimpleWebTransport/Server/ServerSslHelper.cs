@@ -4,9 +4,8 @@ using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Server
+namespace Mirror.SimpleWeb
 {
     public struct SslConfig
     {

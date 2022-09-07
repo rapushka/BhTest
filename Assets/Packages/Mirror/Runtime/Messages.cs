@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     public struct ReadyMessage : NetworkMessage {}
 

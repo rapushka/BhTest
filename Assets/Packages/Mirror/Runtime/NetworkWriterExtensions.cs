@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     // Mirror's Weaver automatically detects all NetworkWriter function types,
     // but they do all need to be extensions.

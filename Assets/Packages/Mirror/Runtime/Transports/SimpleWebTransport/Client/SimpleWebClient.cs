@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Concurrent;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client.StandAlone;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 using UnityEngine;
-using EventType = Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common.EventType;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client
+namespace Mirror.SimpleWeb
 {
     public enum ClientState
     {

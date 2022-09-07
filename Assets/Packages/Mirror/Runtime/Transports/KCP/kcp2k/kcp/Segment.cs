@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp
+namespace kcp2k
 {
     // KCP Segment Definition
     internal class Segment

@@ -1,4 +1,4 @@
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common
+namespace Mirror.SimpleWeb
 {
     public enum EventType
     {

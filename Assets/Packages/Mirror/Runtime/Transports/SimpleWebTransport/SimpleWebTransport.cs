@@ -1,13 +1,10 @@
 using System;
 using System.Net;
 using System.Security.Authentication;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Server;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport
+namespace Mirror.SimpleWeb
 {
     [DisallowMultipleComponent]
     public class SimpleWebTransport : Transport

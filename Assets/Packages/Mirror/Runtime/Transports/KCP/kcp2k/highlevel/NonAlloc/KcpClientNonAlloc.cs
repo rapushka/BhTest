@@ -2,7 +2,7 @@
 // may not be wanted on all platforms, so it's an extra optional class.
 using System;
 
-namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel.NonAlloc
+namespace kcp2k
 {
     public class KcpClientNonAlloc : KcpClient
     {

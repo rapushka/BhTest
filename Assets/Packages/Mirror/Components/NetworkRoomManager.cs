@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Packages.Mirror.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-namespace Packages.Mirror.Components
+namespace Mirror
 {
     /// <summary>
     /// This is a specialized NetworkManager that includes a networked room.
@@ -245,24 +244,24 @@ namespace Packages.Mirror.Components
         /// Called on the server when a new client connects.
         /// <para>Unity calls this on the Server when a Client connects to the Server. Use an override to tell the NetworkManager what to do when a client connects to the server.</para>
         /// </summary>
-        /// <param name="connectionection from client.</param>
-        public override void OnServerConnect(NetworkConnectionToClient connection)
+        /// <param name="conn">Connection from client.</param>
+        public override void OnServerConnect(NetworkConnectionToClient conn)
         {
             if (numPlayers >= maxConnections)
             {
-                connection.Disconnect();
+                conn.Disconnect();
                 return;
             }
 
             // cannot join game in progress
             if (!IsSceneActive(RoomScene))
             {
-                connection.Disconnect();
+                conn.Disconnect();
                 return;
             }
 
-            base.OnServerConnect(connection);
-            OnRoomServerConnect(connection);
+            base.OnServerConnect(conn);
+            OnRoomServerConnect(conn);
         }
 
         /// <summary>

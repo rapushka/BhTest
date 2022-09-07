@@ -1,9 +1,8 @@
 using System;
 using System.Net.Sockets;
 using System.Threading;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client.StandAlone
+namespace Mirror.SimpleWeb
 {
     public class WebSocketClientStandAlone : SimpleWebClient
     {

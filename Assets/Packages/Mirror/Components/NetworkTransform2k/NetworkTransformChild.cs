@@ -2,7 +2,7 @@
 // There must be a NetworkTransform on the root object of the hierarchy. There can be multiple NetworkTransformChild components on an object. This does not use physics for synchronization, it simply synchronizes the localPosition and localRotation of the child transform and lerps towards the recieved values.
 using UnityEngine;
 
-namespace Packages.Mirror.Components.NetworkTransform2k
+namespace Mirror
 {
     [AddComponentMenu("Network/Network Transform Child")]
     public class NetworkTransformChild : NetworkTransformBase

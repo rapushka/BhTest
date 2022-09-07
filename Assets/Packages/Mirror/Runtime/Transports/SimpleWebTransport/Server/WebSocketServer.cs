@@ -3,9 +3,8 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
-using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Server
+namespace Mirror.SimpleWeb
 {
     public class WebSocketServer
     {
@@ -96,7 +95,7 @@ namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Server
                 catch (SocketException)
                 {
                     // check for Interrupted/Abort
-                    Common.Utils.CheckForInterupt();
+                    Utils.CheckForInterupt();
                     throw;
                 }
             }

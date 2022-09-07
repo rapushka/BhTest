@@ -5,11 +5,10 @@
 //   Health: 42
 //
 // BUG: Unity also doesn't show custom drawer for readonly fields (#1368395)
-using Packages.Mirror.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace Packages.Mirror.Editor
+namespace Mirror
 {
     [CustomPropertyDrawer(typeof(SyncVar<>))]
     public class SyncVarDrawer : PropertyDrawer

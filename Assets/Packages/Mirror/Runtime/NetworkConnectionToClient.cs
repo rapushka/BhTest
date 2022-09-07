@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Packages.Mirror.Runtime.Batching;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     public class NetworkConnectionToClient : NetworkConnection
     {

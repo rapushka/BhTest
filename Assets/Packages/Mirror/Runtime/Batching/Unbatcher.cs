@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Packages.Mirror.Runtime.Batching
+namespace Mirror
 {
     public class Unbatcher
     {

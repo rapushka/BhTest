@@ -2,7 +2,7 @@
 // easier IDE workflow and more elegant code.
 using System;
 
-namespace Packages.Mirror.Runtime
+namespace Mirror
 {
     [Obsolete("PooledNetworkReader was renamed to NetworkReaderPooled. It's cleaner & slightly easier to use.")]
     public sealed class PooledNetworkReader : NetworkReaderPooled
