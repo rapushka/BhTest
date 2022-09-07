@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Workflow
+namespace Code.Workflow.UnityComponents
 {
 	[SelectionBase] public class SelectionBase : MonoBehaviour { }
 }

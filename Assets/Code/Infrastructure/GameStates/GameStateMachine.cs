@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Code.Infrastructure.StateMachines;
-using Mirror;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameStates
