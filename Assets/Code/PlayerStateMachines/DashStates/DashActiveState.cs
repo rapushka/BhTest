@@ -1,10 +1,10 @@
 using Code.CommonStateMachines;
 using Code.Gameplay.Dash;
-using Code.Gameplay.PlayerStateMachines.ColorStates;
 using Code.Gameplay.Score;
+using Code.PlayerStateMachines.ColorStates;
 using Code.Workflow.Extensions;
 
-namespace Code.Gameplay.PlayerStateMachines.DashStates
+namespace Code.PlayerStateMachines.DashStates
 {
 	public class DashActiveState : TimeBouncedState<DashPassiveState>, IDashState
 	{

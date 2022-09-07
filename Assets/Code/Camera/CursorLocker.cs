@@ -1,7 +1,7 @@
 using Code.Input;
 using UnityEngine;
 
-namespace Code.Gameplay.Camera
+namespace Code.Camera
 {
 	public class CursorLocker : MonoBehaviour
 	{

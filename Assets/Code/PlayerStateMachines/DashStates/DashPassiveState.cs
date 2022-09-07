@@ -1,8 +1,8 @@
 using Code.CommonStateMachines;
 using Code.Gameplay.Dash;
-using Code.Gameplay.PlayerStateMachines.ColorStates;
+using Code.PlayerStateMachines.ColorStates;
 
-namespace Code.Gameplay.PlayerStateMachines.DashStates
+namespace Code.PlayerStateMachines.DashStates
 {
 	public class DashPassiveState : IDashState
 	{

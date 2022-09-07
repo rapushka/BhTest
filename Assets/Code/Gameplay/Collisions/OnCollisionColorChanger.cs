@@ -1,15 +1,13 @@
-using Code.Gameplay.Collisions;
-using Code.Gameplay.PlayerStateMachines.ColorStates;
-using Code.Gameplay.PlayerStateMachines.DashStates;
+using Code.PlayerStateMachines.ColorStates;
+using Code.PlayerStateMachines.DashStates;
 using Packages.Mirror.Runtime;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Gameplay
+namespace Code.Gameplay.Collisions
 {
 	public class OnCollisionColorChanger : NetworkBehaviour
 	{
-		[FormerlySerializedAs("_collisionLocator")] [SerializeField] private CollisionAdapter _collisionAdapter;
+		[SerializeField] private CollisionAdapter _collisionAdapter;
 		[SerializeField] private PlayerDashStateMachine _dashStateMachine;
 		
 		private void Start() => _collisionAdapter.Collide += OnCollide;

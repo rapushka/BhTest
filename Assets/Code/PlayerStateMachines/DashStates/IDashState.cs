@@ -1,7 +1,7 @@
 using Code.CommonStateMachines;
-using Code.Gameplay.PlayerStateMachines.ColorStates;
+using Code.PlayerStateMachines.ColorStates;
 
-namespace Code.Gameplay.PlayerStateMachines.DashStates
+namespace Code.PlayerStateMachines.DashStates
 {
 	public interface IDashState : IState
 	{

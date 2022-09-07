@@ -1,7 +1,8 @@
 using Code.CommonStateMachines;
-using Code.Gameplay.PlayerStateMachines.DashStates;
+using Code.Gameplay.Collisions;
+using Code.PlayerStateMachines.DashStates;
 
-namespace Code.Gameplay.PlayerStateMachines.ColorStates
+namespace Code.PlayerStateMachines.ColorStates
 {
 	public class ColorChangedState : TimeBouncedState<ColorDefaultState>, IColorState
 	{

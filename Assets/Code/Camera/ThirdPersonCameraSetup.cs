@@ -3,7 +3,7 @@ using Code.Workflow.Extensions;
 using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Code.Gameplay.Camera
+namespace Code.Camera
 {
 	public class ThirdPersonCameraSetup : MonoBehaviour
 	{

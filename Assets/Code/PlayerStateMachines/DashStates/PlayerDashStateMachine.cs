@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Code.CommonStateMachines;
 using Code.Gameplay.Dash;
-using Code.Gameplay.PlayerStateMachines.ColorStates;
 using Code.Gameplay.Score;
 using Code.Input;
+using Code.PlayerStateMachines.ColorStates;
 using UnityEngine;
 
-namespace Code.Gameplay.PlayerStateMachines.DashStates
+namespace Code.PlayerStateMachines.DashStates
 {
 	public class PlayerDashStateMachine : BaseStateMachine<IDashState>
 	{
