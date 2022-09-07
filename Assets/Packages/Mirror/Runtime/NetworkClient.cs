@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Mirror.RemoteCalls;
+using Packages.Mirror.Runtime.Batching;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     public enum ConnectState
     {

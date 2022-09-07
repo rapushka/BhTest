@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mono.CecilX;
+using Packages.Mirror.Runtime;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver
 {
     public static class Extensions
     {

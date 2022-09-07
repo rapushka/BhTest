@@ -4,8 +4,9 @@ using System.Linq;
 using Mono.CecilX;
 using Mono.CecilX.Cil;
 using Mono.CecilX.Rocks;
+using Packages.Mirror.Runtime;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.Processors
 {
     // Processes [SyncVar] attribute fields in NetworkBehaviour
     // not static, because ILPostProcessor is multithreaded

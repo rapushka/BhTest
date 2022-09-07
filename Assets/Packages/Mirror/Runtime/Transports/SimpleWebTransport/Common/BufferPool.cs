@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Mirror.SimpleWeb
+namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common
 {
     public interface IBufferOwner
     {

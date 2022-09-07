@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     public static class InspectorHelper
     {

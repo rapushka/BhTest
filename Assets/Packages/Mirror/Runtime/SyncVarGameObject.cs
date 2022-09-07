@@ -45,7 +45,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     // SyncField<GameObject> only stores an uint netId.
     // while providing .spawned lookup for convenience.

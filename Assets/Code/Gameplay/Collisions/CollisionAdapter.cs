@@ -1,6 +1,6 @@
 using System;
 using Code.Workflow.Extensions;
-using Mirror;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
 namespace Code.Gameplay.Collisions
@@ -10,17 +10,16 @@ namespace Code.Gameplay.Collisions
 		public event Action<GameObject> Collide;
 
 		private void OnControllerColliderHit(ControllerColliderHit hit)
-		{
-			Collider otherCollider = hit.collider;
-			
-			otherCollider.Do((c) => OnCollision(c.gameObject), @if: IsNetworkBehaviour);
-			bool IsNetworkBehaviour(Collider c) => c.TryGetComponent(out NetworkBehaviour _);
-		}
+			=> hit.collider.Do((c) => OnCollision(c.gameObject), @if: IsNetworkBehaviour);
 
-		private void OnCollision(GameObject other) 
+		private static bool IsNetworkBehaviour(Collider c) 
+			=> c.TryGetComponent(out NetworkBehaviour _);
+
+		private void OnCollision(GameObject other)
 			=> other.Do(@if: hasAuthority, @true: CmdSendCollision, @false: SendCollision);
 
-		[Command(requiresAuthority = false)] private void CmdSendCollision(GameObject other) => SendCollision(other);
+		[Command(requiresAuthority = false)] private void CmdSendCollision(GameObject other) 
+			=> SendCollision(other);
 
 		[Server]
 		private void SendCollision(GameObject other)

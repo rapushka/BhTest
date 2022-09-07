@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Mono.CecilX;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver
 {
     // Compares TypeReference using FullName
     public class TypeReferenceComparer : IEqualityComparer<TypeReference>

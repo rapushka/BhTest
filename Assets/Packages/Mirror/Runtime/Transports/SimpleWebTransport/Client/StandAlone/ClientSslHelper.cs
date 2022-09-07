@@ -3,8 +3,9 @@ using System.IO;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
+using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Mirror.SimpleWeb
+namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client.StandAlone
 {
     internal class ClientSslHelper
     {

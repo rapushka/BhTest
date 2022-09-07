@@ -1,9 +1,10 @@
 using Code.CommonStateMachines;
 using Code.Gameplay.Dash;
+using Code.Gameplay.PlayerStateMachines.ColorStates;
 using Code.Gameplay.Score;
-using Code.Gameplay.StateMachine.ColorStates;
+using Code.Workflow.Extensions;
 
-namespace Code.Gameplay.StateMachine.DashStates
+namespace Code.Gameplay.PlayerStateMachines.DashStates
 {
 	public class DashActiveState : TimeBouncedState<DashPassiveState>, IDashState
 	{
@@ -11,18 +12,11 @@ namespace Code.Gameplay.StateMachine.DashStates
 
 		public DashActiveState(DashComponent dashComponent, PlayerScore playerScore)
 			: base(dashComponent.DashDuration)
-		{
-			_playerScore = playerScore;
-		}
+			=> _playerScore = playerScore;
 
 		public void OnDash(PlayerDashStateMachine playerDashStateMachine) { }
 
 		public void OnCollide(IColorState otherColorState)
-		{
-			if (otherColorState is ColorDefaultState)
-			{
-				_playerScore.IncrementScore();
-			}
-		}
+			=> _playerScore.Do((s) => s.IncrementScore(), @if: otherColorState is ColorDefaultState);
 	}
 }

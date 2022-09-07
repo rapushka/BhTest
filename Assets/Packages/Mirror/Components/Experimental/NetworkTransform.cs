@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Mirror.Experimental
+namespace Packages.Mirror.Components.Experimental
 {
     [DisallowMultipleComponent]
     // Deprecated 2022-01-18

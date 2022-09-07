@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     // Mirror's Weaver automatically detects all NetworkReader function types,
     // but they do all need to be extensions.

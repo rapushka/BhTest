@@ -1,13 +1,14 @@
 using System;
 using System.Reflection;
+using Packages.Mirror.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     [CustomEditor(typeof(NetworkBehaviour), true)]
     [CanEditMultipleObjects]
-    public class NetworkBehaviourInspector : Editor
+    public class NetworkBehaviourInspector : UnityEditor.Editor
     {
         bool syncsAnything;
         SyncObjectCollectionsDrawer syncObjectCollectionsDrawer;

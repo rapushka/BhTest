@@ -2,12 +2,13 @@
 // => 30x faster in initial tests
 // => scales way higher
 using System.Collections.Generic;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Components.InterestManagement.SpatialHashing
 {
     [AddComponentMenu("Network/ Interest Management/ Spatial Hash/Spatial Hashing Interest Management")]
-    public class SpatialHashingInterestManagement : InterestManagement
+    public class SpatialHashingInterestManagement : Runtime.InterestManagement
     {
         [Tooltip("The maximum range that objects will be visible at.")]
         public int visRange = 30;

@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using Code.CommonStateMachines;
 using Code.Gameplay.Dash;
+using Code.Gameplay.PlayerStateMachines.ColorStates;
 using Code.Gameplay.Score;
-using Code.Gameplay.StateMachine.ColorStates;
+using Code.Input;
 using UnityEngine;
 
-namespace Code.Gameplay.StateMachine.DashStates
+namespace Code.Gameplay.PlayerStateMachines.DashStates
 {
 	public class PlayerDashStateMachine : BaseStateMachine<IDashState>
 	{
-		[SerializeField] private InputEmit _input;
+		[SerializeField] private InputService _input;
 		[SerializeField] private DashComponent _dashComponent;
 		[SerializeField] private PlayerScore _playerScore;
 

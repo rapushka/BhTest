@@ -2,8 +2,9 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common;
 
-namespace Mirror.SimpleWeb
+namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Client.StandAlone
 {
     /// <summary>
     /// Handles Handshake to the server when it first connects

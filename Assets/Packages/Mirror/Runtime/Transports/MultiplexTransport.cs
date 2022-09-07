@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime.Transports
 {
     // a transport that can listen to multiple underlying transport at the same time
     [DisallowMultipleComponent]

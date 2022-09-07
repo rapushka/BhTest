@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     // Handles network messages on client and server
     public delegate void NetworkMessageDelegate(NetworkConnection conn, NetworkReader reader, int channelId);

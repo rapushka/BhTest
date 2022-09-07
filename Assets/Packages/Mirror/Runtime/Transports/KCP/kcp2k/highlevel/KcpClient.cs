@@ -1,8 +1,9 @@
 // kcp client logic abstracted into a class.
 // for use in Mirror, DOTSNET, testing, etc.
 using System;
+using Packages.Mirror.Runtime.Transports.KCP.kcp2k.kcp;
 
-namespace kcp2k
+namespace Packages.Mirror.Runtime.Transports.KCP.kcp2k.highlevel
 {
     public class KcpClient
     {

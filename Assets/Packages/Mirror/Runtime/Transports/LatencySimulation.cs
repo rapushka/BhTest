@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime.Transports
 {
     struct QueuedMessage
     {

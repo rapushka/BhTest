@@ -4,7 +4,7 @@
 //  different version for every UnityEngine version here)
 using System;
 
-namespace Telepathy
+namespace Packages.Mirror.Runtime.Transports.Telepathy.Telepathy
 {
     public static class Log
     {

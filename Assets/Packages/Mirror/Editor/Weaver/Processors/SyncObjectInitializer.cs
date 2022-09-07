@@ -1,7 +1,8 @@
 using Mono.CecilX;
 using Mono.CecilX.Cil;
+using Packages.Mirror.Runtime;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.Processors
 {
     public static class SyncObjectInitializer
     {

@@ -1,5 +1,6 @@
+using Code.Input;
 using Code.Workflow.Extensions;
-using Mirror;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
 namespace Code.Gameplay.Camera
@@ -8,7 +9,7 @@ namespace Code.Gameplay.Camera
 	{
 		[SerializeField] private Transform _target;
 		[SerializeField] private NetworkBehaviour _playerBehaviour;
-		[SerializeField] private InputEmit _input;
+		[SerializeField] private InputService _input;
 		[SerializeField] private ThirdPersonCameraRotator _rotator;
 		[SerializeField] private CursorLocker _cursorLocker;
 

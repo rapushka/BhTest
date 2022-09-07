@@ -1,8 +1,9 @@
 using System.IO;
 using System.Security.Authentication;
+using Packages.Mirror.Runtime.Transports.SimpleWebTransport.Server;
 using UnityEngine;
 
-namespace Mirror.SimpleWeb
+namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport
 {
 
     public class SslConfigLoader

@@ -1,5 +1,5 @@
 using Code.Infrastructure.GameStates;
-using Mirror;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
 namespace Code.Gameplay.Score

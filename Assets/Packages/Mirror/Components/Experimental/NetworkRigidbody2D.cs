@@ -1,6 +1,7 @@
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror.Experimental
+namespace Packages.Mirror.Components.Experimental
 {
     [AddComponentMenu("Network/ Experimental/Network Rigidbody 2D")]
     public class NetworkRigidbody2D : NetworkBehaviour

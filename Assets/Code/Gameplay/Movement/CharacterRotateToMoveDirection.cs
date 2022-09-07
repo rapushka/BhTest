@@ -8,17 +8,15 @@ namespace Code.Gameplay.Movement
 		[SerializeField] private Transform _transform;
 		[SerializeField] private float _rotationSpeed;
 		[SerializeField] private CharacterController _characterController;
-		
+
+		private Quaternion DesiredRotation => Quaternion.LookRotation(_characterController.velocity, Vector3.up);
 		private float ScaledSpeed => _rotationSpeed * Time.deltaTime;
-		
+
 		private void Update() => this.Do(Rotate, @if: IsMoving());
 
 		private bool IsMoving() => _characterController.velocity != Vector3.zero;
 
 		private void Rotate()
-		{
-			Quaternion desiredRotation = Quaternion.LookRotation(_characterController.velocity, Vector3.up);
-			_transform.rotation = Quaternion.Slerp(_transform.rotation, desiredRotation, ScaledSpeed);
-		}
+			=> _transform.rotation = Quaternion.Slerp(_transform.rotation, DesiredRotation, ScaledSpeed);
 	}
 }

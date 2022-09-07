@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Editor
 {
     public static class EditorHelper
     {

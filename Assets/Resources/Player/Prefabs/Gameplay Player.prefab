@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _collisionLocator: {fileID: 5971471354022010005}
+  _collisionAdapter: {fileID: 5971471354022010005}
   _dashStateMachine: {fileID: 3246176808425552667}
 --- !u!114 &7141706381919774052
 MonoBehaviour:
@@ -973,7 +973,7 @@ MonoBehaviour:
   _mouseSensitivity: 3
   _distanceFromTarget: 7
   _smooth: 0
-  _rotationXMin: -10
+  _rotationXMin: -9
   _rotationXMax: 90
 --- !u!114 &5292329213539400693
 MonoBehaviour:

@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Mirror.SimpleWeb
+namespace Packages.Mirror.Runtime.Transports.SimpleWebTransport.Common
 {
     internal static class Utils
     {

@@ -6,7 +6,7 @@
 //        exceptions would be a bit inconsistent here)
 using Mono.CecilX;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver
 {
     public static class Resolvers
     {

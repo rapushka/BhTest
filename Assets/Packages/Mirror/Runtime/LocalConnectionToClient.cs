@@ -1,6 +1,6 @@
 using System;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     // a server's connection TO a LocalClient.
     // sending messages on this connection causes the client's handler function to be invoked directly

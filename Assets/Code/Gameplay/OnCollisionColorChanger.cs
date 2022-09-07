@@ -1,7 +1,7 @@
 using Code.Gameplay.Collisions;
-using Code.Gameplay.StateMachine;
-using Code.Gameplay.StateMachine.DashStates;
-using Mirror;
+using Code.Gameplay.PlayerStateMachines.ColorStates;
+using Code.Gameplay.PlayerStateMachines.DashStates;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,10 +1,11 @@
+using Code.Input;
 using UnityEngine;
 
 namespace Code.Gameplay.Camera
 {
 	public class CursorLocker : MonoBehaviour
 	{
-		[SerializeField] private InputEmit _input;
+		[SerializeField] private InputService _input;
 
 		public bool CursorCaptured
 		{

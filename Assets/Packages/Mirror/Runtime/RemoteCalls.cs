@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mirror.RemoteCalls
+namespace Packages.Mirror.Runtime
 {
     // invoke type for Cmd/Rpc
     public enum RemoteCallType { Command, ClientRpc }

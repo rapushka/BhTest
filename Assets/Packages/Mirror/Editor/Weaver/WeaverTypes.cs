@@ -1,9 +1,10 @@
 using System;
 using Mono.CecilX;
+using Packages.Mirror.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver
 {
     // not static, because ILPostProcessor is multithreaded
     public class WeaverTypes
@@ -80,11 +81,11 @@ namespace Mirror.Weaver
             TypeReference NetworkClientType = Import(typeof(NetworkClient));
             NetworkClientGetActive = Resolvers.ResolveMethod(NetworkClientType, assembly, Log, "get_active", ref WeavingFailed);
 
-            TypeReference RemoteCallDelegateType = Import<RemoteCalls.RemoteCallDelegate>();
+            TypeReference RemoteCallDelegateType = Import<RemoteCallDelegate>();
             RemoteCallDelegateConstructor = Resolvers.ResolveMethod(RemoteCallDelegateType, assembly, Log, ".ctor", ref WeavingFailed);
 
             TypeReference NetworkBehaviourType = Import<NetworkBehaviour>();
-            TypeReference RemoteProcedureCallsType = Import(typeof(RemoteCalls.RemoteProcedureCalls));
+            TypeReference RemoteProcedureCallsType = Import(typeof(RemoteProcedureCalls));
 
             TypeReference ScriptableObjectType = Import<ScriptableObject>();
 

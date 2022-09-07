@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime.SnapshotInterpolation
 {
     public static class SnapshotInterpolation
     {

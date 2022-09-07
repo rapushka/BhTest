@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Mirror.RemoteCalls;
 using UnityEngine;
 
-namespace Mirror
+namespace Packages.Mirror.Runtime
 {
     /// <summary>NetworkServer handles remote connections and has a local connection for a local client.</summary>
     public static class NetworkServer

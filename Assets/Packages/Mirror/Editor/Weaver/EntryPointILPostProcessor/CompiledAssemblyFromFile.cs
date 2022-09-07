@@ -8,7 +8,7 @@
 using System.IO;
 using Unity.CompilationPipeline.Common.ILPostProcessing;
 
-namespace Mirror.Weaver
+namespace Packages.Mirror.Editor.Weaver.EntryPointILPostProcessor
 {
     public class CompiledAssemblyFromFile : ICompiledAssembly
     {

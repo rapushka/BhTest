@@ -1,3 +1,4 @@
+using Code.Input;
 using Code.Workflow.Extensions;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace Code.Gameplay.Movement
 {
 	public class PlayerMovement : MonoBehaviour
 	{
-		[SerializeField] private InputEmit _input;
+		[SerializeField] private InputService _input;
 		[SerializeField] private float _movementSpeed;
 		[SerializeField] private CharacterController _characterController;
 		[SerializeField] private Transform _followCamera;

@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Code.CommonStateMachines;
-using Code.Gameplay.StateMachine.ColorStates;
-using Code.Gameplay.StateMachine.DashStates;
+using Code.Gameplay.PlayerStateMachines.DashStates;
 using UnityEngine;
 
-namespace Code.Gameplay.StateMachine
+namespace Code.Gameplay.PlayerStateMachines.ColorStates
 {
 	public class PlayerColorStateMachine : BaseStateMachine<IColorState>
 	{

@@ -1,5 +1,5 @@
 using System;
-using Mirror;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +44,7 @@ namespace Code.Gameplay.Score
 			(
 				new Rect
 				(
-					x: _position.x + _index * (_scale.x + _spaceBetween),
+					x: _position.x + (_scale.x + _spaceBetween) * _index,
 					y: _position.y,
 					width: _scale.x,
 					height: _scale.y

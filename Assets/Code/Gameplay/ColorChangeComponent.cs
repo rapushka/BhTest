@@ -1,5 +1,5 @@
 using Code.Workflow.Extensions;
-using Mirror;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
 namespace Code.Gameplay

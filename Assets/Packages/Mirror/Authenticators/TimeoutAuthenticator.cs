@@ -1,7 +1,8 @@
 using System.Collections;
+using Packages.Mirror.Runtime;
 using UnityEngine;
 
-namespace Mirror.Authenticators
+namespace Packages.Mirror.Authenticators
 {
     /// <summary>
     /// An authenticator that disconnects connections if they don't

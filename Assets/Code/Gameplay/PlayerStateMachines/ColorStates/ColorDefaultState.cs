@@ -1,7 +1,8 @@
 using Code.CommonStateMachines;
-using Code.Gameplay.StateMachine.DashStates;
+using Code.Gameplay.PlayerStateMachines.DashStates;
+using Code.Workflow.Extensions;
 
-namespace Code.Gameplay.StateMachine.ColorStates
+namespace Code.Gameplay.PlayerStateMachines.ColorStates
 {
 	public class ColorDefaultState : IColorState
 	{
@@ -17,12 +18,10 @@ namespace Code.Gameplay.StateMachine.ColorStates
 		public void OnUpdate(IStateMachine stateMachine) { }
 		public void Exit(IStateMachine stateMachine) { }
 
-		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState)
-		{
-			if (otherDashState is DashActiveState)
-			{
-				colorStateMachine.SwitchState<ColorChangedState>();
-			}
-		}
+		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState) 
+			=> colorStateMachine.Do(SwitchToChangedColor, @if: otherDashState is DashActiveState);
+
+		private static void SwitchToChangedColor(PlayerColorStateMachine stateMachine) 
+			=> stateMachine.SwitchState<ColorChangedState>();
 	}
 }
