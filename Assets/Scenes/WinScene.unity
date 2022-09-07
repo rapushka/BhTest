@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bbb5e6f170278942a7193eeb70f8a88, type: 3}
---- !u!1001 &2110128464
+--- !u!1001 &5378300610644883499
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -357,10 +357,6 @@ PrefabInstance:
     - target: {fileID: 5378300609611289434, guid: 5f7dae4f9911fff489da7b21a98c5591, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5454645528022039119, guid: 5f7dae4f9911fff489da7b21a98c5591, type: 3}
-      propertyPath: m_Text
-      value: Room scene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7dae4f9911fff489da7b21a98c5591, type: 3}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199173114502918318}
   - component: {fileID: 7547065181042147800}
+  - component: {fileID: 1602505852218688223}
   m_Layer: 0
   m_Name: Game Bootstrapper
   m_TagString: Untagged
@@ -43,3 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f550435ac0042308d1fa2aa6470f185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1602505852218688223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466623412504357020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2801dd037e4149538b251c090bb8551b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreToWin: 3
+  _secondsOnWinScreen: 5

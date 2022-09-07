@@ -1,7 +1,7 @@
 using Code.Workflow.Extensions;
 using UnityEngine;
 
-namespace Code.Infrastructure.GameStateMachine
+namespace Code.Infrastructure.StateMachines
 {
 	public abstract class TimeBouncedState<TNextState> : IState
 		where TNextState : IState
@@ -15,6 +15,8 @@ namespace Code.Infrastructure.GameStateMachine
 
 		public virtual void OnUpdate(IStateMachine stateMachine)
 			=> stateMachine.Do(SwitchToNextState, @if: TimeIsUp);
+
+		public virtual void Exit(IStateMachine stateMachine) { }
 
 		private void SwitchToNextState(IStateMachine stateMachine) => stateMachine.SwitchState<TNextState>();
 		private bool TimeIsUp(IStateMachine _) => (_beingDuration -= Time.deltaTime) <= 0;

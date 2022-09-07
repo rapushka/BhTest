@@ -1,4 +1,4 @@
-using Code.Infrastructure.GameStateMachine;
+using Code.Infrastructure.StateMachines;
 using Code.Player.StateMachine.DashStates;
 
 namespace Code.Player.StateMachine.ColorStates
@@ -15,6 +15,7 @@ namespace Code.Player.StateMachine.ColorStates
 		public void Enter(IStateMachine stateMachine) => _colorChangeComponent.ToDefaultColor();
 
 		public void OnUpdate(IStateMachine stateMachine) { }
+		public void Exit(IStateMachine stateMachine) { }
 
 		public void OnCollide(PlayerColorStateMachine colorStateMachine, IDashState otherDashState)
 		{

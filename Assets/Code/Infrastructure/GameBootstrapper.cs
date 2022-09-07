@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure
 {
@@ -8,8 +7,6 @@ namespace Code.Infrastructure
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
-
-			SceneManager.LoadScene("OfflineScene");
 		}
 	}
 }

@@ -1,11 +1,15 @@
 using Code.Player.Score;
+using Code.UI;
 using Mirror;
 using UnityEngine;
 
 namespace Code.Infrastructure
 {
-	public class NetworkRoomManagerExt : NetworkRoomManager
+	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{
+		[Scene] [SerializeField] private string _winScene;
+		[SerializeField] private WinScreen _winScreen;
+
 		[Header("Start Game Button")] [SerializeField] private Vector2 _position;
 		[SerializeField] private Vector2 _scale;
 
@@ -16,9 +20,23 @@ namespace Code.Infrastructure
 		{
 			var playerScore = gamePlayer.GetComponent<PlayerScore>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
-			playerScore.Construct($"Player{index}", index);
+			var playerName = $"Player{index + 1}";
+			playerScore.Construct(playerName, index);
 
 			return true;
+		}
+
+		public void GameOver(string winnerName)
+		{
+			ServerChangeScene(_winScene);
+
+			_winScreen.DisplayWinnerName(winnerName);
+		}
+
+		public void PlayAgain()
+		{
+			ServerChangeScene(onlineScene);
+			_winScreen.Hide();
 		}
 
 		public override void OnRoomServerPlayersReady()
