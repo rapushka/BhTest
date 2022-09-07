@@ -4,11 +4,28 @@ namespace Code.Workflow.Extensions
 {
 	public static class GenericExtensions
 	{
+		public static T Do<T>(this T @this, Action<T> @do)
+		{
+			@do.Invoke(@this);
+
+			return @this;
+		}
+
 		public static T Do<T>(this T @this, Action<T> @do, bool @if)
 		{
 			if (@if)
 			{
 				@do.Invoke(@this);
+			}
+
+			return @this;
+		}
+
+		public static T Do<T>(this T @this, Action @do, bool @if)
+		{
+			if (@if)
+			{
+				@do.Invoke();
 			}
 
 			return @this;

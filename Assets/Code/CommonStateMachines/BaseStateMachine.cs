@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Code.Workflow.Extensions;
 using UnityEngine;
 
 namespace Code.CommonStateMachines
@@ -13,23 +14,23 @@ namespace Code.CommonStateMachines
 		public TState CurrentState { get; private set; }
 
 		public void SwitchState<T>()
-		{
-			CurrentState.Exit(this);
-			CurrentState = _states[typeof(T)];
-			CurrentState.Enter(this);
-		}
+			=> CurrentState = CurrentState
+			                  .Do((c) => c.Exit(this))
+			                  .Set((c) => _states[typeof(T)])
+			                  .Do((c) => c.Enter(this));
 
 		private void Start()
 		{
 			_states = CreateStatesDictionary();
+
 			SwitchStateToFirstInDictionary();
 		}
 
 		private void SwitchStateToFirstInDictionary()
-		{
-			CurrentState = _states.First().Value;
-			CurrentState.Enter(this);
-		}
+			=> CurrentState = _states
+			                  .First()
+			                  .Value
+			                  .Do((s) => s.Enter(this));
 
 		protected abstract Dictionary<Type, TState> CreateStatesDictionary();
 	}
