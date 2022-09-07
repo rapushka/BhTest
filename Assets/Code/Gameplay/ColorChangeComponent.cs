@@ -1,3 +1,4 @@
+using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
 
@@ -15,17 +16,8 @@ namespace Code.Gameplay
 
 		public void ToChangedColor() => ChangeColor(_changed);
 		
-		private void ChangeColor(Color32 color)
-		{
-			if (isServer)
-			{
-				ApplyColor(color);
-			}
-			else
-			{
-				CmdApplyColor(color);
-			}
-		}
+		private void ChangeColor(Color32 color) 
+			=> color.Do(@if: isServer, @true: ApplyColor, @false: CmdApplyColor);
 
 		[Command(requiresAuthority = false)] private void CmdApplyColor(Color32 color) => ApplyColor(color);
 		[Server] private void ApplyColor(Color32 color)

@@ -16,12 +16,14 @@ namespace Code.Gameplay.Dash
 
 		private IEnumerator DashCoroutine()
 		{
-			float startTime = Time.time; 
+			float inDashTime = _dashDuration; 
 			
-			while(Time.time < startTime + _dashDuration)
+			while((inDashTime -= Time.deltaTime) > 0)
 			{
-				float speed = _dashDistance / _dashDuration;
-				_characterController.Move(_facingTransform.forward * (speed * Time.deltaTime));
+				float dashSpeed = _dashDistance / _dashDuration;
+				float scaledSpeed = dashSpeed * Time.deltaTime;
+				_characterController.Move(_facingTransform.forward * scaledSpeed);
+				
 				yield return null; 
 			}
 		}

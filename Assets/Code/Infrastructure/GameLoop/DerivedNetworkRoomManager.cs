@@ -3,7 +3,7 @@ using Code.UI;
 using Mirror;
 using UnityEngine;
 
-namespace Code.Infrastructure
+namespace Code.Infrastructure.GameLoop
 {
 	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{

@@ -10,9 +10,11 @@ namespace Code.Gameplay.Movement
 		[SerializeField] private CharacterController _characterController;
 		[SerializeField] private Transform _followCamera;
 
-		private void FixedUpdate() => Move();
+		private float ScaledDirection => _movementSpeed * Time.fixedDeltaTime;
+		
+		private void FixedUpdate() => Movement();
 
-		private void Move()
+		private void Movement()
 			=> _input.MoveDirection
 			         .ToXZ()
 			         .Set(FacingByCameraRotation)
@@ -22,6 +24,6 @@ namespace Code.Gameplay.Movement
 		private Vector3 FacingByCameraRotation(Vector3 direction) 
 			=> Quaternion.Euler(0, _followCamera.eulerAngles.y, 0) * direction;
 
-		private Vector3 Scale(Vector3 direction) => direction * (_movementSpeed * Time.fixedDeltaTime);
+		private Vector3 Scale(Vector3 direction) => direction * ScaledDirection;
 	}
 }

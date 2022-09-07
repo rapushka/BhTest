@@ -11,7 +11,9 @@ namespace Code.Gameplay.Movement
 		
 		private float ScaledSpeed => _rotationSpeed * Time.deltaTime;
 		
-		private void Update() => this.Do((_) => Rotate(), @if: _characterController.velocity != Vector3.zero);
+		private void Update() => this.Do((_) => Rotate(), @if: IsMoving());
+
+		private bool IsMoving() => _characterController.velocity != Vector3.zero;
 
 		private void Rotate()
 		{
