@@ -1,4 +1,4 @@
-using Code.Infrastructure.StateMachines;
+using Code.CommonStateMachines;
 using Code.Workflow;
 using UnityEngine.SceneManagement;
 

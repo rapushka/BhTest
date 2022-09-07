@@ -1,4 +1,4 @@
-using Code.Player.Score;
+using Code.Gameplay.Score;
 using Code.UI;
 using Mirror;
 using UnityEngine;
@@ -10,8 +10,7 @@ namespace Code.Infrastructure
 		[Scene] [SerializeField] private string _winScene;
 		[SerializeField] private WinScreen _winScreen;
 
-		[Header("Start Game Button")] [SerializeField] private Vector2 _position;
-		[SerializeField] private Vector2 _scale;
+		[SerializeField] private Rect _startGameButtonRect;
 
 		private bool _showStartButton;
 
@@ -29,7 +28,6 @@ namespace Code.Infrastructure
 		public void GameOver(string winnerName)
 		{
 			ServerChangeScene(_winScene);
-
 			_winScreen.DisplayWinnerName(winnerName);
 		}
 
@@ -66,13 +64,7 @@ namespace Code.Infrastructure
 		private bool IsStartGameButtonPressed()
 			=> GUI.Button
 			(
-				new Rect
-				(
-					x: _position.x,
-					y: _position.y,
-					width: _scale.x,
-					height: _scale.y
-				),
+				_startGameButtonRect,
 				"Start Game"
 			);
 	}

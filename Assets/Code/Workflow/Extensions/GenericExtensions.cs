@@ -24,6 +24,20 @@ namespace Code.Workflow.Extensions
 			return @this;
 		}
 
+		public static T Do<T>(this T @this, bool @if, Action<T> @true, Action<T> @false)
+		{
+			if (@if)
+			{
+				@true.Invoke(@this);
+			}
+			else
+			{
+				@false.Invoke(@this);
+			}
+
+			return @this;
+		}
+
 		public static T Set<T>(this T @this, Func<T, T> @do)
 		{
 			@this = @do.Invoke(@this);

@@ -1,4 +1,4 @@
-using Code.Infrastructure.StateMachines;
+using Code.CommonStateMachines;
 
 namespace Code.Infrastructure.GameStates
 {
