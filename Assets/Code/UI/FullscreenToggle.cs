@@ -11,11 +11,12 @@ namespace Code.UI
 
 		private Resolution _cashedWindowResolution;
 		private Resolution _minimalWindowResolution;
+		private bool _toFullscreen;
 
 		private bool IsFullScreen
 		{
 			set => Screen.fullScreenMode = value
-				? FullScreenMode.ExclusiveFullScreen
+				? FullScreenMode.FullScreenWindow
 				: FullScreenMode.Windowed;
 		}
 
@@ -33,11 +34,28 @@ namespace Code.UI
 			_toggle.onValueChanged.RemoveListener(ToggleFullscreen);
 		}
 
+		private void Update()
+		{
+			if (UnityEngine.Input.GetKeyDown(KeyCode.F11) == false)
+			{
+				return;
+			}
+
+			_toggle.isOn = Screen.fullScreen;
+			ToggleFullscreen(Screen.fullScreen == false);
+		}
+
 		private void ToggleFullscreen(bool toFullscreen)
 		{
-			Resolution targetResolution = GetTargetResolution(toFullscreen);
+			_toFullscreen = toFullscreen;
+			ActualizeScreenMode();
+		}
 
-			Screen.SetResolution(targetResolution.width, targetResolution.height, toFullscreen);
+		private void ActualizeScreenMode()
+		{
+			Resolution targetResolution = GetTargetResolution(_toFullscreen);
+
+			Screen.SetResolution(targetResolution.width, targetResolution.height, _toFullscreen);
 		}
 
 		private Resolution GetTargetResolution(bool toFullscreen)
