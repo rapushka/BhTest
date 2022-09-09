@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 649130974108362220}
   - component: {fileID: 5499723775772554952}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Background Fullscreen Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,9 +489,9 @@ RectTransform:
   m_Father: {fileID: 4456444600174766888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46.5862, y: -10.899994}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 46.58618, y: 10.899994}
   m_SizeDelta: {x: 93.1724, y: 21.799988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &649130974108362220
