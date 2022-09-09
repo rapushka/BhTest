@@ -7,7 +7,6 @@ namespace Code.Infrastructure.GameLoop
 {
 	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{
-		[Scene] [SerializeField] private string _winScene;
 		[SerializeField] private WinScreen _winScreen;
 
 		[SerializeField] private Rect _startGameButtonRect;
@@ -33,7 +32,7 @@ namespace Code.Infrastructure.GameLoop
 
 		public void PlayAgain()
 		{
-			ServerChangeScene(onlineScene);
+			ServerChangeScene(RoomScene);
 			_winScreen.Hide();
 		}
 

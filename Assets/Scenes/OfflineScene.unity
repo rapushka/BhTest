@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Win Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 2944011332969661390, guid: ec3c5a426fc21304ea542b5f9ee5c93f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec3c5a426fc21304ea542b5f9ee5c93f, type: 3}
 --- !u!1001 &5133561884326205195
