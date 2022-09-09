@@ -1,3 +1,4 @@
+using Code.Workflow.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,10 @@ namespace Code.UI
 	public class FullscreenToggle : MonoBehaviour
 	{
 		[SerializeField] private Toggle _toggle;
+		[SerializeField] private Vector2Int _minimalResolutionSize = new Vector2Int(700, 394);
 
-		private static Resolution _cashedWindowResolution;
+		private Resolution _cashedWindowResolution;
+		private Resolution _minimalWindowResolution;
 
 		private bool IsFullScreen
 		{
@@ -16,18 +19,18 @@ namespace Code.UI
 				: FullScreenMode.Windowed;
 		}
 
-		private static Resolution WindowResolution => new Resolution
-		{
-			height = Screen.height,
-			width = Screen.width
-		};
-
-		private static Resolution ScreenResolution => Screen.currentResolution;
-
 		private void Start()
 		{
 			_toggle.isOn = Screen.fullScreen;
+			_minimalWindowResolution = ResolutionExtensions.New(_minimalResolutionSize);
+			_cashedWindowResolution = _minimalWindowResolution;
+
 			_toggle.onValueChanged.AddListener(ToggleFullscreen);
+		}
+
+		private void OnDestroy()
+		{
+			_toggle.onValueChanged.RemoveListener(ToggleFullscreen);
 		}
 
 		private void ToggleFullscreen(bool toFullscreen)
@@ -37,15 +40,17 @@ namespace Code.UI
 			Screen.SetResolution(targetResolution.width, targetResolution.height, toFullscreen);
 		}
 
-		private static Resolution GetTargetResolution(bool toFullscreen) 
-			=> toFullscreen 
-				? CashWindowResolution() 
-				: _cashedWindowResolution;
+		private Resolution GetTargetResolution(bool toFullscreen)
+			=> toFullscreen
+				? ToFullscreen()
+				: ToWindowed();
 
-		private static Resolution CashWindowResolution()
+		private Resolution ToFullscreen()
 		{
-			_cashedWindowResolution = WindowResolution;
-			return ScreenResolution;
+			_cashedWindowResolution = ResolutionExtensions.WindowResolution;
+			return ResolutionExtensions.ScreenResolution;
 		}
+
+		private Resolution ToWindowed() => ResolutionExtensions.Max(_cashedWindowResolution, _minimalWindowResolution);
 	}
 }
