@@ -6,13 +6,11 @@ namespace Code.UI
 {
 	public class FullscreenToggle : MonoBehaviour
 	{
-		private const FullScreenMode PreferredFullScreenMode = FullScreenMode.ExclusiveFullScreen;
-		
 		[SerializeField] private Toggle _toggle;
-		[SerializeField] private int _windowedResolutionWidth = 700;
-		[SerializeField] private int _windowedResolutionHeight = 394;
-		
-		private static Resolution CurrentResolution => Screen.currentResolution;
+		[SerializeField] private int _windowWidth = 700;
+		[SerializeField] private int _windowHeight = 394;
+
+		private static Resolution ScreenResolution => Screen.currentResolution;
 
 		private void Start() => _toggle.isOn = Screen.fullScreen;
 
@@ -29,12 +27,12 @@ namespace Code.UI
 			);
 
 		private static void ToFullscreen()
-		{
-			Screen.fullScreenMode = PreferredFullScreenMode;
-			Screen.SetResolution(CurrentResolution.width, CurrentResolution.height, PreferredFullScreenMode);
-		}
+			=> SetResolution(ScreenResolution, FullScreenMode.FullScreenWindow);
 
 		private void ToWindowed()
-			=> Screen.SetResolution(_windowedResolutionWidth, _windowedResolutionHeight, FullScreenMode.Windowed);
+			=> Screen.SetResolution(_windowWidth, _windowHeight, FullScreenMode.Windowed);
+
+		private static void SetResolution(Resolution resolution, FullScreenMode fullScreenMode)
+			=> Screen.SetResolution(resolution.width, resolution.height, fullScreenMode);
 	}
 }
