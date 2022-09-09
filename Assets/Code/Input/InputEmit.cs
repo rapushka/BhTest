@@ -1,6 +1,7 @@
 using System;
 using Code.Workflow.Extensions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Code.Input
 {
@@ -42,7 +43,15 @@ namespace Code.Input
 				y = UnityEngine.Input.GetAxis("Mouse Y")
 			};
 
-		private void InvokeDash() => InvokeActionByKey(Dashing, KeyCode.Mouse0);
+		private void InvokeDash()
+		{
+			if (MouseOverUI == false)
+			{
+				InvokeActionByKey(Dashing, KeyCode.Mouse0);
+			}
+		}
+
+		private static bool MouseOverUI => EventSystem.current.IsPointerOverGameObject();
 
 		private void Unfocus() => InvokeActionByKey(Unfocused, KeyCode.Escape);
 

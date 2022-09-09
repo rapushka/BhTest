@@ -22,8 +22,17 @@ namespace Code.Camera
 
 		private void Start() => Focus();
 
-		private void OnEnable() => _input.Unfocused += Unfocus;
-		private void OnDisable() => _input.Unfocused -= Unfocus;
+		private void OnEnable()
+		{
+			_input.Unfocused += Unfocus;
+			_input.Dashing += Focus;
+		}
+
+		private void OnDisable()
+		{
+			_input.Unfocused -= Unfocus;
+			_input.Dashing -= Focus;
+		}
 
 		private void OnApplicationFocus(bool hasFocus) => CursorCaptured = hasFocus;
 		private void OnDestroy() => Unfocus();
