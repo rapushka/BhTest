@@ -7,8 +7,45 @@ namespace Code.UI
 	{
 		[SerializeField] private Toggle _toggle;
 
-		private void Start() => _toggle.onValueChanged.AddListener(ToggleFullscreen);
+		private static Resolution _cashedWindowResolution;
 
-		private static void ToggleFullscreen(bool isFullscreen) => Screen.fullScreen = isFullscreen;
+		private bool IsFullScreen
+		{
+			set => Screen.fullScreenMode = value
+				? FullScreenMode.ExclusiveFullScreen
+				: FullScreenMode.Windowed;
+		}
+
+		private static Resolution WindowResolution => new Resolution
+		{
+			height = Screen.height,
+			width = Screen.width
+		};
+
+		private static Resolution ScreenResolution => Screen.currentResolution;
+
+		private void Start()
+		{
+			_toggle.isOn = Screen.fullScreen;
+			_toggle.onValueChanged.AddListener(ToggleFullscreen);
+		}
+
+		private void ToggleFullscreen(bool toFullscreen)
+		{
+			Resolution targetResolution = GetTargetResolution(toFullscreen);
+
+			Screen.SetResolution(targetResolution.width, targetResolution.height, toFullscreen);
+		}
+
+		private static Resolution GetTargetResolution(bool toFullscreen) 
+			=> toFullscreen 
+				? CashWindowResolution() 
+				: _cashedWindowResolution;
+
+		private static Resolution CashWindowResolution()
+		{
+			_cashedWindowResolution = WindowResolution;
+			return ScreenResolution;
+		}
 	}
 }
