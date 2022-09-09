@@ -27,7 +27,7 @@ namespace Code.Infrastructure.GameLoop
 
 		public void GameOver(string winnerName)
 		{
-			ServerChangeScene(_winScene);
+			// ServerChangeScene(_winScene);
 			_winScreen.DisplayWinnerName(winnerName);
 		}
 
