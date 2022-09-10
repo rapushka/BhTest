@@ -1,4 +1,3 @@
-using System;
 using Code.Gameplay.Score;
 using Code.UI;
 using Code.Workflow.Extensions;
@@ -15,8 +14,6 @@ namespace Code.Infrastructure.GameLoop
 		private bool _showStartButton;
 		private PlayerScore _playerScore;
 
-		public event Action Destroyed;
-
 		public void Construct(WinScreen winScreen) => _winScreen = winScreen;
 		
 		public override bool OnRoomServerSceneLoadedForPlayer
@@ -27,6 +24,8 @@ namespace Code.Infrastructure.GameLoop
 			var playerName = $"Player{index + 1}";
 			
 			_playerScore.Construct(playerName, index);
+			
+			Destroy(roomPlayer);
 
 			return true;
 		}
@@ -49,13 +48,7 @@ namespace Code.Infrastructure.GameLoop
 			_showStartButton = true;
 #endif
 		}
-
-		public override void OnDestroy()
-		{
-			Destroyed?.Invoke();
-			base.OnDestroy();
-		}
-
+		
 		public override void OnGUI()
 		{
 			base.OnGUI();
