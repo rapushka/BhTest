@@ -30,5 +30,6 @@ namespace Code.Gameplay.Collisions
 		
 		// ReSharper disable UnusedParameter.Local
 		private void SyncColor(Color32 _, Color32 newValue) => _renderer.material.color = newValue;
+		// ReSharper restore UnusedParameter.Local
 	}
 }
