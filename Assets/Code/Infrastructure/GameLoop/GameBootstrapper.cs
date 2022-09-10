@@ -14,17 +14,16 @@ namespace Code.Infrastructure.GameLoop
 			DontDestroyOnLoad(this);
 
 			DerivedNetworkRoomManager networkRoomManager = CreateNetworkRoomManager();
-			
 			CreateGameStateMachine(networkRoomManager);
 		}
+
+		private DerivedNetworkRoomManager CreateNetworkRoomManager()
+			=> Instantiate(_networkRoomManagerPrefab)
+				.Do(DontDestroyOnLoad);
 
 		private void CreateGameStateMachine(DerivedNetworkRoomManager networkRoomManager)
 			=> Instantiate(_gameStateMachinePrefab)
 			   .Do((sm) => sm.Construct(networkRoomManager))
 			   .Do(DontDestroyOnLoad);
-
-		private DerivedNetworkRoomManager CreateNetworkRoomManager()
-			=> Instantiate(_networkRoomManagerPrefab)
-				.Do(DontDestroyOnLoad);
 	}
 }

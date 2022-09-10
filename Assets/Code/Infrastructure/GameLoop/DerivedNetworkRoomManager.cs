@@ -35,7 +35,7 @@ namespace Code.Infrastructure.GameLoop
 			ServerChangeScene(RoomScene);
 			_winScreen.Hide();
 		}
-
+		
 		public override void OnRoomServerPlayersReady()
 		{
 #if UNITY_SERVER
@@ -60,11 +60,6 @@ namespace Code.Infrastructure.GameLoop
 			ServerChangeScene(GameplayScene);
 		}
 
-		private bool IsStartGameButtonPressed()
-			=> GUI.Button
-			(
-				_startGameButtonRect,
-				"Start Game"
-			);
+		private bool IsStartGameButtonPressed() => GUI.Button(_startGameButtonRect, "Start Game");
 	}
 }
