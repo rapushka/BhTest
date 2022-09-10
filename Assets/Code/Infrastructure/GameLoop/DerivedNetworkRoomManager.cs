@@ -9,13 +9,15 @@ namespace Code.Infrastructure.GameLoop
 {
 	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{
-		[SerializeField] private WinScreen _winScreen;
 		[SerializeField] private Rect _startGameButtonRect;
 
+		private WinScreen _winScreen;
 		private bool _showStartButton;
 		private PlayerScore _playerScore;
 
 		public event Action Destroyed;
+
+		public void Construct(WinScreen winScreen) => _winScreen = winScreen;
 		
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)

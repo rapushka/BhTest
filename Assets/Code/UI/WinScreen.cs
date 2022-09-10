@@ -5,15 +5,16 @@ namespace Code.UI
 {
 	public class WinScreen : MonoBehaviour
 	{
+		[SerializeField] private GameObject _winnerWindowHolder;
 		[SerializeField] private Text _winnerNameView;
 		[SerializeField] private string _textPostfix;
 
 		public void DisplayWinnerName(string winnerName)
 		{
 			_winnerNameView.text = winnerName + _textPostfix;
-			gameObject.SetActive(true);
+			_winnerWindowHolder.SetActive(true);
 		}
 
-		public void Hide() => gameObject.SetActive(false);
+		public void Hide() => _winnerWindowHolder.SetActive(false);
 	}
 }
