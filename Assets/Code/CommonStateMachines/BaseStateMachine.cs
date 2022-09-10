@@ -26,12 +26,12 @@ namespace Code.CommonStateMachines
 			SwitchStateToFirstInDictionary();
 		}
 
+		protected abstract Dictionary<Type, TState> CreateStatesDictionary();
+
 		private void SwitchStateToFirstInDictionary()
 			=> CurrentState = _states
 			                  .First()
 			                  .Value
 			                  .Do((s) => s.Enter(this));
-
-		protected abstract Dictionary<Type, TState> CreateStatesDictionary();
 	}
 }

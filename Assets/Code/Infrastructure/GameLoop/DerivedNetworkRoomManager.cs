@@ -1,3 +1,4 @@
+using System;
 using Code.Gameplay.Score;
 using Code.UI;
 using Code.Workflow.Extensions;
@@ -14,6 +15,8 @@ namespace Code.Infrastructure.GameLoop
 		private bool _showStartButton;
 		private PlayerScore _playerScore;
 
+		public event Action Destroyed;
+		
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
 		{
@@ -35,7 +38,7 @@ namespace Code.Infrastructure.GameLoop
 			ServerChangeScene(RoomScene);
 			_winScreen.Hide();
 		}
-
+		
 		public override void OnRoomServerPlayersReady()
 		{
 #if UNITY_SERVER
@@ -43,6 +46,12 @@ namespace Code.Infrastructure.GameLoop
 #else
 			_showStartButton = true;
 #endif
+		}
+
+		public override void OnDestroy()
+		{
+			Destroyed?.Invoke();
+			base.OnDestroy();
 		}
 
 		public override void OnGUI()
@@ -60,11 +69,6 @@ namespace Code.Infrastructure.GameLoop
 			ServerChangeScene(GameplayScene);
 		}
 
-		private bool IsStartGameButtonPressed()
-			=> GUI.Button
-			(
-				_startGameButtonRect,
-				"Start Game"
-			);
+		private bool IsStartGameButtonPressed() => GUI.Button(_startGameButtonRect, "Start Game");
 	}
 }

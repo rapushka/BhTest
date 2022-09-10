@@ -1,26 +1,28 @@
 using Code.CommonStateMachines;
+using Code.Infrastructure.GameLoop;
 
 namespace Code.Infrastructure.GameStates
 {
-	public class GameWinState : TimeBouncedState<GameplayState>, IGameState
+	public class GameWinState : TimeBouncedState<GamePreparationState>, IGameState
 	{
-		public GameWinState(float duration)
-			: base(duration) { }
+		private readonly DerivedNetworkRoomManager _roomManager;
+
+		public GameWinState(float duration, DerivedNetworkRoomManager roomManager)
+			: base(duration) => _roomManager = roomManager;
 
 		public override void Enter(IStateMachine stateMachine)
 		{
 			base.Enter(stateMachine);
 
 			var gameStateMachine = (GameStateMachine)stateMachine;
-
 			string winnerName = gameStateMachine.LastScoredPlayerName;
-			gameStateMachine.NetworkRoomManager.GameOver(winnerName);
+
+			_roomManager.GameOver(winnerName);
 		}
 
 		public override void Exit(IStateMachine stateMachine)
 		{
-			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.NetworkRoomManager.PlayAgain();
+			_roomManager.PlayAgain();
 
 			base.Exit(stateMachine);
 		}

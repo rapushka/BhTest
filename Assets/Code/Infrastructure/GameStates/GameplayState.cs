@@ -1,5 +1,5 @@
 using Code.CommonStateMachines;
-using UnityEngine;
+using Code.Workflow.Extensions;
 
 namespace Code.Infrastructure.GameStates
 {
@@ -15,14 +15,7 @@ namespace Code.Infrastructure.GameStates
 
 		public void Exit(IStateMachine stateMachine) { }
 
-		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score)
-		{
-			Debug.Log($"{playerName} scored {score}!");
-
-			if (score >= _scoreToWin)
-			{
-				stateMachine.SwitchState<GameWinState>();
-			}
-		}
+		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score) 
+			=> stateMachine.Do((sm) => sm.SwitchState<GameWinState>(), @if: score == _scoreToWin);
 	}
 }

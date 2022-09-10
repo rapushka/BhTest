@@ -1,30 +1,51 @@
+using System;
 using Code.Infrastructure.GameStates;
+using Code.Workflow;
 using Code.Workflow.Extensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Infrastructure.GameLoop
 {
 	public class GameBootstrapper : MonoBehaviour
 	{
-		[SerializeField] private DerivedNetworkRoomManager _networkRoomManagerPrefab;
+		[SerializeField] private DerivedNetworkRoomManager _roomManagerPrefab;
 		[SerializeField] private GameStateMachine _gameStateMachinePrefab;
+		
+		private DerivedNetworkRoomManager _roomManager;
+		private GameStateMachine _gameStateMachine;
 
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
-
-			DerivedNetworkRoomManager networkRoomManager = CreateNetworkRoomManager();
+			SceneManager.LoadScene(Constants.SceneName.OfflineScene);
 			
-			CreateGameStateMachine(networkRoomManager);
+			_roomManager = CreateNetworkRoomManager();
+			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
 
-		private void CreateGameStateMachine(DerivedNetworkRoomManager networkRoomManager)
-			=> Instantiate(_gameStateMachinePrefab)
-			   .Do((sm) => sm.Construct(networkRoomManager))
-			   .Do(DontDestroyOnLoad);
+		private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+		private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
+		private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
+		{
+			if (scene.name != Constants.SceneName.OfflineScene
+			    || _roomManager)
+			{
+				return;
+			}
+
+			_roomManager = CreateNetworkRoomManager();
+			_gameStateMachine.Construct(_roomManager);
+		}
+		
 		private DerivedNetworkRoomManager CreateNetworkRoomManager()
-			=> Instantiate(_networkRoomManagerPrefab)
+			=> Instantiate(_roomManagerPrefab)
 				.Do(DontDestroyOnLoad);
+
+		private GameStateMachine CreateGameStateMachine(DerivedNetworkRoomManager roomManager)
+			=> Instantiate(_gameStateMachinePrefab)
+			   .Do((sm) => sm.Construct(roomManager))
+			   .Do(DontDestroyOnLoad);
 	}
 }

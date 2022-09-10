@@ -7,13 +7,13 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GamePreparationState : IGameState
 	{
-		public void Enter(IStateMachine stateMachine) => SceneManager.LoadScene(Constants.SceneName.OfflineScene);
+		private static bool IsOnlineScene => SceneManager.GetActiveScene().name == Constants.SceneName.OnlineScene;
 
+		public void Enter(IStateMachine stateMachine) { }
+		
 		public void OnUpdate(IStateMachine stateMachine) => stateMachine.Do(ToGameplayState, @if: IsOnlineScene);
 
 		private void ToGameplayState(IStateMachine stateMachine) => stateMachine.SwitchState<GameplayState>();
-
-		private static bool IsOnlineScene => SceneManager.GetActiveScene().name == Constants.SceneName.OnlineScene;
 
 		public void Exit(IStateMachine stateMachine) { }
 
