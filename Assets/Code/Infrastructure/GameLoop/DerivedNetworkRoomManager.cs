@@ -24,6 +24,8 @@ namespace Code.Infrastructure.GameLoop
 			var playerName = $"Player{index + 1}";
 			
 			_playerScore.Construct(playerName, index);
+			
+			Destroy(roomPlayer);
 
 			return true;
 		}
