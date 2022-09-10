@@ -4,8 +4,6 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GameWinState : TimeBouncedState<GameplayState>, IGameState
 	{
-		private string _winnerName;
-
 		public GameWinState(float duration)
 			: base(duration) { }
 
@@ -13,18 +11,18 @@ namespace Code.Infrastructure.GameStates
 		{
 			base.Enter(stateMachine);
 
-			_winnerName = ((GameStateMachine)stateMachine).LastSavedPlayerName;
-
 			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.derivedNetworkRoomManager.GameOver(_winnerName);
+
+			string winnerName = gameStateMachine.LastSavedPlayerName;
+			gameStateMachine.derivedNetworkRoomManager.GameOver(winnerName);
 		}
 
 		public override void Exit(IStateMachine stateMachine)
 		{
-			base.Exit(stateMachine);
-
 			var gameStateMachine = (GameStateMachine)stateMachine;
 			gameStateMachine.derivedNetworkRoomManager.PlayAgain();
+
+			base.Exit(stateMachine);
 		}
 
 		public void OnScoreIncrease(GameStateMachine stateMachine, string playerName, int score) { }

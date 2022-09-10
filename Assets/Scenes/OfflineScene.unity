@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: bf74f9b744983bb49be252889417b2ca, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 4f519c46dc64f7940b0a20fff2491749, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -178,8 +178,6 @@ MonoBehaviour:
   clientIndex: 0
   _winScene: Assets/Scenes/WinScene.unity
   _winScreen: {fileID: 2013278691}
-  _position: {x: 150, y: 300}
-  _scale: {x: 120, y: 20}
   _startGameButtonRect:
     serializedVersion: 2
     x: 150
