@@ -1,4 +1,5 @@
 using Code.Infrastructure.GameStates;
+using Code.UI;
 using Code.Workflow;
 using Code.Workflow.Extensions;
 using Mirror;
@@ -14,17 +15,20 @@ namespace Code.Infrastructure.GameLoop
 		[SerializeField] private GameStateMachine _gameStateMachinePrefab;
 		[SerializeField] private GameObject _uiRootPrefab;
 
-		private DerivedNetworkRoomManager _roomManager;
 		private GameStateMachine _gameStateMachine;
+		private DerivedNetworkRoomManager _roomManager;
+		private WinScreen _winScreen;
 
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
 			SceneManager.LoadScene(_bootstrapScene);
 
-			GameObject uiInstance = Instantiate(_uiRootPrefab);
-			DontDestroyOnLoad(uiInstance);
-			_roomManager = CreateNetworkRoomManager();
+			GameObject uiRoot = Instantiate(_uiRootPrefab);
+			DontDestroyOnLoad(uiRoot);
+			_winScreen = uiRoot.GetComponent<WinScreen>();
+			
+			_roomManager = CreateNetworkRoomManager(_winScreen);
 			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
 
@@ -39,13 +43,14 @@ namespace Code.Infrastructure.GameLoop
 				return;
 			}
 
-			_roomManager = CreateNetworkRoomManager();
+			_roomManager = CreateNetworkRoomManager(_winScreen);
 			_gameStateMachine.Construct(_roomManager);
 		}
 
-		private DerivedNetworkRoomManager CreateNetworkRoomManager()
+		private DerivedNetworkRoomManager CreateNetworkRoomManager(WinScreen winScreen)
 			=> Instantiate(_roomManagerPrefab)
-				.Do(DontDestroyOnLoad);
+			   .Do((nm) => nm.Construct(winScreen))
+			   .Do(DontDestroyOnLoad);
 
 		private GameStateMachine CreateGameStateMachine(DerivedNetworkRoomManager roomManager)
 			=> Instantiate(_gameStateMachinePrefab)
