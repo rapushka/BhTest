@@ -1,5 +1,6 @@
 using Code.Gameplay.Score;
 using Code.UI;
+using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
 
@@ -29,11 +30,8 @@ namespace Code.Infrastructure.GameLoop
 
 		public void PlayAgain()
 		{
-			if (_playerScore)
-			{
-				_playerScore.Destroy();
-			}
-
+			_playerScore.Do((p) => p.Destroy(), @if: (p) => p);
+			
 			ServerChangeScene(RoomScene);
 			_winScreen.Hide();
 		}
