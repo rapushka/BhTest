@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f550435ac0042308d1fa2aa6470f185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _networkRoomManagerPrefab: {fileID: 3974438503999160826, guid: 03d8889b8e7d6544a9f8b7aa2a00d320, type: 3}
+  _roomManagerPrefab: {fileID: 3974438503999160826, guid: 03d8889b8e7d6544a9f8b7aa2a00d320, type: 3}
   _gameStateMachinePrefab: {fileID: -4217296397090772974, guid: e0dfb1928a54e254cb99d00de107440d, type: 3}
 --- !u!1 &660578394494892800
 GameObject:

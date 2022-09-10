@@ -7,7 +7,7 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GamePreparationState : IGameState
 	{
-		public void Enter(IStateMachine stateMachine) => SceneManager.LoadScene(Constants.SceneName.OfflineScene);
+		public void Enter(IStateMachine stateMachine) { }
 
 		public void OnUpdate(IStateMachine stateMachine) => stateMachine.Do(ToGameplayState, @if: IsOnlineScene);
 

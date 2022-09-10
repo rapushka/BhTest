@@ -11,18 +11,18 @@ namespace Code.Infrastructure.GameStates
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		public DerivedNetworkRoomManager NetworkRoomManager { get; private set; }
+		private DerivedNetworkRoomManager _networkRoomManager;
 		public string LastScoredPlayerName { get; private set; }
 
 		public void Construct(DerivedNetworkRoomManager networkRoomManager)
-			=> NetworkRoomManager = networkRoomManager;
+			=> _networkRoomManager = networkRoomManager;
 		
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
 			=> new Dictionary<Type, IGameState>
 			{
 				[typeof(GamePreparationState)] = new GamePreparationState(),
 				[typeof(GameplayState)] = new GameplayState(_scoreToWin),
-				[typeof(GameWinState)] = new GameWinState(_secondsOnWinScreen),
+				[typeof(GameWinState)] = new GameWinState(_secondsOnWinScreen, _networkRoomManager),
 			};
 
 		public void OnScoreIncrease(string playerName, int score)
