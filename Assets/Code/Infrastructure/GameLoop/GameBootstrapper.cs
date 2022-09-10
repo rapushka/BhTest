@@ -1,5 +1,5 @@
-using System;
 using Code.Infrastructure.GameStates;
+using Code.UI;
 using Code.Workflow;
 using Code.Workflow.Extensions;
 using UnityEngine;
@@ -11,7 +11,8 @@ namespace Code.Infrastructure.GameLoop
 	{
 		[SerializeField] private DerivedNetworkRoomManager _roomManagerPrefab;
 		[SerializeField] private GameStateMachine _gameStateMachinePrefab;
-		
+		[SerializeField] private GameObject _uiRootPrefab;
+
 		private DerivedNetworkRoomManager _roomManager;
 		private GameStateMachine _gameStateMachine;
 
@@ -19,7 +20,8 @@ namespace Code.Infrastructure.GameLoop
 		{
 			DontDestroyOnLoad(this);
 			SceneManager.LoadScene(Constants.SceneName.OfflineScene);
-			
+
+			Instantiate(_uiRootPrefab);
 			_roomManager = CreateNetworkRoomManager();
 			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
