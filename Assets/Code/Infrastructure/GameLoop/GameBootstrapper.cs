@@ -1,7 +1,7 @@
-using System;
 using Code.Infrastructure.GameStates;
 using Code.Workflow;
 using Code.Workflow.Extensions;
+using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,17 +9,20 @@ namespace Code.Infrastructure.GameLoop
 {
 	public class GameBootstrapper : MonoBehaviour
 	{
+		[Scene] [SerializeField] private string _bootstrapScene;
 		[SerializeField] private DerivedNetworkRoomManager _roomManagerPrefab;
 		[SerializeField] private GameStateMachine _gameStateMachinePrefab;
-		
+		[SerializeField] private GameObject _uiRootPrefab;
+
 		private DerivedNetworkRoomManager _roomManager;
 		private GameStateMachine _gameStateMachine;
 
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
-			SceneManager.LoadScene(Constants.SceneName.OfflineScene);
-			
+			SceneManager.LoadScene(_bootstrapScene);
+
+			Instantiate(_uiRootPrefab);
 			_roomManager = CreateNetworkRoomManager();
 			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
