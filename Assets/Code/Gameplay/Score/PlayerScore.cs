@@ -1,4 +1,5 @@
 using System;
+using Code.Workflow.Extensions;
 using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,27 +21,24 @@ namespace Code.Gameplay.Score
 
 		public event Action<string, int> ScoreIncrease;
 
-		public void Construct(string playerName, int index)
-		{
-			_syncPlayerName = playerName;
-			_index = index;
-		}
+		public void Construct(string playerName, int index) => (_syncPlayerName, _index) = (playerName, index);
 
-		public void IncrementScore()
-		{
-			if (isServer)
-			{
-				ApplyScore();
-			}
-			else
-			{
-				CmdApplyScore();
-			}
-		}
+		public void Destroy()
+			=> DoSyncAction(serverSideAction: DestroySelf, clientSideAction: CmdDestroy);
+
+		public void IncrementScore() 
+			=> DoSyncAction(serverSideAction: ApplyScore, clientSideAction: CmdApplyScore);
+
+		private void DoSyncAction(Action serverSideAction, Action clientSideAction)
+			=> this.Do
+			(
+				@if: isServer,
+				@true: (_) => serverSideAction(),
+				@false: (_) => clientSideAction()
+			);
 
 		private void OnGUI()
-		{
-			GUI.Box
+			=> GUI.Box
 			(
 				new Rect
 				(
@@ -51,7 +49,17 @@ namespace Code.Gameplay.Score
 				),
 				$"{_syncPlayerName}: {_scoreValue}"
 			);
+
+		[Command] private void CmdDestroy() => DestroySelf();
+
+		[Server]
+		private void DestroySelf()
+		{
+			NetworkServer.Destroy(gameObject);
+			RpcDestroySelf();
 		}
+
+		[ClientRpc] private void RpcDestroySelf() => NetworkServer.Destroy(gameObject);
 
 		[Command(requiresAuthority = false)] private void CmdApplyScore() => ApplyScore();
 
@@ -67,5 +75,6 @@ namespace Code.Gameplay.Score
 		// ReSharper disable UnusedParameter.Local
 		private void SyncPlayerName(string _, string newValue) => _playerNameView.text = _syncPlayerName;
 		private void SyncScore(int _, int newValue) => _scoreValue = _syncScoreValue;
+		// ReSharper restore UnusedParameter.Local
 	}
 }

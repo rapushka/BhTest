@@ -11,13 +11,12 @@ namespace Code.Infrastructure.GameStates
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		private DerivedNetworkRoomManager _derivedNetworkRoomManager;
+		public DerivedNetworkRoomManager NetworkRoomManager { get; private set; }
+		public string LastScoredPlayerName { get; private set; }
 
-		public DerivedNetworkRoomManager derivedNetworkRoomManager
-			=> _derivedNetworkRoomManager ??= FindObjectOfType<DerivedNetworkRoomManager>();
-
-		public string LastSavedPlayerName { get; private set; }
-
+		public void Construct(DerivedNetworkRoomManager networkRoomManager)
+			=> NetworkRoomManager = networkRoomManager;
+		
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
 			=> new Dictionary<Type, IGameState>
 			{
@@ -28,7 +27,7 @@ namespace Code.Infrastructure.GameStates
 
 		public void OnScoreIncrease(string playerName, int score)
 		{
-			LastSavedPlayerName = playerName;
+			LastScoredPlayerName = playerName;
 			CurrentState.OnScoreIncrease(this, playerName, score);
 		}
 
