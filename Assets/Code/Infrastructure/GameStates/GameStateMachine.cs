@@ -8,14 +8,15 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GameStateMachine : BaseStateMachine<IGameState>
 	{
-		[SerializeField] private DerivedNetworkRoomManager _networkRoomManagerPrefab;
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		public DerivedNetworkRoomManager networkRoomManagerPrefab => _networkRoomManagerPrefab;
+		public DerivedNetworkRoomManager NetworkRoomManager { get; private set; }
+		public string LastScoredPlayerName { get; private set; }
 
-		public string LastSavedPlayerName { get; private set; }
-
+		public void Construct(DerivedNetworkRoomManager networkRoomManager)
+			=> NetworkRoomManager = networkRoomManager;
+		
 		protected override Dictionary<Type, IGameState> CreateStatesDictionary()
 			=> new Dictionary<Type, IGameState>
 			{
@@ -26,7 +27,7 @@ namespace Code.Infrastructure.GameStates
 
 		public void OnScoreIncrease(string playerName, int score)
 		{
-			LastSavedPlayerName = playerName;
+			LastScoredPlayerName = playerName;
 			CurrentState.OnScoreIncrease(this, playerName, score);
 		}
 

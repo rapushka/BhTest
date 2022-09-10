@@ -13,14 +13,14 @@ namespace Code.Infrastructure.GameStates
 
 			var gameStateMachine = (GameStateMachine)stateMachine;
 
-			string winnerName = gameStateMachine.LastSavedPlayerName;
-			gameStateMachine.networkRoomManagerPrefab.GameOver(winnerName);
+			string winnerName = gameStateMachine.LastScoredPlayerName;
+			gameStateMachine.NetworkRoomManager.GameOver(winnerName);
 		}
 
 		public override void Exit(IStateMachine stateMachine)
 		{
 			var gameStateMachine = (GameStateMachine)stateMachine;
-			gameStateMachine.networkRoomManagerPrefab.PlayAgain();
+			gameStateMachine.NetworkRoomManager.PlayAgain();
 
 			base.Exit(stateMachine);
 		}
