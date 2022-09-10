@@ -1,9 +1,9 @@
+using System;
 using Code.Infrastructure.GameStates;
 using Code.Workflow;
 using Code.Workflow.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Code.Infrastructure.GameLoop
 {
@@ -21,20 +21,24 @@ namespace Code.Infrastructure.GameLoop
 			SceneManager.LoadScene(Constants.SceneName.OfflineScene);
 			
 			_roomManager = CreateNetworkRoomManager();
-
 			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
 
-		private void OnRoomManagerDestroyed()
+		private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+		private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+
+		private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
 		{
-			_roomManager.Destroyed -= OnRoomManagerDestroyed;
-			
+			if (scene.name != Constants.SceneName.OfflineScene
+			    || _roomManager)
+			{
+				return;
+			}
+
 			_roomManager = CreateNetworkRoomManager();
 			_gameStateMachine.Construct(_roomManager);
-			
-			_roomManager.Destroyed += OnRoomManagerDestroyed;
 		}
-
+		
 		private DerivedNetworkRoomManager CreateNetworkRoomManager()
 			=> Instantiate(_roomManagerPrefab)
 				.Do(DontDestroyOnLoad);

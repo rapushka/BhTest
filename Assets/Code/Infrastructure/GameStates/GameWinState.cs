@@ -8,10 +8,7 @@ namespace Code.Infrastructure.GameStates
 		private readonly DerivedNetworkRoomManager _roomManager;
 
 		public GameWinState(float duration, DerivedNetworkRoomManager roomManager)
-			: base(duration)
-		{
-			_roomManager = roomManager;
-		}
+			: base(duration) => _roomManager = roomManager;
 
 		public override void Enter(IStateMachine stateMachine)
 		{
