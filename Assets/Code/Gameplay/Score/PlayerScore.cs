@@ -26,6 +26,29 @@ namespace Code.Gameplay.Score
 			_index = index;
 		}
 
+		public void Destroy()
+		{
+			if (isServer)
+			{
+				DestroySelf();
+			}
+			else
+			{
+				CmdDestroy();
+			}
+		}
+
+		[Command]
+		private void CmdDestroy() => DestroySelf();
+
+		[Server] private void DestroySelf()
+		{
+			NetworkServer.Destroy(gameObject);
+			RpcDestroy();
+		}
+
+		[ClientRpc] private void RpcDestroy() => NetworkServer.Destroy(gameObject);
+		
 		public void IncrementScore()
 		{
 			if (isServer)
@@ -39,8 +62,7 @@ namespace Code.Gameplay.Score
 		}
 
 		private void OnGUI()
-		{
-			GUI.Box
+			=> GUI.Box
 			(
 				new Rect
 				(
@@ -51,7 +73,6 @@ namespace Code.Gameplay.Score
 				),
 				$"{_syncPlayerName}: {_scoreValue}"
 			);
-		}
 
 		[Command(requiresAuthority = false)] private void CmdApplyScore() => ApplyScore();
 

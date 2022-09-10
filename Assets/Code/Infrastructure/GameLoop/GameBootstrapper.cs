@@ -1,4 +1,5 @@
 using Code.Infrastructure.GameStates;
+using Code.Workflow.Extensions;
 using UnityEngine;
 
 namespace Code.Infrastructure.GameLoop
@@ -12,12 +13,18 @@ namespace Code.Infrastructure.GameLoop
 		{
 			DontDestroyOnLoad(this);
 
-			DerivedNetworkRoomManager networkRoomManager = Instantiate(_networkRoomManagerPrefab);
-			DontDestroyOnLoad(networkRoomManager);
-
-			GameStateMachine gameStateMachine = Instantiate(_gameStateMachinePrefab);
-			gameStateMachine.Construct(networkRoomManager);
-			DontDestroyOnLoad(gameStateMachine);
+			DerivedNetworkRoomManager networkRoomManager = CreateNetworkRoomManager();
+			
+			CreateGameStateMachine(networkRoomManager);
 		}
+
+		private void CreateGameStateMachine(DerivedNetworkRoomManager networkRoomManager)
+			=> Instantiate(_gameStateMachinePrefab)
+			   .Do((sm) => sm.Construct(networkRoomManager))
+			   .Do(DontDestroyOnLoad);
+
+		private DerivedNetworkRoomManager CreateNetworkRoomManager()
+			=> Instantiate(_networkRoomManagerPrefab)
+				.Do(DontDestroyOnLoad);
 	}
 }

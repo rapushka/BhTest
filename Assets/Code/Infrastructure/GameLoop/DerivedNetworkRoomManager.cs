@@ -8,30 +8,32 @@ namespace Code.Infrastructure.GameLoop
 	public class DerivedNetworkRoomManager : NetworkRoomManager
 	{
 		[SerializeField] private WinScreen _winScreen;
-
 		[SerializeField] private Rect _startGameButtonRect;
 
 		private bool _showStartButton;
+		private PlayerScore _playerScore;
 
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
 		{
-			var playerScore = gamePlayer.GetComponent<PlayerScore>();
+			_playerScore = gamePlayer.GetComponent<PlayerScore>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
 			var playerName = $"Player{index + 1}";
-			playerScore.Construct(playerName, index);
+			
+			_playerScore.Construct(playerName, index);
 
 			return true;
 		}
 
-		public void GameOver(string winnerName)
-		{
-			// ServerChangeScene(_winScene);
-			_winScreen.DisplayWinnerName(winnerName);
-		}
+		public void GameOver(string winnerName) => _winScreen.DisplayWinnerName(winnerName);
 
 		public void PlayAgain()
 		{
+			if (_playerScore)
+			{
+				_playerScore.Destroy();
+			}
+
 			ServerChangeScene(RoomScene);
 			_winScreen.Hide();
 		}
