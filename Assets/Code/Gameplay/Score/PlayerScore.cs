@@ -24,18 +24,13 @@ namespace Code.Gameplay.Score
 		public void Construct(string playerName, int index) => (_syncPlayerName, _index) = (playerName, index);
 
 		public void Destroy()
-			=> DoSyncAction(serverSideAction: DestroySelf, clientSideAction: CmdDestroy);
+			=> SynchronizeAction(serverSideAction: DestroySelf, clientSideAction: CmdDestroy);
 
 		public void IncrementScore() 
-			=> DoSyncAction(serverSideAction: ApplyScore, clientSideAction: CmdApplyScore);
+			=> SynchronizeAction(serverSideAction: ApplyScore, clientSideAction: CmdApplyScore);
 
-		private void DoSyncAction(Action serverSideAction, Action clientSideAction)
-			=> this.Do
-			(
-				@if: isServer,
-				@true: (_) => serverSideAction(),
-				@false: (_) => clientSideAction()
-			);
+		private void SynchronizeAction(Action serverSideAction, Action clientSideAction)
+			=> this.Do(@if: isServer, @true: (_) => serverSideAction(), @false: (_) => clientSideAction());
 
 		private void OnGUI()
 			=> GUI.Box
