@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Code.Gameplay.Score
 {
-	public class PlayerScore : NetworkBehaviour
+	public class Player : NetworkBehaviour
 	{
 		[SerializeField] private Text _playerNameView;
 		[Header("GUI Layout")] [SerializeField] private Vector2 _position;

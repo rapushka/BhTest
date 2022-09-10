@@ -1,23 +1,24 @@
 using Code.Infrastructure.GameStates;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Gameplay.Score
 {
 	public class ScoreIncreaseAdapter : NetworkBehaviour
 	{
-		[SerializeField] private PlayerScore _playerScore;
+		[FormerlySerializedAs("_playerScore")] [SerializeField] private Player _player;
 
 		private GameStateMachine _gameStateMachine;
 
 		private GameStateMachine GameStateMachine 
 			=> _gameStateMachine ??= FindObjectOfType<GameStateMachine>();
 
-		private void Start() => _playerScore.ScoreIncrease += OnScoreIncrease;
+		private void Start() => _player.ScoreIncrease += OnIncrease;
 
-		private void OnDestroy() => _playerScore.ScoreIncrease -= OnScoreIncrease;
+		private void OnDestroy() => _player.ScoreIncrease -= OnIncrease;
 
-		private void OnScoreIncrease(string playerName, int score) 
+		private void OnIncrease(string playerName, int score) 
 			=> GameStateMachine.OnScoreIncrease(playerName, score);
 	}
 }

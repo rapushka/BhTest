@@ -8,15 +8,15 @@ namespace Code.PlayerStateMachines.DashStates
 {
 	public class DashActiveState : TimeBouncedState<DashPassiveState>, IDashState
 	{
-		private readonly PlayerScore _playerScore;
+		private readonly Player _player;
 
-		public DashActiveState(DashComponent dashComponent, PlayerScore playerScore)
+		public DashActiveState(DashComponent dashComponent, Player player)
 			: base(dashComponent.DashDuration)
-			=> _playerScore = playerScore;
+			=> _player = player;
 
 		public void OnDash(PlayerDashStateMachine playerDashStateMachine) { }
 
 		public void OnCollide(IColorState otherColorState)
-			=> _playerScore.Do((s) => s.IncrementScore(), @if: otherColorState is ColorDefaultState);
+			=> _player.Do((s) => s.IncrementScore(), @if: otherColorState is ColorDefaultState);
 	}
 }

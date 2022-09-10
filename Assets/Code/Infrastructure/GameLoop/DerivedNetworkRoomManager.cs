@@ -12,18 +12,18 @@ namespace Code.Infrastructure.GameLoop
 
 		private WinScreen _winScreen;
 		private bool _showStartButton;
-		private PlayerScore _playerScore;
+		private Player _player;
 
 		public void Construct(WinScreen winScreen) => _winScreen = winScreen;
 		
 		public override bool OnRoomServerSceneLoadedForPlayer
 			(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
 		{
-			_playerScore = gamePlayer.GetComponent<PlayerScore>();
+			_player = gamePlayer.GetComponent<Player>();
 			int index = roomPlayer.GetComponent<NetworkRoomPlayer>().index;
 			var playerName = $"Player{index + 1}";
 			
-			_playerScore.Construct(playerName, index);
+			_player.Construct(playerName, index);
 			
 			Destroy(roomPlayer);
 
@@ -34,7 +34,7 @@ namespace Code.Infrastructure.GameLoop
 
 		public void PlayAgain()
 		{
-			_playerScore.Do((p) => p.Destroy(), @if: (p) => p);
+			_player.Do((p) => p.Destroy(), @if: (p) => p);
 			
 			ServerChangeScene(RoomScene);
 			_winScreen.Hide();

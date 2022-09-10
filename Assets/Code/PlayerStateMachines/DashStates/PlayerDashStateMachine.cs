@@ -6,6 +6,7 @@ using Code.Gameplay.Score;
 using Code.Input;
 using Code.PlayerStateMachines.ColorStates;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.PlayerStateMachines.DashStates
 {
@@ -13,7 +14,7 @@ namespace Code.PlayerStateMachines.DashStates
 	{
 		[SerializeField] private InputService _input;
 		[SerializeField] private DashComponent _dashComponent;
-		[SerializeField] private PlayerScore _playerScore;
+		[FormerlySerializedAs("_playerScore")] [SerializeField] private Player _player;
 
 		public void Collide(IColorState otherColorState) => CurrentState.OnCollide(otherColorState);
 
@@ -21,7 +22,7 @@ namespace Code.PlayerStateMachines.DashStates
 			=> new Dictionary<Type, IDashState>
 			{
 				[typeof(DashPassiveState)] = new DashPassiveState(_dashComponent),
-				[typeof(DashActiveState)] = new DashActiveState(_dashComponent, _playerScore),
+				[typeof(DashActiveState)] = new DashActiveState(_dashComponent, _player),
 			};
 
 		private void OnEnable() => _input.Dashing += OnDash;
