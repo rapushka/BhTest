@@ -8,13 +8,11 @@ namespace Code.Infrastructure.GameStates
 {
 	public class GameStateMachine : BaseStateMachine<IGameState>
 	{
+		[SerializeField] private DerivedNetworkRoomManager _networkRoomManagerPrefab;
 		[SerializeField] private int _scoreToWin = 3;
 		[SerializeField] private float _secondsOnWinScreen = 5f;
 
-		private DerivedNetworkRoomManager _derivedNetworkRoomManager;
-
-		public DerivedNetworkRoomManager derivedNetworkRoomManager
-			=> _derivedNetworkRoomManager ??= FindObjectOfType<DerivedNetworkRoomManager>();
+		public DerivedNetworkRoomManager networkRoomManagerPrefab => _networkRoomManagerPrefab;
 
 		public string LastSavedPlayerName { get; private set; }
 

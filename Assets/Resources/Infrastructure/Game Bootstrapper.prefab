@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2801dd037e4149538b251c090bb8551b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _networkRoomManagerPrefab: {fileID: 3974438503999160826, guid: 03d8889b8e7d6544a9f8b7aa2a00d320, type: 3}
   _scoreToWin: 3
   _secondsOnWinScreen: 5
 --- !u!1 &660578394494892800
@@ -820,3 +821,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: {fileID: 1156384114529785254}
+  _windowWidth: 700
+  _windowHeight: 394
