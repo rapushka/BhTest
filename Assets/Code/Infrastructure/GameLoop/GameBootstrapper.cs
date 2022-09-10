@@ -22,7 +22,8 @@ namespace Code.Infrastructure.GameLoop
 			DontDestroyOnLoad(this);
 			SceneManager.LoadScene(_bootstrapScene);
 
-			Instantiate(_uiRootPrefab);
+			GameObject uiInstance = Instantiate(_uiRootPrefab);
+			DontDestroyOnLoad(uiInstance);
 			_roomManager = CreateNetworkRoomManager();
 			_gameStateMachine = CreateGameStateMachine(_roomManager);
 		}
@@ -41,7 +42,7 @@ namespace Code.Infrastructure.GameLoop
 			_roomManager = CreateNetworkRoomManager();
 			_gameStateMachine.Construct(_roomManager);
 		}
-		
+
 		private DerivedNetworkRoomManager CreateNetworkRoomManager()
 			=> Instantiate(_roomManagerPrefab)
 				.Do(DontDestroyOnLoad);
